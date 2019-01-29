@@ -3,44 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LudoGameEngine", "LudoGameEngine\LudoGameEngine.csproj", "{4771B031-1F55-48FE-BEA4-8109CEB7218B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LudoWebApi", "LudoWebApi\LudoWebApi.csproj", "{582B766B-CB4A-44A2-B85F-48991174E931}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LudoWebApi", "LudoWebApi\LudoWebApi.csproj", "{193EB3D5-6326-479A-9CE1-1C99C5F84987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LudoGameEngine", "LudoGameEngine\LudoGameEngine.csproj", "{8CDD25E4-DCDC-419D-A1C0-0C464CF2EC84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Debug|x64.Build.0 = Debug|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Debug|x86.Build.0 = Debug|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Release|x64.ActiveCfg = Release|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Release|x64.Build.0 = Release|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Release|x86.ActiveCfg = Release|Any CPU
-		{4771B031-1F55-48FE-BEA4-8109CEB7218B}.Release|x86.Build.0 = Release|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Debug|x64.Build.0 = Debug|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Debug|x86.Build.0 = Debug|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Release|Any CPU.Build.0 = Release|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Release|x64.ActiveCfg = Release|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Release|x64.Build.0 = Release|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Release|x86.ActiveCfg = Release|Any CPU
-		{193EB3D5-6326-479A-9CE1-1C99C5F84987}.Release|x86.Build.0 = Release|Any CPU
+		{582B766B-CB4A-44A2-B85F-48991174E931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582B766B-CB4A-44A2-B85F-48991174E931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582B766B-CB4A-44A2-B85F-48991174E931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582B766B-CB4A-44A2-B85F-48991174E931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CDD25E4-DCDC-419D-A1C0-0C464CF2EC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CDD25E4-DCDC-419D-A1C0-0C464CF2EC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CDD25E4-DCDC-419D-A1C0-0C464CF2EC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CDD25E4-DCDC-419D-A1C0-0C464CF2EC84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
