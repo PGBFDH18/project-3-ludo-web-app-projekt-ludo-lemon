@@ -10,8 +10,11 @@ namespace Lemon_WebApp.Controllers
 {
     public class LudoController : Controller
     {
+
+        
         public IActionResult Index()
         {
+            //[Route("giveNumber")]
             var client = new RestClient("http://localhost:50839/");
 
             var request = new RestRequest("api/ludo/dice", Method.GET);
