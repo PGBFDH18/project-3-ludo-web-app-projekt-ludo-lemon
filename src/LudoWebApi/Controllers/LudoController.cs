@@ -2,6 +2,7 @@
 using System.Linq;
 using LudoWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using LudoGameEngine;
 
 namespace LudoWebApi.Controllers
 {
@@ -87,6 +88,16 @@ namespace LudoWebApi.Controllers
         public void DeleteGame(int gameId)
         {
             ludoGames.DeleteGame(gameId);
+        }
+
+        // GET: api/Ludo/dice
+        [HttpGet("dice")]
+        public ActionResult<int> RollDice()
+        {
+            Diece dice = new Diece();
+            int value = dice.RollDiece();
+
+            return Ok(value);
         }
     }
 }
