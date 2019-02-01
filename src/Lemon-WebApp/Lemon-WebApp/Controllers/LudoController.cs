@@ -23,8 +23,7 @@ namespace Lemon_WebApp.Controllers
             var diceValue = ludoGameResponse.Data;
             //Console.WriteLine(diceValue);
             //Random e = new Random();
-            DiceModel model = new DiceModel();
-            model.currentDicePosition = model.DiceDictionary[diceValue];
+            DiceModel model = new DiceModel(diceValue);
 
             return View(model);
         }
