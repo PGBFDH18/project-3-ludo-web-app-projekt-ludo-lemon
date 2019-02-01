@@ -21,123 +21,106 @@ namespace Lemon_WebApp.Models
             DiceValue = diceValue;
             DiceDictionary = new Dictionary<int, List<DiceDot>>
             {
+                [1] = new List<DiceDot>
                 {
-                    1, new List<DiceDot>
+                    new DiceDot
                     {
-                        new DiceDot
-                        {
-                             Id ="center"
-                        }
+                        Id ="center"
+                    }
+                },                
+                [2] = new List<DiceDot>
+                {
+                    new DiceDot
+                    {
+                        Id ="leftUpper"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightLower"
                     }
                 },
+                [3] = new List<DiceDot>
                 {
-                    2, new List<DiceDot>
+                    new DiceDot
                     {
-
-                        new DiceDot
-                        {
-                             Id ="leftUpper"
-                        },
-                         new DiceDot
-                        {
-                             Id ="rightLower"
-                        }
+                        Id ="leftUpper"
+                    },
+                    new DiceDot
+                    {
+                        Id ="center"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightLower"
                     }
                 },
+                [4] = new List<DiceDot>
                 {
-                    3, new List<DiceDot>
+                    new DiceDot
                     {
-
-                        new DiceDot
-                        {
-                             Id ="leftUpper"
-                        },
-                        new DiceDot
-                        {
-                             Id ="center"
-                        },
-                        new DiceDot
-                        {
-                             Id ="rightLower"
-                        }
+                        Id ="leftUpper"
+                    },
+                    new DiceDot
+                    {
+                            Id ="leftLower"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightUpper"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightLower"
                     }
                 },
+                [5] = new List<DiceDot>
                 {
-                    4, new List<DiceDot>
+                    new DiceDot
                     {
-
-                        new DiceDot
-                        {
-                             Id ="leftUpper"
-                        },
-                        new DiceDot
-                        {
-                             Id ="leftLower"
-                        },
-                        new DiceDot
-                        {
-                             Id ="rightUpper"
-                        },
-                        new DiceDot
-                        {
-                             Id ="rightLower"
-                        }
+                        Id ="leftUpper"
+                    },
+                    new DiceDot
+                    {
+                        Id ="leftLower"
+                    },
+                    new DiceDot
+                    {
+                        Id ="center"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightUpper"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightLower"
                     }
                 },
+                [6] = new List<DiceDot>
                 {
-                    5, new List<DiceDot>
+                    new DiceDot
                     {
-
-                        new DiceDot
-                        {
-                             Id ="leftUpper"
-                        },
-                        new DiceDot
-                        {
-                             Id ="leftLower"
-                        },
-                        new DiceDot
-                        {
-                             Id ="center"
-                        },
-                        new DiceDot
-                        {
-                             Id ="rightUpper"
-                        },
-                        new DiceDot
-                        {
-                             Id ="rightLower"
-                        }
-                    }
-                },
-                {
-                    6, new List<DiceDot>
+                        Id ="leftUpper"
+                    },
+                    new DiceDot
                     {
-
-                        new DiceDot
-                        {
-                             Id ="leftUpper"
-                        },
-                        new DiceDot
-                        {
-                             Id ="leftMiddel"
-                        },
-                        new DiceDot
-                        {
-                             Id ="leftLower"
-                        },
-                        new DiceDot
-                        {
-                             Id ="rightUpper"
-                        },
-                        new DiceDot
-                        {
-                             Id ="rightMiddel"
-                        },
-                        new DiceDot
-                        {
-                             Id ="rightLower"
-                        }
+                        Id ="leftMiddel"
+                    },
+                    new DiceDot
+                    {
+                        Id ="leftLower"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightUpper"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightMiddel"
+                    },
+                    new DiceDot
+                    {
+                        Id ="rightLower"
                     }
                 }
             };
