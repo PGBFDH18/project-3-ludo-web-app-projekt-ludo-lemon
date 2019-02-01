@@ -8,7 +8,7 @@
 
 
 <div class="gameInfo">
-    <input type="button" value="Roll dice" onclick="location.href='@Url.Action("LudoController")'" />
+
     <div class="currentPlayer">player1</div>
     <div class="dice">
         @foreach (var dot in Model.currentDicePosition)
@@ -25,6 +25,9 @@
             <div class="diceDot" id="rightUpper"></div>
             <div class="diceDot" id="rightMiddel"></div>
             <div class="diceDot" id="rightLower"></div>*@
+    </div>
+    <div class="rollDiceButton">
+        <input type="button" value="Roll dice" onclick="location.href='@Url.Action("LudoController")'" />
     </div>
 </div>
 <div class="board">
