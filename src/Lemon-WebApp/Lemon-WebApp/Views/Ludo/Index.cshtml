@@ -18,7 +18,8 @@
 
 <div class="gameInfo">
 
-    <div class="currentPlayer">player1</div>
+    <div id="presentation">Spelare i tur:</div>
+    <div id="currentPlayer" class="currentPlayer"></div>
     <div class="dice">
         @foreach (var dot in Model.currentDicePosition)
         {
@@ -35,7 +36,7 @@
             <div class="diceDot" id="rightMiddel"></div>
             <div class="diceDot" id="rightLower"></div>*@
     </div>
-    <div class="rollDiceButton">
+    <div class="rollDiceButton" id="rollDiceButton">
         <input type="button" value="Roll dice" onclick="location.href='@Url.Action("LudoController")'" />
     </div>
 </div>
@@ -176,5 +177,6 @@
         <div class="field">
             <div class="brick player4" id="bluePiece4"></div>
         </div>
+        <script src="~/js/LudoBoard.js"></script>
     </div>
 </div>
