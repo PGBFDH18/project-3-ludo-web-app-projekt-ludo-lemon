@@ -1,12 +1,10 @@
 ﻿html {
-    background-color: lightgray;
+    background-color: #6bb0dd;
+    color: rgb(255, 255, 255);
+    font-family: "Lucida Console";
+    font-size: 16px;
 }
 
-.rollDiceButton {
-    position: absolute;
-    top: 220px;
-    left: 47px
-}
 
 .currentPlayer {
     font-size: 300%;
@@ -17,7 +15,6 @@
     height: 56px;
     background-color: antiquewhite;
     border: 2px solid black;
-    border-radius: 5px;
     margin: 0px;
     padding: 0px;
     position: absolute;
@@ -80,8 +77,8 @@
     width: 180px;
     height: 180px;
     position: absolute;
-    left: 360px;
-    top: 360px;
+    left: 360;
+    top: 360;
     background-color: cyan;
 }
 
