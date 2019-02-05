@@ -10,7 +10,16 @@ namespace Lemon_WebApp.Controllers
 {
     public class LudoController : Controller
     {
+        public int Something()
+        {
+            //[Route("createGame")]
+            var client = new RestClient("http://localhost:50839/");
 
+            var request = new RestRequest("api/ludo/", Method.POST);
+            IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
+            var gameId = ludoGameResponse.Data;
+            return gameId;
+        }
         
         public IActionResult Index()
         {
