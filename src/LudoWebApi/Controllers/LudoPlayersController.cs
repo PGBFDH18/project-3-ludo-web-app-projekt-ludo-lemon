@@ -82,7 +82,8 @@ namespace LudoWebApi.Controllers
             {
                 Color = player.PlayerColor.ToString(),
                 Id = player.PlayerId,
-                Name = player.Name
+                Name = player.Name,
+                Pieces = player.Pieces.ToArray()
             };
         }
 
