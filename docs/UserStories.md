@@ -1,18 +1,27 @@
 ﻿# Userstories
-## GameEngine
-- Som en av *2-4* användare vill jag kunna välja färg.
-- Nästa spelare i ordning ska kunna välja färg, en av kvarvarande tre, o.s.v.
-- Innan spelat påbörjas, är alla spelares pjäser placerade i sina bon.
-- När minst 2 spelare valts kan spelet påbörjas genom att tärningen kastas av första spelaren.
-- Som spelare vill jag kunna se positionen på samtliga pjäser.
-- Om en spelare slår *1* eller *6* med tärningen får hen välja att gå ut med en pjäs från boet.
-- Som spelare vill jag kunna välja vilken av mina pjäser jag vill flytta.
-- Om min pjäs hamnar på samma position som någon av de andra spelarnas pjäser kommer jag knuffa ut den andra pjäsen ("knuff").
-- Den utslagna pjäsen placeras i sin spelares bo.
-- På ruta **41-45** kan man inte bli "knuffad".
-- En pjäs går i mål när spelaren flyttat den **45 steg**.
-- Den spelare som först får alla sina pjäser i mål har vunnit spelet.
-- Som användare ska jag kunna spara ett spel till en fil och återuppta det genom inläsning av filen.
+## WebAPP
+- Som spelare vill jag se ett **välkomst-Webb-fönster** där spelet presenteras.
+- Som spelare vill jag kunna logga in med ett **användarnamn**.
+- Som spelare vill jag kunna få en lista på tidigare sparade spel där jag deltagit som spelare så att jag kan välja att **öppna/fortsätta** ett spel.
+- Som spelare vill jag komma till ett nytt Webb-fönster där det sparade spelet **presenteras grafiskt** så att det skall gå att fortsätta spela den.
+- Som spelare vill jag kunna välja att påbörja ett **nytt spel** i välkomst-fönstret och **namnge** spelet.
+- Som spelare vill jag kunna välja bland **4 färger**.
+- Som spelare vill jag kunna **påbörja spelet** när minst två spelare är med genom att tärningen kastas av första spelaren.
+- Spelet påbörjas automatiskt när 4 spelare gått med genom att tärningen kastas av första spelaren.
+- Som spelare vill jag komma till ett Webb-fönster så att jag grafiskt kan se spelplanen, pjäsernas placering och tärningen.
+- Som spelare vill jag kunna **"kasta" tärningen** genom att klicka på den.
+- Som spelare vill jag kunna se **resultatet av tärningsslaget** så att jag kan ta ställning till vilken pjäs jag vill/kan flytta.
+- Som spelare vill jag kunna se **positionen på samtliga pjäser** på spelplanet så att jag kan ta ställning till vilken pjäs jag vill/kan flytta.
+- Som spelare vill jag kunna välja att **flytta ut en pjäs från boet** om jag kastar **1** eller **6** med tärningen.
+- Som spelare vill jag kunna **välja vilken av mina pjäser jag vill flytta** genom att klicka på den.
+- Som spelare vill jag kunna **"knuffa ut"** en motståndares pjäs om jag hamnar på samma position som motståndaren. Den utslagna pjäsen placeras automatiskt i sin spelares bo.
+- Som spelare kan jag inte bli "knuffad" om jag befinner mig på ruta **53-57** på spelplanet.
+- Som spelare har min pjäs gått i mål när pjäsen flyttat **58 steg**.
+- Som spelare har jag **vunnit** om alla mina fyra pjäser gått i mål först av alla deltagande spelare.
+- Spelet **avslutas automatiskt** om en spelare vunnit.
+- Som spelare vill jag kunna **avsluta ett spel** när jag vill.
+- Som spelare vill jag kunna välja att **spara ett spel** som inte är avslutat så att det kan återupptas senare om jag vill.
+- Som spelare vill jag kunna **namnge** spelet som skall sparas så att jag kan välja att fortsätta spela den senare om jag vill.
 
 ## api-interface
 <p>Resources och hur olika metoder påverkar dem</p>
