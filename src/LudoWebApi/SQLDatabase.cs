@@ -11,17 +11,54 @@ namespace LudoWebApi
     {
         private SqlConnection _connection;
 
-        public SQLDatabase(string connectionString) => 
-            _connection = new SqlConnection(connectionString); 
-
-        public IEnumerable<GameModel> Load()
+        public SQLDatabase(string connectionString)
         {
-            throw new NotImplementedException();
+            _connection = new SqlConnection(connectionString);
         }
 
+        /// <summary>
+        /// Loads all GameModels from database.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<GameModel> Load()
+        {
+            var command = new SqlCommand("SELECT * FROM LudoGame", _connection);
+            _connection.Open();
+            SqlDataReader data = command.ExecuteReader();
+            while (data.Read())
+            {
+                yield return new GameModel
+                {
+                    GameId = Convert.ToInt32(data["ID"]),
+                    State = Convert.ToString(data["State"]),
+                    CurrentPlayerId = Convert.ToInt32(data["CurrentPlayerID"])
+                };
+            }
+            data.Close();
+        }
+
+        /// <summary>
+        /// Loads a single GameModel from database.
+        /// </summary>
+        /// <param name="gameID">ID of the game to load from database.</param>
+        /// <returns></returns>
         public GameModel Load(int gameID)
         {
-            throw new NotImplementedException();
+            var command = new SqlCommand("SELECT * FROM LudoGame WHERE ID = @gameID", _connection);
+            _connection.Open();
+            var idParameter = new SqlParameter("@gameID", gameID);
+            command.Parameters.Add(idParameter);
+            SqlDataReader data = command.ExecuteReader();
+            data.Read();
+            var gameModel = new GameModel
+            {
+                GameId = Convert.ToInt32(data["ID"]),
+                State = Convert.ToString(data["State"]),
+                CurrentPlayerId = Convert.ToInt32(data["CurrentPlayerID"])
+            };
+            data.Close();
+
+            return gameModel;
         }
 
         public void Remove(int gameID)
@@ -37,5 +74,7 @@ namespace LudoWebApi
         {
             throw new NotImplementedException();
         }
+
+        public void DropConnection() => _connection.Close();
     }
 }

@@ -12,5 +12,6 @@ namespace LudoWebApi
         Models.GameModel Load(int gameID);
         void Update(int gameID, Models.GameModel gameModel);
         void Remove(int gameID);
+        void DropConnection();
     }
 }
