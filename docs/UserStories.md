@@ -101,5 +101,8 @@ Sammanfattat är correctionFactor en "konstant" som adderas med pjäsens lokala 
 - [x] Upprätta YAML-fil i *VisualStudio* Code alt. *SwaggerHub*
 - [x] Upprätta API:et i VisualStudio
 - [x] Lägga till CI vi Azure DevOps
-- [ ] Refactoring Console till *GameEngine*
-- [ ] Göra en Console applikation som kör Fia via Web-API
+- [ ] Implementera en WebbApp
+- [ ] Deploy till en webbserver
+- [ ] Validering av input
+- [ ] Loggning av vad som händer i spelet
+- [ ] Minst 3 enhetstester
