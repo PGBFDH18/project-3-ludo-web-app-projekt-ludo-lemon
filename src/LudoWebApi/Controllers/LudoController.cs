@@ -58,11 +58,14 @@ namespace LudoWebApi.Controllers
             var game = ludoGames[gameId];
             int numberOfPlayers = game.GetPlayers().Count();
             var currentPlayer = game.GetCurrentPlayer();
+            
             return new GameModel() {
                 GameId = gameId,
-                CurrentPlayerId = currentPlayer == null ? 0: currentPlayer.PlayerId,
+                CurrentPlayerId = currentPlayer == null ? 0 : currentPlayer.PlayerId,
                 NumberOfPlayers = numberOfPlayers,
-                State = game.GetGameState().ToString()
+                State = game.GetGameState().ToString(),
+                LudoPlayers = ludoGames[gameId].GetPlayers()
+
             };
         }
 

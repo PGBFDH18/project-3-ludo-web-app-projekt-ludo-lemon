@@ -36,5 +36,13 @@ namespace Lemon_WebApp.Controllers
 
             return View(model);
         }
+
+        public IActionResult GetPieces()
+        {
+            //[Route("collectPositions)]
+            var client = new RestClient("http://localhost:50839");
+            for (i = 0; i < )
+            var request = new RestRequest("api/ludo/29739/players/0", Method.GET)
+        }
     }
 }

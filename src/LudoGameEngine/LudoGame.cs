@@ -144,7 +144,7 @@ namespace LudoGameEngine
             {
                 piece.State = PieceGameState.Goal;
             }
-
+            EndTurn(player);
         }
 
         public int RollDiece()

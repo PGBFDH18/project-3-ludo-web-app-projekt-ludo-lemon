@@ -11,6 +11,6 @@ namespace LudoWebApi.Models
         public int GameId { get; set; }
         public int NumberOfPlayers { get; set; }
         public int CurrentPlayerId { get; set; }
-        
+        public LudoGameEngine.Player[] LudoPlayers { get; set; }
     }
 }
