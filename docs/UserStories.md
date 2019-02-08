@@ -98,6 +98,7 @@ Sammanfattat är correctionFactor en "konstant" som adderas med pjäsens lokala 
 
 ## ToDo's
 - [x] Sätta upp och organisera SQL-database in *Gearhost* <br>
+- [ ] Implementera kommunikation mellan databasen och API
 - [x] Upprätta YAML-fil i *VisualStudio* Code alt. *SwaggerHub*
 - [x] Upprätta API:et i VisualStudio
 - [x] Lägga till CI vi Azure DevOps
