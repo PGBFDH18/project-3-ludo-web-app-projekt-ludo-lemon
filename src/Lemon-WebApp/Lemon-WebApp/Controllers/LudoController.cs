@@ -37,12 +37,31 @@ namespace Lemon_WebApp.Controllers
             return View(model);
         }
 
-        public IActionResult GetPieces()
+//<<<<<<< HEAD
+//        public IActionResult GetPieces()
+//        {
+//            //[Route("collectPositions)]
+//            var client = new RestClient("http://localhost:50839");
+//            for (i = 0; i < )
+//            var request = new RestRequest("api/ludo/29739/players/0", Method.GET)
+//        }
+//=======
+        public int DeleteGame()  // (vi ska testa den när vi skapar spel)
         {
-            //[Route("collectPositions)]
-            var client = new RestClient("http://localhost:50839");
-            for (i = 0; i < )
-            var request = new RestRequest("api/ludo/29739/players/0", Method.GET)
+            //[Route("deleteGame")]
+            var client = new RestClient("http://localhost:50839/");
+
+            var request = new RestRequest("api/ludo/{gameId}", Method.DELETE);
+
+            return HttpStatusCode(Ok);
         }
+
+        private int HttpStatusCode(Func<OkResult> ok)
+        {
+            throw new NotImplementedException();
+        }
+
+
+//>>>>>>> 9fb847cfa099c3cf162afdc51ad089efbf56aa0a
     }
 }
