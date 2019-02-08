@@ -36,5 +36,22 @@ namespace Lemon_WebApp.Controllers
 
             return View(model);
         }
+
+        public int DeleteGame()  // (vi ska testa den när vi skapar spel)
+        {
+            //[Route("deleteGame")]
+            var client = new RestClient("http://localhost:50839/");
+
+            var request = new RestRequest("api/ludo/{gameId}", Method.DELETE);
+
+            return HttpStatusCode(Ok);
+        }
+
+        private int HttpStatusCode(Func<OkResult> ok)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
