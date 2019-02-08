@@ -1,4 +1,59 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function someFunction(diceValue) {
 
-// Write your JavaScript code.
+    document.getElementById('center').style.display = 'none';
+    document.getElementById('leftUpper').style.display = 'none';
+    document.getElementById('leftMiddel').style.display = 'none';
+    document.getElementById('leftLower').style.display = 'none';
+    document.getElementById('rightUpper').style.display = 'none';
+    document.getElementById('rightMiddel').style.display = 'none';
+    document.getElementById('rightLower').style.display = 'none';
+
+    if (diceValue == 1) {
+        document.getElementById('center').style.display = 'inline';
+    }
+    if (diceValue == 2) {
+        document.getElementById('leftUpper').style.display = 'inline';
+        document.getElementById('rightLower').style.display = 'inline';
+    }
+    if (diceValue == 3) {
+        document.getElementById('leftUpper').style.display = 'inline';
+        document.getElementById('center').style.display = 'inline';
+        document.getElementById('rightLower').style.display = 'inline';
+    }
+    if (diceValue == 4) {
+        document.getElementById('leftUpper').style.display = 'inline';
+        document.getElementById('leftLower').style.display = 'inline';
+        document.getElementById('rightUpper').style.display = 'inline';
+        document.getElementById('rightLower').style.display = 'inline';
+    }
+    if (diceValue == 5) {
+        document.getElementById('center').style.display = 'inline';
+        document.getElementById('leftUpper').style.display = 'inline';
+        document.getElementById('leftLower').style.display = 'inline';
+        document.getElementById('rightUpper').style.display = 'inline';
+        document.getElementById('rightLower').style.display = 'inline';
+    }
+    if (diceValue == 6) {
+        document.getElementById('leftUpper').style.display = 'inline';
+        document.getElementById('leftMiddel').style.display = 'inline';
+        document.getElementById('leftLower').style.display = 'inline';
+        document.getElementById('rightUpper').style.display = 'inline';
+        document.getElementById('rightMiddel').style.display = 'inline';
+        document.getElementById('rightLower').style.display = 'inline';
+    }
+}
+
+$('#rollDice').submit(function () { // catch the form's submit event
+    $.ajax({ // create an AJAX call...
+        url: "Ludo/RollDice", // the file to call
+        type: "get", // GET or POST
+        data: $("form").serialize(), // get the form data
+        success: function (diceValue) { // on success..
+            someFunction(diceValue);
+            return diceValue;
+
+            //$('#showValue').html(response); // update the DIV
+        }
+    });
+    return false; // cancel original event to prevent form submitting
+});

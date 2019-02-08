@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LudoGameEngine;
 
 namespace LudoWebApi.Models
 {
@@ -12,5 +13,6 @@ namespace LudoWebApi.Models
         public int NumberOfPlayers { get; set; }
         public int CurrentPlayerId { get; set; }
         public LudoGameEngine.Player[] LudoPlayers { get; set; }
+        public Piece[] Pieces { get; set; }
     }
 }
