@@ -1,4 +1,4 @@
-﻿function someFunction(diceValue) {
+﻿function showDiceDots(diceValue) {
 
     document.getElementById('center').style.display = 'none';
     document.getElementById('leftUpper').style.display = 'none';
@@ -43,17 +43,25 @@
     }
 }
 
+// ajax call to get dice value from WebApi
 $('#rollDice').submit(function () { // catch the form's submit event
     $.ajax({ // create an AJAX call...
         url: "Ludo/RollDice", // the file to call
         type: "get", // GET or POST
         data: $("form").serialize(), // get the form data
         success: function (diceValue) { // on success..
-            someFunction(diceValue);
-            return diceValue;
 
-            //$('#showValue').html(response); // update the DIV
+            // method to show the markup of dice with diceValue
+            showDiceDots(diceValue); 
+
+            // moving mechanism
+            $(document).ready(function () {
+                $('.field').on('click', '#bluePiece1', function () {
+                    $(this).appendTo('#' + diceValue)
+                });
+            });
         }
     });
     return false; // cancel original event to prevent form submitting
 });
+

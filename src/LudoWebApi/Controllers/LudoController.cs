@@ -66,7 +66,6 @@ namespace LudoWebApi.Controllers
                 NumberOfPlayers = numberOfPlayers,
                 State = game.GetGameState().ToString(),
                 LudoPlayers = ludoGames[gameId].GetPlayers()
-                State = game.GetGameState().ToString()
             };
         }
 
