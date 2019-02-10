@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LudoWebApi.Controllers
 {
-    [Route("api/ludo")]
+    [Route("api/ludo/{gameId}/players")]
     [ApiController]
     public class LudoPlayersController : ControllerBase
     {
@@ -25,7 +25,7 @@ namespace LudoWebApi.Controllers
         /// List med alla spelera i spelet
         /// </summary>
         /// <returns></returns>
-        [HttpGet("{gameId}/players")]
+        [HttpGet]
         public IEnumerable<LudoPlayer> Get(int gameId)
         {
             return ludoGames[gameId].GetPlayers().Select(p => 
@@ -42,7 +42,7 @@ namespace LudoWebApi.Controllers
         /// Lägg till en ny spelere till spelet
         /// </summary>
         /// <param name="value"></param>
-        [HttpPost("{gameId}/players")]
+        [HttpPost]
         public ActionResult Post(int gameId, [FromBody] LudoPlayer player)
         {
             PlayerColor playerColor = ParseColor(player.Color);
@@ -74,7 +74,7 @@ namespace LudoWebApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{gameId}/players/{playerId}")]
+        [HttpGet("{playerId}")]
         public LudoPlayer Get(int gameId, int playerId)
         {
             var player = ludoGames[gameId].GetPlayers().First(p =>  p.PlayerId == playerId);
@@ -93,7 +93,7 @@ namespace LudoWebApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>
-        [HttpPut("{gameId}/players/{playerId}")]
+        [HttpPut("{playerId}")]
         public void Put(int gameId, int playerId, [FromBody] LudoPlayer value)
         {
             var player = ludoGames[gameId].GetPlayers().First(p => p.PlayerId == playerId);

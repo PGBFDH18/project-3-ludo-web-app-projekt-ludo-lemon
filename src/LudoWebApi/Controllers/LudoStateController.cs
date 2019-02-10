@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LudoWebApi.Controllers
 {
-    [Route("api/ludo")]
+    [Route("api/ludo/{gameId}/state")]
     [ApiController]
     public class LudoStateController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace LudoWebApi.Controllers
         /// </summary>
         /// <param name="gameId"></param>
         /// <returns></returns>
-        [HttpGet("{gameId}/state")]
+        [HttpGet]
         public string Get(int gameId)
         {
             return ludoGames[gameId].GetGameState().ToString();
@@ -35,7 +35,7 @@ namespace LudoWebApi.Controllers
         /// If possible change the state to started
         /// </summary>
         /// <param name="gameId"></param>
-        [HttpPut("{gameId}/state")]
+        [HttpPut]
         public ActionResult Put(int gameId)
         {
             try
