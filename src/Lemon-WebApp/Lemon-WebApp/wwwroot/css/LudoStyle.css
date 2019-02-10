@@ -77,9 +77,9 @@
     width: 180px;
     height: 180px;
     position: absolute;
-    left: 360;
-    top: 360;
-    background-color: cyan;
+    left: 360px;
+    top: 360px;
+    background-color: #6bb0dd;
 }
 
 .field {

@@ -135,12 +135,12 @@ namespace LudoGameEngine
             piece.State = PieceGameState.InGame;
             piece.Position = newPosition;
 
-            if (newPosition >= 51)
+            if (newPosition >= 53)
             {
                 piece.State = PieceGameState.GoalPath;
             }
 
-            if (newPosition > 55)
+            if (newPosition > 58)
             {
                 piece.State = PieceGameState.Goal;
             }
