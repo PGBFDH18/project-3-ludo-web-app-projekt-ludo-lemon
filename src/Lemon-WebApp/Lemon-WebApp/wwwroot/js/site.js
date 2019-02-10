@@ -56,8 +56,10 @@ $('#rollDice').submit(function () { // catch the form's submit event
 
             // moving mechanism
             $(document).ready(function () {
-                $('.field').on('click', '#bluePiece1', function () {
+                $('.field').on('click', '.brick', function () {
                     $(this).appendTo('#' + diceValue)
+                    var x = $(this).attr('id');
+                    console.log(x);
                 });
             });
         }
