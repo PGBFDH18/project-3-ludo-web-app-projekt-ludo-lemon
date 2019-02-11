@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace Lemon_WebApp.Models
 {
-    public class PlayerModel
+    public class PieceModel
     {
 
+
+        
     }
 }

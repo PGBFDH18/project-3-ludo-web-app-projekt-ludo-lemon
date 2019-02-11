@@ -3,6 +3,7 @@ using System.Linq;
 using LudoWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using LudoGameEngine;
+using Serilog;
 
 namespace LudoWebApi.Controllers
 {
@@ -100,7 +101,11 @@ namespace LudoWebApi.Controllers
             Diece dice = new Diece();
             int value = dice.RollDiece();
 
+            
+
             return Ok(value);
+
+            
         }
     }
 }

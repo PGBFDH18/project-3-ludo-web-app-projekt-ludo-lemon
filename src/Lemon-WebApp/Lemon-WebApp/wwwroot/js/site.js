@@ -57,11 +57,23 @@ $('#rollDice').submit(function () { // catch the form's submit event
             // moving mechanism
             $(document).ready(function () {
                 $('.field').on('click', '.brick', function () {
-                    $(this).appendTo('#' + diceValue)
+                    $(this).appendTo('#' + diceValue);
                     var x = $(this).attr('id');
                     console.log(x);
                 });
             });
+        }
+    });
+    return false; // cancel original event to prevent form submitting
+});
+
+
+$('#create_game').submit(function () { // catch the form's submit event
+    $.ajax({ // create an AJAX call...
+        url: "Ludo/Something", // the file to call
+        type: "POST", // GET or POST
+        data: $("form").serialize(), // get the form data
+        success: function () { // on success..
         }
     });
     return false; // cancel original event to prevent form submitting

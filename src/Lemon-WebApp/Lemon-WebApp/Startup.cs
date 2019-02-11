@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace Lemon_WebApp
 {
@@ -17,6 +18,8 @@ namespace Lemon_WebApp
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            Log.Logger = new LoggerConfiguration().WriteTo.Seq("http://localhost:5341/").CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -52,6 +55,7 @@ namespace Lemon_WebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            
 
             app.UseMvc(routes =>
             {
