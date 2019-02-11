@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Lemon_WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
+using Newtonsoft.Json;
 
 namespace Lemon_WebApp.Controllers
 {
@@ -66,5 +67,19 @@ namespace Lemon_WebApp.Controllers
             throw new NotImplementedException();
         }
 
+        public void tryToFindAllPiecePositions()
+        {
+            //[Route("getGameInformation")]
+            var client = new RestClient("http://localhost:50839/");
+
+            var request = new RestRequest("/api/Ludo/115", Method.GET);
+            //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
+            IRestResponse ludoGameResponse = client.Execute(request);
+            var gameSetup = ludoGameResponse;
+            //PieceModel model = new PieceModel(gameSetup);
+            string data = gameSetup.Content;
+            JsonConvert.DeserializeObject<GameModel>(data);
+            //return model;
+        }
     }
 }
