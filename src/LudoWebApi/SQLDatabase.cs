@@ -17,25 +17,52 @@ namespace LudoWebApi
             _connection = new SqlConnection(connectionString);
         }
 
+        public void AddUser(IUser user)
+        {
+            _connection.Execute(
+                "INSERT INTO [User] (ID, Username)" +
+                "VALUES " +
+                "   (@userID, @name)", new { userID = user.ID, name = user.Username });
+        }
+
+        public User LoadUser(int userID)
+        {
+            User user = _connection.Query<User>(
+                "SELECT ID, Username " +
+                "FROM [User] " +
+                "WHERE ID = @uID", new { uID = userID}).First();
+
+            return user;
+        }
+
         /// <summary>
         /// Loads all GameModels from database.
         /// </summary>
         /// <returns></returns>
         public IEnumerable<GameModel> Load()
         {
-            var command = new SqlCommand("SELECT * FROM LudoGame", _connection);
-            _connection.Open();
-            SqlDataReader data = command.ExecuteReader();
-            while (data.Read())
-            {
-                yield return new GameModel
-                {
-                    GameId = Convert.ToInt32(data["ID"]),
-                    State = Convert.ToString(data["State"]),
-                    CurrentPlayerId = Convert.ToInt32(data["CurrentPlayerID"])
-                };
-            }
-            data.Close();
+            //var command = new SqlCommand("SELECT * FROM LudoGame", _connection);
+            //_connection.Open();
+            //SqlDataReader data = command.ExecuteReader();
+            //while (data.Read())
+            //{
+            //    yield return new GameModel
+            //    {
+            //        GameId = Convert.ToInt32(data["ID"]),
+            //        State = Convert.ToString(data["State"]),
+            //        CurrentPlayerId = Convert.ToInt32(data["CurrentPlayerID"])
+            //    };
+            //}
+            //data.Close();
+
+            List<GameModel> gameModels = _connection.Query<GameModel>(
+                "SELECT " +
+                "   ID AS GameId, " +
+                "   State, " +
+                "   CurrentPlayerId " +
+                "FROM LudoGame").ToList();
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -45,13 +72,13 @@ namespace LudoWebApi
         /// <returns></returns>
         public GameModel Load(int gameID)
         {
-            GameModel gameModel = _connection.Query<GameModel>(
+            GameModel gameModel = _connection.QueryFirst<GameModel>(
                 "SELECT " +
                 "   ID AS GameId, " +
                 "   State, " +
                 "   CurrentPlayerId " +
                 "FROM LudoGame " +
-                "WHERE ID = @gID", new { gID = gameID }).First();
+                "WHERE ID = @gID", new { gID = gameID });
 
             LudoGameEngine.Player[] players = _connection.Query<LudoGameEngine.Player>(
                 "SELECT " +
@@ -78,15 +105,6 @@ namespace LudoWebApi
             return gameModel;
         }
 
-        private IEnumerable<LudoGameEngine.Piece> LoadPieces(int playerID)
-        {
-            var parameters = new { pID = playerID };
-
-            LudoPlayer player = _connection.QueryFirst<LudoPlayer>("", parameters);
-
-            throw new NotImplementedException();
-        }
-
         public void Remove(int gameID)
         {
             throw new NotImplementedException();
@@ -96,8 +114,10 @@ namespace LudoWebApi
             throw new NotImplementedException();
         }
 
-        public void Save()
+        public void Save(int userID, GameModel gameModel)
         {
+            _connection.Execute("", new { });
+
             throw new NotImplementedException();
         }
 

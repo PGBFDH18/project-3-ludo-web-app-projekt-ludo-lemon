@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LudoWebApi
 {
-    public class GameIdGenerator : IGameIdGenerator
+    public class IdGenerator : IIdGenerator
     {
-        public int GenerateGameId()
+        public int GenerateId()
         {
             Random random = new Random();
             return random.Next(1, 50000);

@@ -12,10 +12,10 @@ namespace LudoWebApi.Controllers
     public class LudoController : ControllerBase
     {
         private ILudoGameContainer ludoGames;
-        private IGameIdGenerator gameIdGenerator;
+        private IIdGenerator gameIdGenerator;
 
 
-        public LudoController(ILudoGameContainer lgc, IGameIdGenerator gid)
+        public LudoController(ILudoGameContainer lgc, IIdGenerator gid)
         {
             ludoGames = lgc;
             gameIdGenerator = gid;
@@ -41,7 +41,7 @@ namespace LudoWebApi.Controllers
         [HttpPost]
         public int Post()
         {
-            var randomId = gameIdGenerator.GenerateGameId();
+            var randomId = gameIdGenerator.GenerateId();
             ludoGames.CreateGame(randomId);
             return randomId;
         }

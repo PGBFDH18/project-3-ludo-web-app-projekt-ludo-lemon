@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LudoWebApi
 {
-    class User : IUser
+    public class User : IUser
     {
         public int ID { get; set; }
         public string Username { get; set; }

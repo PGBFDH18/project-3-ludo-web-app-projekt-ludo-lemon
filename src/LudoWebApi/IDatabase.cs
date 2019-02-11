@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace LudoWebApi
 {
-    interface IDatabase
+    public interface IDatabase
     {
-        void Save();
+        void AddUser(IUser user);
+        User LoadUser(int userID);
+        void Save(int userID, Models.GameModel gameModel);
         IEnumerable<Models.GameModel> Load();
         Models.GameModel Load(int gameID);
         void Update(int gameID, Models.GameModel gameModel);

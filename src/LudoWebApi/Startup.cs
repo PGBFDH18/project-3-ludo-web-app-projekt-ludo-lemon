@@ -23,7 +23,7 @@ namespace LudoWebApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<ILudoGameContainer, LudoGameContainer>();
             services.AddTransient<IDiece, Diece>();
-            services.AddTransient<IGameIdGenerator, GameIdGenerator>();
+            services.AddTransient<IIdGenerator, IdGenerator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

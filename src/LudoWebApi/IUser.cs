@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LudoWebApi
 {
-    interface IUser
+    public interface IUser
     {
         int ID { get; set; }
         string Username { get; set; }
