@@ -67,3 +67,15 @@ $('#rollDice').submit(function () { // catch the form's submit event
     return false; // cancel original event to prevent form submitting
 });
 
+
+$('#create_game').submit(function () { // catch the form's submit event
+    $.ajax({ // create an AJAX call...
+        url: "Ludo/Something", // the file to call
+        type: "POST", // GET or POST
+        data: $("form").serialize(), // get the form data
+        success: function () { // on success..
+        }
+    });
+    return false; // cancel original event to prevent form submitting
+});
+
