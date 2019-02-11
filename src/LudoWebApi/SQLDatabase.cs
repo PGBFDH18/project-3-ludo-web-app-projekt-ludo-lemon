@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using LudoWebApi.Models;
+using Dapper;
 
 namespace LudoWebApi
 {
@@ -44,21 +45,32 @@ namespace LudoWebApi
         /// <returns></returns>
         public GameModel Load(int gameID)
         {
-            var command = new SqlCommand("SELECT * FROM LudoGame WHERE ID = @gameID", _connection);
-            _connection.Open();
-            var idParameter = new SqlParameter("@gameID", gameID);
-            command.Parameters.Add(idParameter);
-            SqlDataReader data = command.ExecuteReader();
-            data.Read();
-            var gameModel = new GameModel
-            {
-                GameId = Convert.ToInt32(data["ID"]),
-                State = Convert.ToString(data["State"]),
-                CurrentPlayerId = Convert.ToInt32(data["CurrentPlayerID"])
-            };
-            data.Close();
+            var parameters = new { gID = gameID };            
 
-            return gameModel;
+            GameModel gameModel = _connection.QueryFirst<GameModel>(
+                "SELECT " +
+                "   ID, " +
+                "   State, " +
+                "   CurrentPlayerID " +
+                "FROM LudoGame " +
+                "WHERE ID = @gID", parameters);
+
+            LudoPlayer[] players = _connection.Query<LudoPlayer>(
+                "SELECT * " +
+                "FROM LudoGame AS lg " +
+                "JOIN PlayerLudoGame AS plg ON lg.ID = plg.LudoGameID " +
+                "JOIN Player AS pl ON plg.PlayerID = pl.ID " +
+                "WHERE lg.ID = @gID AND ", parameters).ToArray();
+
+            LudoGameEngine.Piece[] pieces = _connection.Query<LudoGameEngine.Piece>(
+                "SELECT * " +
+                "FROM LudoGame AS lg " +
+                "JOIN PlayerLudoGame AS plg ON lg.ID = plg.LudoGameID " +
+                "JOIN Player AS pl ON plg.PlayerID = pl.ID " +
+                "JOIN Piece AS pi ON pl.ID = pi.PlayerID " +
+                "WHERE lg.ID = @gID", parameters).ToArray();
+
+            throw new NotImplementedException();
         }
 
         public void Remove(int gameID)
