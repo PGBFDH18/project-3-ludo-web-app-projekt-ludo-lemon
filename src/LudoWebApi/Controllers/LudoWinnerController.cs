@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LudoWebApi.Controllers
 {
-    [Route("api/ludo")]
+    [Route("api/ludo/{gameId}/winner")]
     [ApiController]
     public class LudoWinnerController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace LudoWebApi.Controllers
         /// </summary>
         /// <param name="gameId"></param>
         /// <returns></returns>
-        [HttpGet("{gameId}/winner")]
+        [HttpGet]
         public string Get(int gameId)
         {
             var winner = ludoGames[gameId].GetWinner();

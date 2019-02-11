@@ -1,21 +1,10 @@
-﻿@model Lemon_WebApp.Models.DiceModel
+﻿@*model Lemon_WebApp.Models.DiceModel*@
 
 @{
 
     Layout = "_MittLayout";
     ViewData["Title"] = "Min start sida";
 }
-
-
-<script>
-    $(document).ready(function () {
-        $("#bluePiece1").click(function () {
-            $("#bluePiece1").appendTo("#28");
-        });
-    });
-</script>
-
-
 
 <div class="gameInfo">
 
@@ -54,78 +43,78 @@
         <div class="field" id="4"></div>
         <div class="field" id="5"></div>
         <div class="field" id="6"></div>
+        <div class="field" id="7"></div>
         <div class="field player2" id="g1"></div>
         <div class="field player2" id="g2"></div>
         <div class="field player2" id="g3"></div>
         <div class="field player2" id="g4"></div>
         <div class="field player2" id="g5"></div>
-        <div class="field player2" id="g6"></div>
-        <div class="field" id="7"></div>
         <div class="field" id="8"></div>
         <div class="field" id="9"></div>
         <div class="field" id="10"></div>
         <div class="field" id="11"></div>
         <div class="field" id="12"></div>
+        <div class="field" id="13"></div>
     </div>
     <div class="wing" id="rightWing">
-        <div class="field" id="13"></div>
         <div class="field" id="14"></div>
         <div class="field" id="15"></div>
         <div class="field" id="16"></div>
         <div class="field" id="17"></div>
         <div class="field" id="18"></div>
+        <div class="field" id="19"></div>
+        <div class="field" id="20"></div>
         <div class="field player3" id="y1"></div>
         <div class="field player3" id="y2"></div>
         <div class="field player3" id="y3"></div>
         <div class="field player3" id="y4"></div>
         <div class="field player3" id="y5"></div>
-        <div class="field player3" id="y6"></div>
-        <div class="field" id="19"></div>
-        <div class="field" id="20"></div>
         <div class="field" id="21"></div>
         <div class="field" id="22"></div>
         <div class="field" id="23"></div>
         <div class="field" id="24"></div>
-    </div>
-    <div class="wing" id="topWing">
         <div class="field" id="25"></div>
         <div class="field" id="26"></div>
+    </div>
+    <div class="wing" id="topWing">
         <div class="field" id="27"></div>
         <div class="field" id="28"></div>
         <div class="field" id="29"></div>
         <div class="field" id="30"></div>
+        <div class="field" id="31"></div>
+        <div class="field" id="32"></div>
+        <div class="field" id="33"></div>
         <div class="field player4" id="b1"></div>
         <div class="field player4" id="b2"></div>
         <div class="field player4" id="b3"></div>
         <div class="field player4" id="b4"></div>
         <div class="field player4" id="b5"></div>
-        <div class="field player4" id="b6"></div>
-        <div class="field" id="31"></div>
-        <div class="field" id="32"></div>
-        <div class="field" id="33"></div>
         <div class="field" id="34"></div>
         <div class="field" id="35"></div>
         <div class="field" id="36"></div>
-    </div>
-    <div class="wing" id="bottomWing">
         <div class="field" id="37"></div>
         <div class="field" id="38"></div>
         <div class="field" id="39"></div>
+    </div>
+    <div class="wing" id="bottomWing">
         <div class="field" id="40"></div>
         <div class="field" id="41"></div>
         <div class="field" id="42"></div>
+        <div class="field" id="43"></div>
+        <div class="field" id="44"></div>
+        <div class="field" id="45"></div>
+        <div class="field" id="46"></div>
         <div class="field player1" id="r1"></div>
         <div class="field player1" id="r2"></div>
         <div class="field player1" id="r3"></div>
         <div class="field player1" id="r4"></div>
         <div class="field player1" id="r5"></div>
-        <div class="field player1" id="r6"></div>
-        <div class="field" id="43"></div>
-        <div class="field" id="44"></div>
-        <div class="field" id="45"></div>
-        <div class="field" id="46"></div>
         <div class="field" id="47"></div>
         <div class="field" id="48"></div>
+        <div class="field" id="49"></div>
+        <div class="field" id="50"></div>
+        <div class="field" id="51"></div>
+        <div class="field" id="52"></div>
     </div>
     <div class="goal"></div>
     <div class="start player1">
@@ -185,5 +174,4 @@
         </div>
     </div>
 </div>
-
 <script src="~/js/site.js"></script>
