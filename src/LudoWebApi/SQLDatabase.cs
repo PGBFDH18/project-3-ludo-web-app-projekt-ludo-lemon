@@ -45,30 +45,44 @@ namespace LudoWebApi
         /// <returns></returns>
         public GameModel Load(int gameID)
         {
-            var parameters = new { gID = gameID };            
-
-            GameModel gameModel = _connection.QueryFirst<GameModel>(
+            GameModel gameModel = _connection.Query<GameModel>(
                 "SELECT " +
-                "   ID, " +
+                "   ID AS GameId, " +
                 "   State, " +
-                "   CurrentPlayerID " +
+                "   CurrentPlayerId " +
                 "FROM LudoGame " +
-                "WHERE ID = @gID", parameters);
+                "WHERE ID = @gID", new { gID = gameID }).First();
 
-            LudoPlayer[] players = _connection.Query<LudoPlayer>(
-                "SELECT * " +
-                "FROM LudoGame AS lg " +
-                "JOIN PlayerLudoGame AS plg ON lg.ID = plg.LudoGameID " +
-                "JOIN Player AS pl ON plg.PlayerID = pl.ID " +
-                "WHERE lg.ID = @gID AND ", parameters).ToArray();
+            LudoGameEngine.Player[] players = _connection.Query<LudoGameEngine.Player>(
+                "SELECT " +
+                "   pl.ID AS PlayerId, " +
+                "   pl.Color AS PlayerColor " +
+                "FROM Player AS pl " +
+                "JOIN PlayerLudoGame AS plg ON pl.ID = plg.PlayerID " +
+                "JOIN LudoGame AS lg ON plg.LudoGameID = lg.ID " +
+                "WHERE lg.ID = @gID", new { gID = gameModel.GameId}).ToArray();
 
-            LudoGameEngine.Piece[] pieces = _connection.Query<LudoGameEngine.Piece>(
-                "SELECT * " +
-                "FROM LudoGame AS lg " +
-                "JOIN PlayerLudoGame AS plg ON lg.ID = plg.LudoGameID " +
-                "JOIN Player AS pl ON plg.PlayerID = pl.ID " +
-                "JOIN Piece AS pi ON pl.ID = pi.PlayerID " +
-                "WHERE lg.ID = @gID", parameters).ToArray();
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i].Pieces = _connection.Query<LudoGameEngine.Piece>(
+                    "SELECT " +
+                    "   ID AS PieceId, " +
+                    "   State," +
+                    "   Position " +
+                    "FROM Piece " +
+                    "WHERE PlayerID = @pID", new { pID = players[i].PlayerId }).ToArray();
+            }
+
+            gameModel.LudoPlayers = players;
+
+            return gameModel;
+        }
+
+        private IEnumerable<LudoGameEngine.Piece> LoadPieces(int playerID)
+        {
+            var parameters = new { pID = playerID };
+
+            LudoPlayer player = _connection.QueryFirst<LudoPlayer>("", parameters);
 
             throw new NotImplementedException();
         }

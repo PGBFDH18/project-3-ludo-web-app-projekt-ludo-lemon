@@ -28,12 +28,13 @@ namespace LudoWebApi.Controllers
         [HttpGet]
         public IEnumerable<LudoPlayer> Get(int gameId)
         {
-            return ludoGames[gameId].GetPlayers().Select(p => 
-                new LudoPlayer() {
+            return ludoGames[gameId].GetPlayers().Select(p =>
+                new LudoPlayer()
+                {
                     Color = p.PlayerColor.ToString(),
                     Id = p.PlayerId,
-                    Name = p.Name }
-                );
+                    Name = p.Name
+                });
         }
 
 
