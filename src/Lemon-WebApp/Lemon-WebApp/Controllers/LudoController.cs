@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Lemon_WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
+using Serilog;
 
 namespace Lemon_WebApp.Controllers
 {
@@ -19,11 +20,14 @@ namespace Lemon_WebApp.Controllers
             //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
             IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
             var diceValue = ludoGameResponse.Data;
-            DiceModel model = new DiceModel(diceValue);
+            //DiceModel model = new DiceModel(diceValue);
+            Log.Information("The dice roll was: {diceValue}", diceValue);
             return diceValue;
+
+
         }
 
-        public int Something()
+        public void Something()
         {
             //[Route("createGame")]
             var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
@@ -31,7 +35,8 @@ namespace Lemon_WebApp.Controllers
             var request = new RestRequest("api/ludo/", Method.POST);
             IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
             var gameId = ludoGameResponse.Data;
-            return gameId;
+            Log.Information("Created a game with ID: {gameId}", gameId);
+            
         }
         
         public IActionResult Index()
