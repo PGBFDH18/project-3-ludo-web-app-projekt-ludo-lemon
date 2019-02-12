@@ -9,10 +9,10 @@ namespace LudoWebApi
     {
         void AddUser(IUser user);
         User LoadUser(int userID);
-        void Save(int userID, Models.GameModel gameModel);
+        void Save(Models.GameModel gameModel);
         IEnumerable<Models.GameModel> Load();
         Models.GameModel Load(int gameID);
-        void Update(int gameID, Models.GameModel gameModel);
+        void Update(Models.GameModel gameModel);
         void Remove(int gameID);
         void DropConnection();
     }

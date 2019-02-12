@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace LudoWebApi.Controllers
 {
@@ -11,15 +12,30 @@ namespace LudoWebApi.Controllers
     [ApiController]
     public class DatabaseTestController : ControllerBase
     {
-        // GET: api/DatabaseTest
+        // GET: DatabaseTest/
         [HttpGet]
-        public ActionResult<LudoWebApi.Models.GameModel> Get()
+        public ActionResult<IEnumerable<Models.GameModel>> LoadAll()
         {
+            string password = System.IO.File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "key.dbpass"));
             SQLDatabase database = 
-                new SQLDatabase("Data Source=den1.mssql8.gear.host;Initial Catalog=lemon;Persist Security Info=True;User ID=lemon;Password=***********");
-            var hello = database.Load(92384);
+                new SQLDatabase($"Data Source=den1.mssql8.gear.host;Initial Catalog=lemon;Persist Security Info=True;User ID=lemon;Password={password}");
+            var hello = database.Load();
 
             return Ok(hello);
         }
+
+        // GET: DatabaseTest/123
+        [Route("{gameId}")]
+        [HttpGet]
+        public ActionResult<LudoWebApi.Models.GameModel> Load(int gameId)
+        {
+            string password = System.IO.File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "key.dbpass"));
+            SQLDatabase database = 
+                new SQLDatabase($"Data Source=den1.mssql8.gear.host;Initial Catalog=lemon;Persist Security Info=True;User ID=lemon;Password={password}");
+            var hello = database.Load(gameId);
+
+            return Ok(hello);
+        }
+
     }
 }

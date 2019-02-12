@@ -12,28 +12,20 @@ namespace LudoWebApi
     {
         private SqlConnection _connection;
 
-        public SQLDatabase(string connectionString)
-        {
+        public SQLDatabase(string connectionString) =>
             _connection = new SqlConnection(connectionString);
-        }
 
-        public void AddUser(IUser user)
-        {
+        public void AddUser(IUser user) =>
             _connection.Execute(
                 "INSERT INTO [User] (ID, Username)" +
                 "VALUES " +
                 "   (@userID, @name)", new { userID = user.ID, name = user.Username });
-        }
 
-        public User LoadUser(int userID)
-        {
-            User user = _connection.Query<User>(
+        public User LoadUser(int userID) =>
+            _connection.Query<User>(
                 "SELECT ID, Username " +
                 "FROM [User] " +
-                "WHERE ID = @uID", new { uID = userID}).First();
-
-            return user;
-        }
+                "WHERE ID = @uID", new { uID = userID }).First();
 
         /// <summary>
         /// Loads all GameModels from database.
@@ -62,7 +54,17 @@ namespace LudoWebApi
                 "   CurrentPlayerId " +
                 "FROM LudoGame").ToList();
 
-            throw new NotImplementedException();
+            for (int i = 0; i < gameModels.Count; i++)
+            {
+                gameModels[i].LudoPlayers = _connection.Query<LudoGameEngine.Player>(
+                    "SELECT " +
+                    "   ID AS PlayerId, " +
+                    "   Color AS PlayerColor " +
+                    "FROM Player " +
+                    "WHERE ID = @gID", new { gID = gameModels[i].GameId }).ToArray();
+            }
+
+            return gameModels;
         }
 
         /// <summary>
@@ -83,8 +85,10 @@ namespace LudoWebApi
             LudoGameEngine.Player[] players = _connection.Query<LudoGameEngine.Player>(
                 "SELECT " +
                 "   pl.ID AS PlayerId, " +
+                "   u.Username AS Name, " +
                 "   pl.Color AS PlayerColor " +
                 "FROM Player AS pl " +
+                "JOIN [User] AS u ON pl.UserID = u.ID " +
                 "JOIN PlayerLudoGame AS plg ON pl.ID = plg.PlayerID " +
                 "JOIN LudoGame AS lg ON plg.LudoGameID = lg.ID " +
                 "WHERE lg.ID = @gID", new { gID = gameModel.GameId}).ToArray();
@@ -107,16 +111,62 @@ namespace LudoWebApi
 
         public void Remove(int gameID)
         {
-            throw new NotImplementedException();
+            _connection.Execute(
+                "DELETE FROM Piece " +
+                "JOIN Player AS pl ON Piece.PlayerID = pl.ID " +
+                "JOIN PlayerLudoGame AS plg ON pl.ID = plg.PlayerID " +
+                "JOIN LudoGame AS lg ON plg.LudoGameID = lg.ID " +
+                "WHERE lg.ID = @gID", new { gID = gameID });
+
+            _connection.Execute(
+                "DELETE PlayerLudoGame " +
+                "WHERE LudoGameID = @lgID", new { lgID = gameID });
+
+            var pieceIdsToDelete = _connection.Query<int>(
+                "SELECT * " +
+                "FROM LudoGame AS lg " +
+                "JOIN PlayerLudoGame AS plg ON lg.ID = plg.LudoGameID " +
+                "JOIN Player AS pl ON plg.PlayerID = pl.ID " +
+                "JOIN Piece AS pi ON pl.ID = pi.PlayerID " +
+                "WHERE lg.ID = @lgID", new { lgID = gameID });
         }
-        public void Update(int gameID, GameModel gameModel)
+        public void Update(GameModel gameModel)
         {
-            throw new NotImplementedException();
+            // Update one table at a time.
+            _connection.Execute(
+                "UPDATE LudoGame " +
+                "SET " +
+                "   State = @gState, " +
+                "   CurrentPlayerID = @cpID " +
+                "WHERE ID = @gID", new { gState = gameModel.State, cpID = gameModel.CurrentPlayerId, gID = gameModel.GameId });
+
+            foreach (var player in gameModel.LudoPlayers)
+            {
+                _connection.Execute(
+                    "UPDATE Player " +
+                    "SET " +
+                    "   Color = @pColor " +
+                    "WHERE ID = @pID", new { pColor = player.PlayerColor, pID = player.PlayerId });
+            }
+
+            foreach (var player in gameModel.LudoPlayers)
+                foreach (var piece in player.Pieces)
+                {
+                    _connection.Execute(
+                        "UPDATE Piece " +
+                        "SET " +
+                        "   State = @pState, " +
+                        "   Position = @pPosition " +
+                        "WHERE ID = @pID", new { pState = piece.State, pPosition = piece.Position, pID = piece.PieceId });
+                }
         }
 
-        public void Save(int userID, GameModel gameModel)
+        public void Save(GameModel gameModel)
         {
-            _connection.Execute("", new { });
+            var players = gameModel.LudoPlayers;
+            var pieces = players.Select(pl => pl.Pieces).ToList();
+
+            
 
             throw new NotImplementedException();
         }
