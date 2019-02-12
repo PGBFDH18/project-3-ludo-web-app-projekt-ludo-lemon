@@ -3,6 +3,7 @@ using Xunit;
 using LudoWebApi;
 using System.IO;
 
+// TEMP
 namespace SQLDatabaseTests
 {
     public class DatabaseTest
@@ -15,7 +16,7 @@ namespace SQLDatabaseTests
         {
             SQLDatabase database = new SQLDatabase(_connectionString);
 
-            LudoWebApi.Models.GameModel game = database.Load(92384);
+            LudoWebApi.Models.GameModel game = database.LoadGame(92384);
             LudoGameEngine.Player player = game.LudoPlayers[0];
 
             _loadFromDatabaseReturnsCorrectPlayer_Passed = 3476 == player.PlayerId ? true : false;
@@ -25,7 +26,7 @@ namespace SQLDatabaseTests
         [Fact]
         public void SaveUserToDatabaseSuccessful()
         {
-            IUser user = new User
+            User user = new User
             {
                 ID = 123,
                 Username = "TestUser"
@@ -52,16 +53,22 @@ namespace SQLDatabaseTests
         public void UpdateLudoGameSuccessful()
         {
             IDatabase database = new SQLDatabase(_connectionString);
-            var existingGameModel = database.Load(92384);
+            var existingGameModel = database.LoadGame(92384);
             existingGameModel.LudoPlayers[0].Pieces[0].Position += 10;
             int position = existingGameModel.LudoPlayers[0].Pieces[0].Position;
 
-            database.Update(existingGameModel);
+            database.UpdateGame(existingGameModel);
 
-            existingGameModel = database.Load(92384);
+            existingGameModel = database.LoadGame(92384);
 
             Assert.Equal(position, existingGameModel.LudoPlayers[0].Pieces[0].Position);
+        }
 
+        [Fact]
+        public void DeleteGameFromDatabaseSuccessful()
+        {
+            IDatabase database = new SQLDatabase(_connectionString);
+            database.RemoveGame(3647);
         }
     }
 }

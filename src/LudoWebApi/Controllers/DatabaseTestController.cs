@@ -19,7 +19,7 @@ namespace LudoWebApi.Controllers
             string password = System.IO.File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "key.dbpass"));
             SQLDatabase database = 
                 new SQLDatabase($"Data Source=den1.mssql8.gear.host;Initial Catalog=lemon;Persist Security Info=True;User ID=lemon;Password={password}");
-            var hello = database.Load();
+            var hello = database.LoadGames();
 
             return Ok(hello);
         }
@@ -32,7 +32,7 @@ namespace LudoWebApi.Controllers
             string password = System.IO.File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "key.dbpass"));
             SQLDatabase database = 
                 new SQLDatabase($"Data Source=den1.mssql8.gear.host;Initial Catalog=lemon;Persist Security Info=True;User ID=lemon;Password={password}");
-            var hello = database.Load(gameId);
+            var hello = database.LoadGame(gameId);
 
             return Ok(hello);
         }
