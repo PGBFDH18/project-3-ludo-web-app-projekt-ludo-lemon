@@ -12,13 +12,14 @@ namespace LudoWebApi.Controllers
     [ApiController]
     public class DatabaseTestController : ControllerBase
     {
+        private string _connectionString = $"Data Source=den1.mssql8.gear.host;Initial Catalog=lemon;Persist Security Info=True;User ID=lemon;Password={System.IO.File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "key.dbpass"))}";
+
         // GET: DatabaseTest/
         [HttpGet]
         public ActionResult<IEnumerable<Models.GameModel>> LoadAll()
         {
-            string password = System.IO.File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "key.dbpass"));
             SQLDatabase database = 
-                new SQLDatabase($"Data Source=den1.mssql8.gear.host;Initial Catalog=lemon;Persist Security Info=True;User ID=lemon;Password={password}");
+                new SQLDatabase(_connectionString);
             var hello = database.LoadGames();
 
             return Ok(hello);
@@ -27,14 +28,24 @@ namespace LudoWebApi.Controllers
         // GET: DatabaseTest/123
         [Route("{gameId}")]
         [HttpGet]
-        public ActionResult<LudoWebApi.Models.GameModel> Load(int gameId)
+        public ActionResult<Models.GameModel> Load(int gameId)
         {
-            string password = System.IO.File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "key.dbpass"));
             SQLDatabase database = 
-                new SQLDatabase($"Data Source=den1.mssql8.gear.host;Initial Catalog=lemon;Persist Security Info=True;User ID=lemon;Password={password}");
+                new SQLDatabase(_connectionString);
             var hello = database.LoadGame(gameId);
 
             return Ok(hello);
+        }
+
+        [HttpPut]
+        public ActionResult<Models.GameModel> Update(Models.GameModel gameModel)
+        {
+            SQLDatabase database =
+                new SQLDatabase(_connectionString);
+            database.UpdateGame(gameModel);
+
+            return Ok(database.LoadGame(gameModel.GameId));
+
         }
 
     }
