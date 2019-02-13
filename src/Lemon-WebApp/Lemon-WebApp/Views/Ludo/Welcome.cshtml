@@ -18,9 +18,20 @@
     </center>
     <p>Write your username to log in</p>
 
-    <input type="button" value="Go to GameBoard" onclick="location.href='@Url.Action("GetGameState", "Ludo")'" />   
+    <input type="button" value="Go to GameBoard" onclick="location.href='@Url.Action("GetGameState", "Ludo")'" />
     <center><img src="pic8.png" id="picture"></center>
+    
+    </div>
+    <div><p>Select color:</p></div>
+    <div>
+        <select name="color">
+            <option value="red">RED</option>
+            <option value="yellow">YELLOW</option>
+            <option value="blue">BLUE</option>
+            <option value="green">GREEN</option>
+        </select>
 
+    </div>
     <form action="/index.html" id="userform">
         Username: <input type="text" name="usrname">
         <input type="submit">
