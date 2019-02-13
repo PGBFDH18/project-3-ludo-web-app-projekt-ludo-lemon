@@ -61,7 +61,8 @@ namespace LudoWebApi
                     "SELECT " +
                     "   pl.ID AS PlayerId, " +
                     "   u.Username AS Name, " +
-                    "   pl.Color AS PlayerColor " +
+                    "   pl.Color AS PlayerColor, " +
+                    "   pl.Number AS Number " +
                     "FROM Player AS pl " +
                     "JOIN [User] AS u ON pl.UserID = u.ID " +
                     "JOIN PlayerLudoGame AS plg ON pl.ID = plg.PlayerID " +
@@ -101,7 +102,8 @@ namespace LudoWebApi
                 "SELECT " +
                 "   pl.ID AS PlayerId, " +
                 "   u.Username AS Name, " +
-                "   pl.Color AS PlayerColor " +
+                "   pl.Color AS PlayerColor, " +
+                "   pl.Number AS Number " +
                 "FROM Player AS pl " +
                 "JOIN [User] AS u ON pl.UserID = u.ID " +
                 "JOIN PlayerLudoGame AS plg ON pl.ID = plg.PlayerID " +
@@ -159,8 +161,9 @@ namespace LudoWebApi
                 _connection.Execute(
                     "UPDATE Player " +
                     "SET " +
-                    "   Color = @pColor " +
-                    "WHERE ID = @pID", new { pColor = player.PlayerColor, pID = player.PlayerId });
+                    "   Color = @pColor, " +
+                    "   Number = @pNumber " +
+                    "WHERE ID = @pID", new { pColor = player.PlayerColor, pNumber = player.Number, pID = player.PlayerId });
 
             foreach (var player in gameModel.LudoPlayers)
                 foreach (var piece in player.Pieces)

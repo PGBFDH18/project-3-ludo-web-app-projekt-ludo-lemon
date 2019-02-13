@@ -5,6 +5,7 @@ namespace LudoGameEngine
         public int PlayerId { get; set; }
         public string Name { get; set; }
         public PlayerColor PlayerColor { get; set; }
+        public int Number { get; set; }
         public Piece[] Pieces {get; set;}
         public int Offset
         {
