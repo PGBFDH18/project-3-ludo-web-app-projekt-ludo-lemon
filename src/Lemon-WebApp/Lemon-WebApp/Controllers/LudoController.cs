@@ -13,6 +13,8 @@ namespace Lemon_WebApp.Controllers
 {
     public class LudoController : Controller
     {
+        private static int _diceValue;
+
         public int RollDice()
         {
             //[Route("giveNumber")]
@@ -21,9 +23,13 @@ namespace Lemon_WebApp.Controllers
             var request = new RestRequest("api/ludo/dice", Method.GET);
             //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
             IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
+
             var diceValue = ludoGameResponse.Data;
+            _diceValue = diceValue;
+
             //DiceModel model = new DiceModel(diceValue);
             Log.Information("The dice roll was: {diceValue}", diceValue);
+
             return diceValue;
         }
 
@@ -66,7 +72,7 @@ namespace Lemon_WebApp.Controllers
 
             movePiece.playerId = currentPlayerId;
             movePiece.pieceId = int.Parse(pieceId);
-            movePiece.numberOfFields = RollDice();
+            movePiece.numberOfFields = _diceValue;
            
             var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
             var request = new RestRequest("api/ludo/41742", Method.PUT);
