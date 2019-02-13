@@ -43,10 +43,12 @@
     }
 }
 
+
+
 // ajax call to get dice value from WebApi
 $('#rollDice').submit(function () { // catch the form's submit event
     $.ajax({ // create an AJAX call...
-        url: "Ludo/RollDice", // the file to call
+        url: "RollDice", // the file to call
         type: "get", // GET or POST
         data: $("form").serialize(), // get the form data
         success: function (diceValue) { // on success..
@@ -59,7 +61,7 @@ $('#rollDice').submit(function () { // catch the form's submit event
                 $('.field').on('click', '.brick', function () {
                     $(this).appendTo('#' + diceValue);
                     var x = $(this).attr('id');
-                    console.log(x);
+                    //console.log(x);
                 });
             });
         }

@@ -61,7 +61,7 @@ namespace Lemon_WebApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Ludo}/{action=Index}/{id?}");
+                    template: "{controller=Ludo}/{action=Welcome}/{id?}");
             });
         }
     }

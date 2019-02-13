@@ -1,4 +1,4 @@
-﻿@*model Lemon_WebApp.Models.DiceModel*@
+﻿@model Lemon_WebApp.Models.GameModel
 
 @{
 
@@ -8,7 +8,11 @@
 
 <div class="gameInfo">
 
-    <div class="currentPlayer">player1</div>
+    <div class="currentPlayer">@Model.ludoPlayers[Model.currentPlayerId].name</div>
+    <div>
+
+    </div>
+
     <div id="showValue" class="dice">
 
         <div class="diceDot" id="center"></div>
@@ -25,9 +29,7 @@
             }*@
     </div>
     <br><br>
-    <div class="rollDiceButton">
-        <input type="button" value="Get GameInfo" onclick="location.href='@Url.Action("tryToFindAllPiecePositions", "Ludo")'" />
-    </div>
+
 
     <form id="rollDice" action="javascript:void(0);" method="get">
         <input type="submit" value="Roll THE Dice">
@@ -35,7 +37,17 @@
 
     <form id="create_game" method="get">
         <input type="submit" value="Create game">
-</form>
+    </form>
+
+    @Model.currentPlayerId;
+
+    @using (Html.BeginForm("MovePiece", "Ludo"))
+    {
+        <input type="text" name="pieceId">
+        <input type="text" name="currentPlayerId" value="@Model.currentPlayerId">
+        <input type="submit" value="Move Piece">
+    }
+
 </div>
 
 <div class="board">
@@ -164,17 +176,19 @@
     </div>
     <div class="start player4">
         <div class="field">
-            <div class="brick player4" id="bluePiece1"></div>
+            <div class="brick player4" id="0"></div>
         </div>
         <div class="field">
-            <div class="brick player4" id="bluePiece2"></div>
+            <div class="brick player4" id="1"></div>
         </div>
         <div class="field">
-            <div class="brick player4" id="bluePiece3"></div>
+            <div class="brick player4" id="2"></div>
         </div>
         <div class="field">
-            <div class="brick player4" id="bluePiece4"></div>
+            <div class="brick player4" id="3"></div>
         </div>
     </div>
-</div>
+
+
 <script src="~/js/site.js"></script>
+</div>

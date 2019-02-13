@@ -25,8 +25,11 @@ namespace Lemon_WebApp.Controllers
             //DiceModel model = new DiceModel(diceValue);
             Log.Information("The dice roll was: {diceValue}", diceValue);
             return diceValue;
+        }
 
-
+        public IActionResult Welcome()
+        {
+            return View();
         }
 
         public void Something()
@@ -40,21 +43,43 @@ namespace Lemon_WebApp.Controllers
             Log.Information("Created a game with ID: {gameId}", gameId);
             
         }
-        
-        public IActionResult Index()
+
+        public IActionResult GetGameState()
         {
-            //[Route("giveNumber")]
-            //var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
+            //[Route("getGameInformation")]
+            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
 
-            //var request = new RestRequest("api/ludo/dice", Method.GET);
-            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
-            //IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
-            //var diceValue = ludoGameResponse.Data;
-            //Console.WriteLine(diceValue);
-            //Random e = new Random();
-            //DiceModel model = new DiceModel(diceValue);
+            var request = new RestRequest("/api/Ludo/41742", Method.GET);
+            //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
+            IRestResponse ludoGameResponse = client.Execute(request);
+            var gameSetup = ludoGameResponse;
+            //PieceModel model = new PieceModel(gameSetup);
+            var data = gameSetup.Content;
+            var gameInfo = JsonConvert.DeserializeObject<GameModel>(data);
 
-            return View();
+            return View("~/Views/Ludo/Index.cshtml", gameInfo);
+        }
+        
+        public IActionResult MovePiece(string pieceId, int currentPlayerId)
+        {
+            MovePiece movePiece = new MovePiece();
+
+            movePiece.playerId = currentPlayerId;
+            movePiece.pieceId = int.Parse(pieceId);
+            movePiece.numberOfFields = RollDice();
+           
+            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
+            var request = new RestRequest("api/ludo/41742", Method.PUT);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(movePiece);
+            IRestResponse ludoGameResponse = client.Put(request);
+
+            return GetGameState();
+            
+            //var request = new RestRequest("/api/Ludo/115", Method.PUT);
+            ////request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
+            
+
         }
 
 
@@ -73,19 +98,19 @@ namespace Lemon_WebApp.Controllers
             throw new NotImplementedException();
         }
 
-        public void tryToFindAllPiecePositions()
+        public IActionResult tryToFindAllPiecePositions()
         {
             //[Route("getGameInformation")]
-            var client = new RestClient("http://localhost:50839/");
+            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
 
             var request = new RestRequest("/api/Ludo/115", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
             IRestResponse ludoGameResponse = client.Execute(request);
             var gameSetup = ludoGameResponse;
             //PieceModel model = new PieceModel(gameSetup);
-            string data = gameSetup.Content;
-            JsonConvert.DeserializeObject<GameModel>(data);
-            //return model;
+            var  data = gameSetup.Content;
+            var gameInfo = JsonConvert.DeserializeObject<GameModel>(data);
+            return View();
         }
     }
 }
