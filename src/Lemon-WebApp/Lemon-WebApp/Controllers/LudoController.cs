@@ -43,7 +43,7 @@ namespace Lemon_WebApp.Controllers
             return View();
         }
 
-        public void Something()
+        public void CreateGame()
         {
             //[Route("createGame")]
 
@@ -109,10 +109,8 @@ namespace Lemon_WebApp.Controllers
             //[Route("getGameInformation")]
 
             var request = new RestRequest("/api/Ludo/115", Method.GET);
-            //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
             IRestResponse ludoGameResponse = client.Execute(request);
             var gameSetup = ludoGameResponse;
-            //PieceModel model = new PieceModel(gameSetup);
             var  data = gameSetup.Content;
             var gameInfo = JsonConvert.DeserializeObject<GameModel>(data);
             return View();
