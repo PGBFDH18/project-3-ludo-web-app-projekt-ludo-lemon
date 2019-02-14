@@ -38,6 +38,7 @@ namespace Lemon_WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddCors();
             services.AddTransient<IRestClient, RestClient>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -55,7 +56,9 @@ namespace Lemon_WebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            // Shows UseCors with CorsPolicyBuilder.
+            app.UseCors(builder =>
+               builder.WithOrigins("https://ludowebapp-dev-as.azurewebsites.net"));
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
