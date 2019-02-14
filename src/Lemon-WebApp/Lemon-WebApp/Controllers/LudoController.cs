@@ -129,7 +129,7 @@ namespace Lemon_WebApp.Controllers
             return View(game);
         }
 
-        public IActionResult AddPlayer()
+        /*public IActionResult AddPlayer()
         {
             var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
             var request = new RestRequest("api/ludo/41742", Method.POST);
@@ -137,6 +137,6 @@ namespace Lemon_WebApp.Controllers
             request.AddJsonBody(movePiece);
             IRestResponse ludoGameResponse = client.Put(request);
         }
-
+        */
     }
 }
