@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RestSharp;
 using Serilog;
 
 namespace Lemon_WebApp
@@ -19,7 +20,10 @@ namespace Lemon_WebApp
         {
             Configuration = configuration;
 
-            Log.Logger = new LoggerConfiguration().WriteTo.Seq("http://localhost:5341/").CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Seq("http://localhost:5341/")
+                .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -34,7 +38,7 @@ namespace Lemon_WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddTransient<IRestClient, RestClient>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
