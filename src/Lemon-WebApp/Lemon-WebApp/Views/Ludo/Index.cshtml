@@ -8,9 +8,29 @@
 
 <div class="gameInfo">
 
-    <div class="currentPlayer">@Model.ludoPlayers[Model.currentPlayerId].name</div>
-    <div>
+    @{
+        string playerColor = "";
 
+        if (Model.ludoPlayers[Model.currentPlayerId].playerColor == 0)
+        {
+            playerColor = "blue";
+        }
+        if (Model.ludoPlayers[Model.currentPlayerId].playerColor == 1)
+        {
+            playerColor = "yellow";
+        }
+        if (Model.ludoPlayers[Model.currentPlayerId].playerColor == 2)
+        {
+            playerColor = "red";
+        }
+        if (Model.ludoPlayers[Model.currentPlayerId].playerColor == 3)
+        {
+            playerColor = "green";
+        }
+    }
+
+    <div id="playerName" class="currentPlayer">
+        <font color="@playerColor">@Model.ludoPlayers[Model.currentPlayerId].name</font>
     </div>
 
     <div id="showValue" class="dice">
@@ -29,16 +49,15 @@
             }*@
     </div>
     <br><br>
-        <div>
-            @using (Html.BeginForm("MovePiece", "Ludo"))
-            {
-                <p>Enter Piece Id To Move</p>
-                <input type="text" name="pieceId">
-                <p>Current player ID fills automatically</p>
-                <input type="text" name="currentPlayerId" value="@Model.currentPlayerId">
-                <input type="submit" value="Move Piece">
-            }
-        </div>
+    <div>
+        @using (Html.BeginForm("MovePiece", "Ludo"))
+        {
+            <p>Enter Piece Id To Move</p>
+            <input type="text" name="pieceId">
+            <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
+            <input type="submit" value="Move Piece">
+        }
+    </div>
     <br /><br /><br /><br />
     <form id="rollDice" action="javascript:void(0);" method="get">
         <input type="submit" value="Roll THE Dice">
@@ -191,7 +210,5 @@
             <div class="brick player4" id="3"></div>
         </div>
     </div>
-
-
-<script src="~/js/site.js"></script>
+    <script src="~/js/site.js"></script>
 </div>
