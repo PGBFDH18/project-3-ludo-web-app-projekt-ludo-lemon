@@ -13,15 +13,20 @@ namespace Lemon_WebApp.Controllers
 {
     public class LudoController : Controller
     {
+        private IRestClient client;
         private static int _diceValue;
+
+        public LudoController(IRestClient _client)
+        {
+            client = _client;
+            client.BaseUrl = new Uri("https://ludolemon-webapi.azurewebsites.net");
+        }
 
         public int RollDice()
         {
             //[Route("giveNumber")]
-            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
 
             var request = new RestRequest("api/ludo/dice", Method.GET);
-            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
             IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
 
             var diceValue = ludoGameResponse.Data;
@@ -41,19 +46,16 @@ namespace Lemon_WebApp.Controllers
         public void Something()
         {
             //[Route("createGame")]
-            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
 
             var request = new RestRequest("api/ludo/", Method.POST);
             IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
             var gameId = ludoGameResponse.Data;
             Log.Information("Created a game with ID: {gameId}", gameId);
-            
         }
 
         public IActionResult GetGameState()
         {
             //[Route("getGameInformation")]
-            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
 
             var request = new RestRequest("/api/Ludo/41742", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
@@ -74,7 +76,6 @@ namespace Lemon_WebApp.Controllers
             movePiece.pieceId = int.Parse(pieceId);
             movePiece.numberOfFields = _diceValue;
            
-            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
             var request = new RestRequest("api/ludo/41742", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(movePiece);
@@ -92,7 +93,6 @@ namespace Lemon_WebApp.Controllers
         public int DeleteGame()  // (vi ska testa den när vi skapar spel)
         {
             //[Route("deleteGame")]
-            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
 
             var request = new RestRequest("api/ludo/{gameId}", Method.DELETE);
 
@@ -107,7 +107,6 @@ namespace Lemon_WebApp.Controllers
         public IActionResult tryToFindAllPiecePositions()
         {
             //[Route("getGameInformation")]
-            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
 
             var request = new RestRequest("/api/Ludo/115", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
