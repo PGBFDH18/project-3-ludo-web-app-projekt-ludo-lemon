@@ -8,9 +8,10 @@ namespace Lemon_WebApp.Models
 {
     public class Piece
     {
-        [Range(0,3)]
+        [Range(0,3)] 
         public int pieceId { get; set; }
         public int state { get; set; }
         public int position { get; set; }
     }
 }
+
