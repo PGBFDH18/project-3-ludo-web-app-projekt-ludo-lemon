@@ -38,7 +38,7 @@ namespace Lemon_WebApp.Controllers
             return View();
         }
 
-        public void Something()
+        public void CreateGame()
         {
             //[Route("createGame")]
             var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
