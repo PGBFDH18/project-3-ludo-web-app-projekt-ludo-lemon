@@ -1,0 +1,40 @@
+﻿@model Lemon_WebApp.Models.GameConfiguration
+
+@{
+    // Layout = "_MittLayout";
+    ViewData["Title"] = "Game Configuration";
+}
+
+<html>
+<head>
+    <title>LudoGameApple</title>
+    <link href="~/css/GameConfigurationStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="form-selectedGames">
+        <form>
+            <p>Available games</p>
+            <select name="selectedGames" id="selectedGames">
+                @foreach (var game in Model.games)
+                {
+                    <option value="@game">@game</option>
+                }
+            </select>
+            <input value="Load game" type="submit">
+        </form>
+    </div>
+    <br />
+    <div class="form-addPlayer">
+        <form>
+            <p><h4>Lägg till spelare</h4></p>
+            
+            <input value="Name" type="text">
+            <input value="Color" type="text">
+            <input value="Add player" type="submit">
+        </form>
+
+    </div>
+
+
+</body>
+</html>

@@ -115,5 +115,28 @@ namespace Lemon_WebApp.Controllers
             var gameInfo = JsonConvert.DeserializeObject<GameModel>(data);
             return View();
         }
+
+        public IActionResult GameConfiguration()
+        {
+            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
+
+            var request = new RestRequest("/api/Ludo/", Method.GET);
+            IRestResponse ludoGameResponse = client.Execute(request);
+            var getGames = ludoGameResponse;
+            var data = getGames.Content;
+            var games = JsonConvert.DeserializeObject<List<int>>(data);
+            GameConfiguration game = new GameConfiguration(games);
+            return View(game);
+        }
+
+        public IActionResult AddPlayer()
+        {
+            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
+            var request = new RestRequest("api/ludo/41742", Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(movePiece);
+            IRestResponse ludoGameResponse = client.Put(request);
+        }
+
     }
 }
