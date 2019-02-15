@@ -8,6 +8,7 @@ namespace Lemon_WebApp.Models
 {
     public class Piece
     {
+        [Required]
         [Range(0,3)] 
         public int pieceId { get; set; }
         public int state { get; set; }
