@@ -13,13 +13,13 @@ namespace Lemon_WebApp.Controllers
 {
     public class LudoController : Controller
     {
-        private IRestClient client;
+        private IRestClient _client;
         private static int _diceValue;
 
-        public LudoController(IRestClient _client)
+        public LudoController(IRestClient client)
         {
-            client = _client;
-            client.BaseUrl = new Uri("https://ludolemon-webapi.azurewebsites.net");
+            _client = client;
+            _client.BaseUrl = new Uri("https://ludolemon-webapi.azurewebsites.net");
         }
 
         public int RollDice()
@@ -27,7 +27,7 @@ namespace Lemon_WebApp.Controllers
             //[Route("giveNumber")]
 
             var request = new RestRequest("api/ludo/dice", Method.GET);
-            IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
+            IRestResponse<int> ludoGameResponse = _client.Execute<int>(request);
 
             var diceValue = ludoGameResponse.Data;
             _diceValue = diceValue;
@@ -48,7 +48,7 @@ namespace Lemon_WebApp.Controllers
             //[Route("createGame")]
 
             var request = new RestRequest("api/ludo/", Method.POST);
-            IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
+            IRestResponse<int> ludoGameResponse = _client.Execute<int>(request);
             var gameId = ludoGameResponse.Data;
             Log.Information("Created a game with ID: {gameId}", gameId);
         }
@@ -59,7 +59,7 @@ namespace Lemon_WebApp.Controllers
 
             var request = new RestRequest("/api/Ludo/41742", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
-            IRestResponse ludoGameResponse = client.Execute(request);
+            IRestResponse ludoGameResponse = _client.Execute(request);
             var gameSetup = ludoGameResponse;
             //PieceModel model = new PieceModel(gameSetup);
             var data = gameSetup.Content;
@@ -79,7 +79,7 @@ namespace Lemon_WebApp.Controllers
             var request = new RestRequest("api/ludo/41742", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(movePiece);
-            IRestResponse ludoGameResponse = client.Put(request);
+            IRestResponse ludoGameResponse = _client.Put(request);
 
             return GetGameState();
             
@@ -109,7 +109,7 @@ namespace Lemon_WebApp.Controllers
             //[Route("getGameInformation")]
 
             var request = new RestRequest("/api/Ludo/115", Method.GET);
-            IRestResponse ludoGameResponse = client.Execute(request);
+            IRestResponse ludoGameResponse = _client.Execute(request);
             var gameSetup = ludoGameResponse;
             var  data = gameSetup.Content;
             var gameInfo = JsonConvert.DeserializeObject<GameModel>(data);
