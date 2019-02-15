@@ -15,6 +15,7 @@ namespace Lemon_WebApp.Controllers
     {
         private IRestClient client;
         private static int _diceValue;
+        private int gameId;
 
         public LudoController(IRestClient _client)
         {
@@ -53,11 +54,11 @@ namespace Lemon_WebApp.Controllers
             //  Log.Information("Created a game with ID: {gameId}", gameId);
 
 
-            return View("~/Views/Ludo/GameConfiguration.cshtml", gameId);
+            return View("~/Views/Ludo/GameConfiguration.cshtml");
         }
 
        
-        public IActionResult GetGameState(int gameId = 25396)
+        public IActionResult GetGameState()
         {
             var request = new RestRequest($"/api/Ludo/{gameId}", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
