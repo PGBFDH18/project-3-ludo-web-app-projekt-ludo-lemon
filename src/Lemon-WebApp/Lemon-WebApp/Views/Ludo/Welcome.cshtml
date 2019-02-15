@@ -23,25 +23,15 @@
             If the player got some another diece value, the turn passes to the next player.<br>
         </p>
     </div>
-    <p>Write your username to log in</p>
 
-    <input type="button" value="Go to GameBoard" onclick="location.href='@Url.Action("GetGameState", "Ludo")'" />
     <center><img src="~/img/pic8.png" id="picture"></center>
 
-    </div>
-    <div><p>Select color:</p></div>
-    <div>
-        <select name="color">
-            <option value="red">RED</option>
-            <option value="yellow">YELLOW</option>
-            <option value="blue">BLUE</option>
-            <option value="green">GREEN</option>
-        </select>
+    <br><br>
+    <form action="https://ludowebapp-dev-as.azurewebsites.net/Ludo/GameConfiguration">
+        <input type="submit" value="NEW GAME" />
+    </form> <br><br>
+    <button>LOAD SAVED GAME</button>
 
-    </div>
-    <form action="/index.html" id="userform">
-        Username: <input type="text" name="usrname">
-        <input type="submit">
-    </form>
+
 </body>
 </html>
