@@ -43,7 +43,7 @@ namespace Lemon_WebApp.Controllers
             return View();
         }
 
-        public void CreateGame()
+        public IActionResult CreateGame()
         {
             //[Route("createGame")]
 
@@ -51,8 +51,10 @@ namespace Lemon_WebApp.Controllers
             IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
             var gameId = ludoGameResponse.Data;
             Log.Information("Created a game with ID: {gameId}", gameId);
+            return View("~/Views/Ludo/GameConfiguration.cshtml", gameId);
         }
 
+       
         public IActionResult GetGameState()
         {
             //[Route("getGameInformation")]
