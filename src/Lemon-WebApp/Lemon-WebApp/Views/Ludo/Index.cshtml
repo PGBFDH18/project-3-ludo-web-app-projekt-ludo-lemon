@@ -1,4 +1,5 @@
-﻿@model Lemon_WebApp.Models.GameModel
+﻿@*gameInfo*@
+@model Lemon_WebApp.Models.GameModel
 
 @{
 
@@ -50,21 +51,42 @@
     </div>
     <br><br>
 
-    <div class="form-selectedPiece">
-        <p>Choose Piece To Move</p>
-        @using (Html.BeginForm("MovePiece", "Ludo", FormMethod.Post))
+
+
+
+
+    @*<div class="pieceToMove">
+        @using (Html.BeginForm("MovePiece", "Ludo"))
         {
-            <select name="selectedPiece" id="selectedPiece">
+            <p>Enter Piece Id To Move</p>
+            <input type="text" name="pieceId">
+            <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
+            <p>Game ID. (Please do not alter)</p>
+            <input type="text" name="gameId" value="@Model.gameId">
+            <input type="submit" value="Move Piece">
+        }
+    </div>*@
+
+
+
+        <div class="form-selectedPiece">
+            <p>Choose Piece To Move</p>
+            @using (Html.BeginForm("MovePiece", "Ludo", FormMethod.Post))
+            {
+                <select name="selectedPiece" id="selectedPiece">
                 @for (int i = 0; i < Model.ludoPlayers[Model.currentPlayerId].pieces.Count; i++)
                 {
                     <option value=@i>@int.Parse((@Model.ludoPlayers[Model.currentPlayerId].pieces[i].pieceId + 1).ToString())</option>
                 }
-            </select>
-            <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
-            <input type="text" name="gameID" value="@Model.gameId">
-            <input type="submit" value="Move Piece">
-        }
-    </div>
+                </select>
+                <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
+                <input type="text" value="@Model.gameId">
+                <input type="submit" value="Move Piece">
+            }
+        </div>
+
+
+
 
     <br /><br /><br /><br />
     <div class="rollDice">
