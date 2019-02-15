@@ -50,7 +50,9 @@ namespace Lemon_WebApp.Controllers
             var request = new RestRequest("api/ludo/", Method.POST);
             IRestResponse<int> ludoGameResponse = client.Execute<int>(request);
             var gameId = ludoGameResponse.Data;
-            Log.Information("Created a game with ID: {gameId}", gameId);
+            //  Log.Information("Created a game with ID: {gameId}", gameId);
+
+
             return View("~/Views/Ludo/GameConfiguration.cshtml", gameId);
         }
 
