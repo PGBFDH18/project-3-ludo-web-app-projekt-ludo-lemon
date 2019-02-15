@@ -1,7 +1,7 @@
 ﻿@model Lemon_WebApp.Models.GameConfiguration
 
 @{
-    // Layout = "_MittLayout";
+    //Layout = "_MittLayout";
     ViewData["Title"] = "Game Configuration";
 }
 
@@ -12,29 +12,52 @@
 </head>
 <body>
     <div class="form-selectedGames">
-        <form>
-            <p>Available games</p>
+        @using (Html.BeginForm("****", "*****", FormMethod.Post))
+        {
+            <h4>Available games</h4>
             <select name="selectedGames" id="selectedGames">
-                @foreach (var game in Model.games)
+                @if (Model.games != null)
                 {
-                    <option value="@game">@game</option>
+                    @foreach (var game in Model.games)
+                    {
+                        <option value="@game">@game</option>
+                    }
                 }
             </select>
             <input value="Load game" type="submit">
-        </form>
+        }
     </div>
-    <br />
+    <br /><br />
     <div class="form-addPlayer">
-        <form>
-            <p><h4>Lägg till spelare</h4></p>
-            
-            <input value="Name" type="text">
-            <input value="Color" type="text">
+        @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
+        {
+            <h4>Add player</h4>
+            <input value="Name" type="text" name="nameOfPlayer">
+            <select name="playerColor" id="playerColor">
+                <option value="Blue">Blue</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Red">Red</option>
+                <option value="Green">Green</option>
+            </select>
             <input value="Add player" type="submit">
-        </form>
-
+        }
     </div>
 
+    @{
+        var playerData = ViewBag.Message;
+    }
+
+    @if (!String.IsNullOrEmpty(playerData.Name))
+    {
+        <div><p>Name: <b>@playerData.Name</b> was added with color: <b>@playerData.Color</b></p></div>
+    }
+    <br /><br />
+
+    <div>
+        <form action="@Url.Action("PutGameStateToStart", "Ludo")">
+            <input value="Go to gameboard" type="submit">
+        </form>
+    </div>
 
 </body>
 </html>

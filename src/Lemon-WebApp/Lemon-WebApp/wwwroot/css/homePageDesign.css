@@ -3,17 +3,29 @@ body {
     color: rgb(255, 255, 255);
     font-family: "Lucida Console";
     font-size: 22px;
+
 }
-
-
-.button{
-    background-color: rgb(73, 65, 65); /* Green */
-    border: 2px rgb(164, 235, 57);
-    color: rgb(151, 236, 95);
+input {
+    background-color: rgb(7, 27, 160); /* Green */
+    border: 2 px rgb(15, 3, 121);
+    color: rgb(218, 228, 84);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    font-family: "Lucida Console";
-  }
+    font-family: "Lucida Console"
+}
+
+button {
+    background-color: rgb(7, 27, 160); /* Green */
+    border: 2 px rgb(15, 3, 121);
+    color: rgb(218, 228, 84);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "Lucida Console"
+}
+

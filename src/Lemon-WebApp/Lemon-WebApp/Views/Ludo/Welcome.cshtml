@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title>LudoGameApple</title>
+    <title>LudoGameLemon</title>
     <link href="~/css/homePageDesign.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -23,25 +23,17 @@
             If the player got some another diece value, the turn passes to the next player.<br>
         </p>
     </div>
-    <p>Write your username to log in</p>
 
-    <input type="button" value="Go to GameBoard" onclick="location.href='@Url.Action("GetGameState", "Ludo")'" />
     <center><img src="~/img/pic8.png" id="picture"></center>
 
-    </div>
-    <div><p>Select color:</p></div>
-    <div>
-        <select name="color">
-            <option value="red">RED</option>
-            <option value="yellow">YELLOW</option>
-            <option value="blue">BLUE</option>
-            <option value="green">GREEN</option>
-        </select>
+    <br><br>
+    
+    <form action="@Url.Action("PutGameStateToStart", "Ludo")">
+        <center>
+            <input type="submit" value="NEW GAME">
+        </center>
+    </form> <br><br>
 
-    </div>
-    <form action="/index.html" id="userform">
-        Username: <input type="text" name="usrname">
-        <input type="submit">
-    </form>
+    <center><button>LOAD SAVED GAME</button></center>
 </body>
 </html>

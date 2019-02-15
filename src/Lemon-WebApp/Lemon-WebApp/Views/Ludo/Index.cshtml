@@ -50,7 +50,12 @@
             }*@
     </div>
     <br><br>
-    <div>
+
+
+
+
+
+    @*<div class="pieceToMove">
         @using (Html.BeginForm("MovePiece", "Ludo"))
         {
             <p>Enter Piece Id To Move</p>
@@ -60,18 +65,35 @@
             <input type="text" name="gameId" value="@Model.gameId">
             <input type="submit" value="Move Piece">
         }
-    </div>
+    </div>*@
+
+
+
+        <div class="form-selectedPiece">
+            <p>Choose Piece To Move</p>
+            @using (Html.BeginForm("MovePiece", "Ludo", FormMethod.Post))
+            {
+                <select name="selectedPiece" id="selectedPiece">
+                @for (int i = 0; i < Model.ludoPlayers[Model.currentPlayerId].pieces.Count; i++)
+                {
+                    <option value=@i>@int.Parse((@Model.ludoPlayers[Model.currentPlayerId].pieces[i].pieceId + 1).ToString())</option>
+                }
+                </select>
+                <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
+                <input type="text" value="@Model.gameId">
+                <input type="submit" value="Move Piece">
+            }
+        </div>
+
+
+
+
     <br /><br /><br /><br />
-    <form id="rollDice" action="javascript:void(0);" method="get">
-        <input type="submit" value="Roll THE Dice">
-    </form>
-
-    <form id="create_game" method="get">
-        <input type="submit" value="Create game">
-    </form>
-
-
-
+    <div class="rollDice">
+        <form id="rollDice" action="javascript:void(0);" method="get">
+            <input type="submit" value="Roll THE Dice">
+        </form>
+    </div>
 
 </div>
 
@@ -220,16 +242,20 @@
         var pColor = "";
         switch (ludoPlayer.playerColor)
         {
-            case 0: pColor = "blue";
+            case 0:
+                pColor = "blue";
                 break;
-            case 1: pColor = "yellow";
+            case 1:
+                pColor = "yellow";
                 break;
-            case 2: pColor = "red";
+            case 2:
+                pColor = "red";
                 break;
-            case 3: pColor = "green";
+            case 3:
+                pColor = "green";
                 break;
         }
-           
+
         @for (var k = 0; k < ludoPlayer.pieces.Count; k++)
         {
             var piece = ludoPlayer.pieces[k];
@@ -243,14 +269,6 @@
             </script>
         }
     }
-
-    <script>
-        //var field = document.getElementById('23');
-        //var piece = document.getElementById('greenPiece4');
-        //field.appendChild(piece);
-
-        
-    </script>
 
     <script src="~/js/site.js"></script>
 </div>
