@@ -10,7 +10,11 @@ namespace Lemon_WebApp.Models
         public int playerId { get; set; }
         public string name { get; set; }
         public int playerColor { get; set; }
+        public int Number { get; set; }
         public List<Piece> pieces { get; set; }
-        public int offset { get; set; }
+        public int offset
+        {
+            get => playerColor * 13;
+        }
     }
 }

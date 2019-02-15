@@ -68,7 +68,7 @@ namespace Lemon_WebApp.Controllers
             return View("~/Views/Ludo/Index.cshtml", gameInfo);
         }
         
-        public IActionResult MovePiece(string pieceId, int currentPlayerId)
+        public IActionResult MovePiece(string pieceId, int currentPlayerId, int gameId)
         {
             MovePiece movePiece = new MovePiece();
 
