@@ -125,7 +125,7 @@ namespace Lemon_WebApp.Controllers
         {
             var request = new RestRequest("api/ludo/25396/state", Method.PUT);
             request.RequestFormat = DataFormat.Json;
-            IRestResponse addPlayerRequest = client.Put(request);
+            IRestResponse addPlayerRequest = _client.Put(request);
 
             return View();
         }
@@ -140,7 +140,7 @@ namespace Lemon_WebApp.Controllers
             var request = new RestRequest("api/ludo/25396/players", Method.POST);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(playerData);
-            IRestResponse addPlayerRequest = client.Post(request);
+            IRestResponse addPlayerRequest = _client.Post(request);
 
 
             return GameConfiguration(playerData);
