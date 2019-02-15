@@ -53,6 +53,7 @@
 
 
 
+
     @*<div class="pieceToMove">
         @using (Html.BeginForm("MovePiece", "Ludo"))
         {
@@ -62,6 +63,7 @@
             <input type="submit" value="Move Piece">
         }
     </div>*@
+
 
 
         <div class="form-selectedPiece">
@@ -75,6 +77,7 @@
                 }
                 </select>
                 <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
+                <input type="text" value="@Model.gameId">
                 <input type="submit" value="Move Piece">
             }
         </div>

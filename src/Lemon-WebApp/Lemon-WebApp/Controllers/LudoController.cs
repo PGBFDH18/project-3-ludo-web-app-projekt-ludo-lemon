@@ -57,9 +57,9 @@ namespace Lemon_WebApp.Controllers
         }
 
        
-        public IActionResult GetGameState()
+        public IActionResult GetGameState(int gameId = 25396)
         {
-            var request = new RestRequest("/api/Ludo/25396", Method.GET);
+            var request = new RestRequest($"/api/Ludo/{gameId}", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
             IRestResponse ludoGameResponse = client.Execute(request);
             var gameSetup = ludoGameResponse;
@@ -70,19 +70,21 @@ namespace Lemon_WebApp.Controllers
             return View("~/Views/Ludo/Index.cshtml", gameInfo);
         }
 
-        public IActionResult MovePiece(int selectedPiece, int currentPlayerId)
+        public IActionResult MovePiece(int selectedPiece, int currentPlayerId, int gameId)
         {
-            MovePiece movePiece = new MovePiece();
-            movePiece.playerId = currentPlayerId;
-            movePiece.pieceId = selectedPiece;
-            movePiece.numberOfFields = _diceValue;
+            MovePiece movePiece = new MovePiece
+            {
+                playerId = currentPlayerId,
+                pieceId = selectedPiece,
+                numberOfFields = _diceValue
+            };
 
-            var request = new RestRequest("api/ludo/25396", Method.PUT);
+            var request = new RestRequest($"api/ludo/{gameId}", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(movePiece);
             IRestResponse ludoGameResponse = client.Put(request);
 
-            return GetGameState();
+            return GetGameState(gameId);
 
             //var request = new RestRequest("/api/Ludo/115", Method.PUT);
             ////request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
