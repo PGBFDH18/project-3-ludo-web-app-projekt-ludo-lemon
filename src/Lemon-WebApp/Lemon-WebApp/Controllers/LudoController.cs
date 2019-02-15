@@ -85,7 +85,7 @@ namespace Lemon_WebApp.Controllers
             request.AddJsonBody(movePiece);
             IRestResponse ludoGameResponse = client.Put(request);
 
-            return GetGameState(gameId);
+            return GetGameState(/*gameId*/);
 
             //var request = new RestRequest("/api/Ludo/115", Method.PUT);
             ////request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
