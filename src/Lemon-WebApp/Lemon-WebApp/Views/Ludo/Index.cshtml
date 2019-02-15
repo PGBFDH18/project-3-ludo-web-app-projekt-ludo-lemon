@@ -49,15 +49,21 @@
             }*@
     </div>
     <br><br>
-    <div>
-        @using (Html.BeginForm("MovePiece", "Ludo"))
-        {
-            <p>Enter Piece Id To Move</p>
-            <input type="text" name="pieceId">
-            <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
-            <input type="submit" value="Move Piece">
-        }
-    </div>
+        <div class="form-selectedPiece">
+            <p>Choose Piece To Move</p>
+            @using (Html.BeginForm("MovePiece", "Ludo", FormMethod.Post))
+            {
+                <select name="selectedPiece" id="selectedPiece">
+                @for (int i = 0; i < Model.ludoPlayers[Model.currentPlayerId].pieces.Count; i++)
+                {
+                    <option value=@i>@int.Parse((@Model.ludoPlayers[Model.currentPlayerId].pieces[i].pieceId + 1).ToString())</option>
+                }
+                </select>
+                <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
+                <input type="submit" value="Move Piece">
+            }
+        </div>
+
     <br /><br /><br /><br />
     <form id="rollDice" action="javascript:void(0);" method="get">
         <input type="submit" value="Roll THE Dice">
