@@ -49,7 +49,7 @@
             }*@
     </div>
     <br><br>
-    <div>
+    <div class="pieceToMove">
         @using (Html.BeginForm("MovePiece", "Ludo"))
         {
             <p>Enter Piece Id To Move</p>
@@ -59,16 +59,11 @@
         }
     </div>
     <br /><br /><br /><br />
-    <form id="rollDice" action="javascript:void(0);" method="get">
-        <input type="submit" value="Roll THE Dice">
-    </form>
-
-    <form id="create_game" method="get">
-        <input type="submit" value="Create game">
-    </form>
-
-
-
+    <div class="rollDice">
+        <form id="rollDice" action="javascript:void(0);" method="get">
+            <input type="submit" value="Roll THE Dice">
+        </form>
+    </div>
 
 </div>
 

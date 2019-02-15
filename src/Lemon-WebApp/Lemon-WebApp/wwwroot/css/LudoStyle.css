@@ -8,6 +8,14 @@
 
 .currentPlayer {
     font-size: 300%;
+    position: absolute;
+    top: 2px;
+}
+
+.pieceToMove {
+    font-size: 125%;
+    position: absolute;
+    top: 160px;
 }
 
 .dice {
@@ -18,8 +26,14 @@
     margin: 0px;
     padding: 0px;
     position: absolute;
-    top: 450px;
+    top: 50px;
     left: 50px;
+}
+
+.rollDice {
+    position: absolute;
+    top: 120px;
+    left:32px;
 }
 
 .diceDot {
