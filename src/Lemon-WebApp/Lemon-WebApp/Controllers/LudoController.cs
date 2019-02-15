@@ -53,7 +53,7 @@ namespace Lemon_WebApp.Controllers
             Log.Information("Created a game with ID: {gameId}", gameId);
         }
 
-        public IActionResult GetGameState(int gameId = 41742) // <- Default-value to avoid ArgumentOutOfRangeException when not argument is passed to the method.
+        public IActionResult GetGameState(int gameId = 25396) // <- Default-value to avoid ArgumentOutOfRangeException when not argument is passed to the method.
         {
             //[Route("getGameInformation")]
 
