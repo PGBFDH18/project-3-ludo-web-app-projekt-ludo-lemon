@@ -53,11 +53,12 @@ namespace Lemon_WebApp.Controllers
             Log.Information("Created a game with ID: {gameId}", gameId);
         }
 
-        public IActionResult GetGameState()
+        public IActionResult GetGameState(int gameId = 41742) // <- Default-value to avoid ArgumentOutOfRangeException when not argument is passed to the method.
         {
             //[Route("getGameInformation")]
 
-            var request = new RestRequest("/api/Ludo/41742", Method.GET);
+            //var request = new RestRequest("/api/Ludo/41742", Method.GET);
+            var request = new RestRequest($"/api/Ludo/{gameId}", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
             IRestResponse ludoGameResponse = _client.Execute(request);
             var gameSetup = ludoGameResponse;
@@ -70,18 +71,20 @@ namespace Lemon_WebApp.Controllers
         
         public IActionResult MovePiece(string pieceId, int currentPlayerId, int gameId)
         {
-            MovePiece movePiece = new MovePiece();
+            MovePiece movePiece = new MovePiece
+            {
+                playerId = currentPlayerId,
+                pieceId = int.Parse(pieceId),
+                numberOfFields = _diceValue
+            };
 
-            movePiece.playerId = currentPlayerId;
-            movePiece.pieceId = int.Parse(pieceId);
-            movePiece.numberOfFields = _diceValue;
-           
-            var request = new RestRequest("api/ludo/41742", Method.PUT);
+            //var request = new RestRequest("api/ludo/41742", Method.PUT);
+            var request = new RestRequest($"api/ludo/{gameId}", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(movePiece);
             IRestResponse ludoGameResponse = _client.Put(request);
 
-            return GetGameState();
+            return GetGameState(gameId);
             
             //var request = new RestRequest("/api/Ludo/115", Method.PUT);
             ////request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
