@@ -57,9 +57,7 @@ namespace Lemon_WebApp.Controllers
        
         public IActionResult GetGameState()
         {
-            //[Route("getGameInformation")]
-
-            var request = new RestRequest("/api/Ludo/41742", Method.GET);
+            var request = new RestRequest("/api/Ludo/25396", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
             IRestResponse ludoGameResponse = client.Execute(request);
             var gameSetup = ludoGameResponse;
@@ -69,25 +67,24 @@ namespace Lemon_WebApp.Controllers
 
             return View("~/Views/Ludo/Index.cshtml", gameInfo);
         }
-        
-        public IActionResult MovePiece(string pieceId, int currentPlayerId)
+
+        public IActionResult MovePiece(int selectedPiece, int currentPlayerId)
         {
             MovePiece movePiece = new MovePiece();
-
             movePiece.playerId = currentPlayerId;
-            movePiece.pieceId = int.Parse(pieceId);
+            movePiece.pieceId = selectedPiece;
             movePiece.numberOfFields = _diceValue;
-           
-            var request = new RestRequest("api/ludo/41742", Method.PUT);
+
+            var request = new RestRequest("api/ludo/25396", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(movePiece);
             IRestResponse ludoGameResponse = client.Put(request);
 
             return GetGameState();
-            
+
             //var request = new RestRequest("/api/Ludo/115", Method.PUT);
             ////request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
-            
+
 
         }
 
@@ -106,19 +103,7 @@ namespace Lemon_WebApp.Controllers
             throw new NotImplementedException();
         }
 
-        public IActionResult tryToFindAllPiecePositions()
-        {
-            //[Route("getGameInformation")]
-
-            var request = new RestRequest("/api/Ludo/115", Method.GET);
-            IRestResponse ludoGameResponse = client.Execute(request);
-            var gameSetup = ludoGameResponse;
-            var  data = gameSetup.Content;
-            var gameInfo = JsonConvert.DeserializeObject<GameModel>(data);
-            return View();
-        }
-
-        public IActionResult GameConfiguration()
+        public IActionResult GameConfiguration(AddPlayer player)
         {
             var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
 
@@ -128,17 +113,34 @@ namespace Lemon_WebApp.Controllers
             var data = getGames.Content;
             var games = JsonConvert.DeserializeObject<List<int>>(data);
             GameConfiguration game = new GameConfiguration(games);
-            return View(game);
+            ViewBag.Message = player;
+            return View("~/Views/Ludo/GameConfiguration.cshtml", game);
         }
 
-        /*public IActionResult AddPlayer()
+        public IActionResult PutGameStateToStart()
         {
-            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
-            var request = new RestRequest("api/ludo/41742", Method.POST);
+            var request = new RestRequest("api/ludo/25396/state", Method.PUT);
             request.RequestFormat = DataFormat.Json;
-            request.AddJsonBody(movePiece);
-            IRestResponse ludoGameResponse = client.Put(request);
+            IRestResponse addPlayerRequest = client.Put(request);
+
+            return View();
         }
-        */
+
+        public IActionResult AddPlayer(string nameOfPlayer, string playerColor)
+        {
+            AddPlayer playerData = new AddPlayer();
+
+            playerData.Name = nameOfPlayer;
+            playerData.Color = playerColor;
+
+            var request = new RestRequest("api/ludo/25396/players", Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(playerData);
+            IRestResponse addPlayerRequest = client.Post(request);
+
+
+            return GameConfiguration(playerData);
+        }
+
     }
 }
