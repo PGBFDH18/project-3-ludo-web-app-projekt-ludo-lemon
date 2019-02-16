@@ -51,23 +51,23 @@ namespace Lemon_WebApp.Controllers
             var gameId = ludoGameResponse.Data;
             //  Log.Information("Created a game with ID: {gameId}", gameId);
 
-            return GameConfiguration(gameId);
+            var gameModel = GetTotalGameInfo(gameId);
+
+            return View("~/Views/Ludo/GameConfiguration.cshtml", gameModel);
         }
 
-        public IActionResult GetTotalGameInfo(int gameID)
+        public GameModel GetTotalGameInfo(int gameId)
         {
-            var request = new RestRequest($"/api/Ludo/{gameID}", Method.GET);
+            var request = new RestRequest($"/api/Ludo/{gameId}", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
             IRestResponse ludoGameResponse = _client.Execute(request);
             var gameSetup = ludoGameResponse;
             var data = gameSetup.Content;
-            var gameInfo = JsonConvert.DeserializeObject<GameModel>(data);
-
-            return View("~/Views/Ludo/Index.cshtml", gameInfo);
+            var gameModel = JsonConvert.DeserializeObject<GameModel>(data);
+            return gameModel;
         }
 
-
-        public IActionResult MovePiece(int selectedPiece, int currentPlayerId, int gameID)
+        public IActionResult MovePiece(int selectedPiece, int currentPlayerId, int gameId)
         {
             MovePiece movePiece = new MovePiece
             {
@@ -76,12 +76,15 @@ namespace Lemon_WebApp.Controllers
                 numberOfFields = _diceValue
             };
 
-            var request = new RestRequest($"api/ludo/{gameID}", Method.PUT);
+            var request = new RestRequest($"api/ludo/{gameId}", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(movePiece);
             IRestResponse ludoGameResponse = _client.Put(request);
 
-            return GetTotalGameInfo(gameID);
+            var gameModel = GetTotalGameInfo(gameId);
+
+            return View("~/Views/Ludo/Index.cshtml", gameModel);
+
             //var request = new RestRequest("/api/Ludo/115", Method.PUT);
             ////request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
         }
@@ -98,34 +101,37 @@ namespace Lemon_WebApp.Controllers
             throw new NotImplementedException();
         }
 
+        /*
         public IActionResult GameConfiguration(int gameID)
         {
-            GameConfiguration gameConfig = new GameConfiguration(gameID);
-
-            return View("~/Views/Ludo/GameConfiguration.cshtml", gameConfig);
+            return View("~/Views/Ludo/GameConfiguration.cshtml", );
         }
+        */
 
-        public IActionResult PutGameStateToStart(int gameID)
+        public IActionResult PutGameStateToStart(int gameId)
         {
-            var request = new RestRequest($"api/ludo/{gameID}/state", Method.PUT);
+            var request = new RestRequest($"api/ludo/{gameId}/state", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             IRestResponse addPlayerRequest = _client.Put(request);
-            return GetTotalGameInfo(gameID);
+            var gameModel = GetTotalGameInfo(gameId);
+            return View("~/Views/Ludo/Index.cshtml", gameModel);
         }
 
-        public IActionResult AddPlayer(string nameOfPlayer, string playerColor, int gameID)
+        public IActionResult AddPlayer(string nameOfPlayer, string playerColor, int gameId)
         {
             AddPlayer playerData = new AddPlayer();
 
             playerData.Name = nameOfPlayer;
             playerData.Color = playerColor;
 
-            var request = new RestRequest($"api/ludo/{gameID}/players", Method.POST);
+            var request = new RestRequest($"api/ludo/{gameId}/players", Method.POST);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(playerData);
             IRestResponse addPlayerRequest = _client.Post(request);
 
-            return GameConfiguration(gameID);
+            var gameModel = GetTotalGameInfo(gameId);
+
+            return View("~/Views/Ludo/GameConfiguration.cshtml", gameModel);
         }
 
     }
