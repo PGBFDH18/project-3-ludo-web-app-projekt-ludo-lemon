@@ -44,14 +44,40 @@
         }
     </div>
 
-    @*@{
-            var playerData = ViewBag.Message;
-        }
 
-        @if (!String.IsNullOrEmpty(playerData.Name))
+
+
+    <p>
+        @if (Model.numberOfPlayers > 0)
         {
-            <div><p>Name: <b>@playerData.Name</b> was added with color: <b>@playerData.Color</b></p></div>
-        }*@
+            for (int i = 0; i < Model.ludoPlayers.Count; i++)
+            {
+
+                string playerColor = "";
+
+                if (Model.ludoPlayers[i].playerColor == 0)
+                {
+                    playerColor = "blue";
+                }
+                if (Model.ludoPlayers[i].playerColor == 1)
+                {
+                    playerColor = "yellow";
+                }
+                if (Model.ludoPlayers[i].playerColor == 2)
+                {
+                    playerColor = "red";
+                }
+                if (Model.ludoPlayers[i].playerColor == 3)
+                {
+                    playerColor = "green";
+                }
+                <div>
+                    Name: <b>@Model.ludoPlayers[i].name</b> was added with color: <font color="@playerColor">@playerColor</font>
+                </div>
+            }
+        }
+    </p>
+
     <br /><br />
 
     <div>
