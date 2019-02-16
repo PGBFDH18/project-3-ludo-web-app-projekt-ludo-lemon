@@ -51,24 +51,6 @@
     </div>
     <br><br>
 
-
-
-
-
-    @*<div class="pieceToMove">
-        @using (Html.BeginForm("MovePiece", "Ludo"))
-        {
-            <p>Enter Piece Id To Move</p>
-            <input type="text" name="pieceId">
-            <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
-            <p>Game ID. (Please do not alter)</p>
-            <input type="text" name="gameId" value="@Model.gameId">
-            <input type="submit" value="Move Piece">
-        }
-    </div>*@
-
-
-
         <div class="form-selectedPiece">
             <p>Choose Piece To Move</p>
             @using (Html.BeginForm("MovePiece", "Ludo", FormMethod.Post))
@@ -80,15 +62,14 @@
                 }
                 </select>
                 <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
-                <input type="text" value="@Model.gameId">
+                <input type="text" name="gameID" value="@Model.gameId">
                 <input type="submit" value="Move Piece">
             }
         </div>
-
-
-
-
+    
     <br /><br /><br /><br />
+
+
     <div class="rollDice">
         <form id="rollDice" action="javascript:void(0);" method="get">
             <input type="submit" value="Roll THE Dice">

@@ -9,5 +9,6 @@ namespace Lemon_WebApp.Models
     {
         public string Color { get; set; }
         public string Name { get; set; }
+        public int gameId { get; set; }
     }
 }

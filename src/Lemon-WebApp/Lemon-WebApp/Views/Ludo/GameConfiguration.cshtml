@@ -11,28 +11,29 @@
     <link href="~/css/GameConfigurationStyle.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="form-selectedGames">
-        @using (Html.BeginForm("****", "*****", FormMethod.Post))
-        {
-            <h4>Available games</h4>
-            <select name="selectedGames" id="selectedGames">
-                @if (Model.games != null)
-                {
-                    @foreach (var game in Model.games)
+    @*<div class="form-selectedGames">
+            @using (Html.BeginForm("****", "*****", FormMethod.Post))
+            {
+                <h4>Available games</h4>
+                <select name="selectedGames" id="selectedGames">
+                    @if (Model.games != null)
                     {
-                        <option value="@game">@game</option>
+                        @foreach (var game in Model.games)
+                        {
+                            <option value="@game">@game</option>
+                        }
                     }
-                }
-            </select>
-            <input value="Load game" type="submit">
-        }
-    </div>
+                </select>
+                <input value="Load game" type="submit">
+            }
+        </div>*@
     <br /><br />
     <div class="form-addPlayer">
         @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
         {
             <h4>Add player</h4>
             <input value="Name" type="text" name="nameOfPlayer">
+            <input type="hidden" name="gameId" value="@Model.gameId">
             <select name="playerColor" id="playerColor">
                 <option value="Blue">Blue</option>
                 <option value="Yellow">Yellow</option>
@@ -43,19 +44,20 @@
         }
     </div>
 
-    @{
-        var playerData = ViewBag.Message;
-    }
+    @*@{
+            var playerData = ViewBag.Message;
+        }
 
-    @if (!String.IsNullOrEmpty(playerData.Name))
-    {
-        <div><p>Name: <b>@playerData.Name</b> was added with color: <b>@playerData.Color</b></p></div>
-    }
+        @if (!String.IsNullOrEmpty(playerData.Name))
+        {
+            <div><p>Name: <b>@playerData.Name</b> was added with color: <b>@playerData.Color</b></p></div>
+        }*@
     <br /><br />
 
     <div>
         <form action="@Url.Action("PutGameStateToStart", "Ludo")">
             <input value="Go to gameboard" type="submit">
+            <input type="hidden" name="gameId" value="@Model.gameId">
         </form>
     </div>
 

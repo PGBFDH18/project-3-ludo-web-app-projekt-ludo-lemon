@@ -8,14 +8,12 @@ using RestSharp;
 using Newtonsoft.Json;
 using Serilog;
 
-
 namespace Lemon_WebApp.Controllers
 {
     public class LudoController : Controller
     {
         private IRestClient _client;
         private static int _diceValue;
-        private int gameId;
 
         public LudoController(IRestClient client)
         {
@@ -53,24 +51,23 @@ namespace Lemon_WebApp.Controllers
             var gameId = ludoGameResponse.Data;
             //  Log.Information("Created a game with ID: {gameId}", gameId);
 
-
-            return View("~/Views/Ludo/GameConfiguration.cshtml");
+            return GameConfiguration(gameId);
         }
-       
-        public IActionResult GetGameState()
+
+        public IActionResult GetTotalGameInfo(int gameID)
         {
-            var request = new RestRequest($"/api/Ludo/{gameId}", Method.GET);
+            var request = new RestRequest($"/api/Ludo/{gameID}", Method.GET);
             //request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
             IRestResponse ludoGameResponse = _client.Execute(request);
             var gameSetup = ludoGameResponse;
-            //PieceModel model = new PieceModel(gameSetup);
             var data = gameSetup.Content;
             var gameInfo = JsonConvert.DeserializeObject<GameModel>(data);
 
             return View("~/Views/Ludo/Index.cshtml", gameInfo);
         }
 
-        public IActionResult MovePiece(int selectedPiece, int currentPlayerId, int gameId)
+
+        public IActionResult MovePiece(int selectedPiece, int currentPlayerId, int gameID)
         {
             MovePiece movePiece = new MovePiece
             {
@@ -79,26 +76,20 @@ namespace Lemon_WebApp.Controllers
                 numberOfFields = _diceValue
             };
 
-            var request = new RestRequest($"api/ludo/{gameId}", Method.PUT);
+            var request = new RestRequest($"api/ludo/{gameID}", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(movePiece);
             IRestResponse ludoGameResponse = _client.Put(request);
 
-            return GetGameState(/*gameId*/);
-
+            return GetTotalGameInfo(gameID);
             //var request = new RestRequest("/api/Ludo/115", Method.PUT);
             ////request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
-
-
         }
-
 
         public int DeleteGame()  // (vi ska testa den när vi skapar spel)
         {
             //[Route("deleteGame")]
-
             var request = new RestRequest("api/ludo/{gameId}", Method.DELETE);
-
             return HttpStatusCode(Ok);
         }
 
@@ -107,43 +98,34 @@ namespace Lemon_WebApp.Controllers
             throw new NotImplementedException();
         }
 
-        public IActionResult GameConfiguration(AddPlayer player)
+        public IActionResult GameConfiguration(int gameID)
         {
-            var client = new RestClient("https://ludolemon-webapi.azurewebsites.net");
+            GameConfiguration gameConfig = new GameConfiguration(gameID);
 
-            var request = new RestRequest("/api/Ludo/", Method.GET);
-            IRestResponse ludoGameResponse = client.Execute(request);
-            var getGames = ludoGameResponse;
-            var data = getGames.Content;
-            var games = JsonConvert.DeserializeObject<List<int>>(data);
-            GameConfiguration game = new GameConfiguration(games);
-            ViewBag.Message = player;
-            return View("~/Views/Ludo/GameConfiguration.cshtml", game);
+            return View("~/Views/Ludo/GameConfiguration.cshtml", gameConfig);
         }
 
-        public IActionResult PutGameStateToStart()
+        public IActionResult PutGameStateToStart(int gameID)
         {
-            var request = new RestRequest("api/ludo/25396/state", Method.PUT);
+            var request = new RestRequest($"api/ludo/{gameID}/state", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             IRestResponse addPlayerRequest = _client.Put(request);
-
-            return View();
+            return GetTotalGameInfo(gameID);
         }
 
-        public IActionResult AddPlayer(string nameOfPlayer, string playerColor)
+        public IActionResult AddPlayer(string nameOfPlayer, string playerColor, int gameID)
         {
             AddPlayer playerData = new AddPlayer();
 
             playerData.Name = nameOfPlayer;
             playerData.Color = playerColor;
 
-            var request = new RestRequest("api/ludo/25396/players", Method.POST);
+            var request = new RestRequest($"api/ludo/{gameID}/players", Method.POST);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(playerData);
             IRestResponse addPlayerRequest = _client.Post(request);
 
-
-            return GameConfiguration(playerData);
+            return GameConfiguration(gameID);
         }
 
     }

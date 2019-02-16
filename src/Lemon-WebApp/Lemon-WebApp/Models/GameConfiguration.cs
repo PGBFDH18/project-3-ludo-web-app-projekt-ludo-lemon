@@ -7,13 +7,11 @@ namespace Lemon_WebApp.Models
 {
     public class GameConfiguration
     {
-        public List<int> games { get; set; }
+        public int gameId { get; set; }
         
-
-
-        public GameConfiguration(List<int> game)
+        public GameConfiguration(int gameID)
         {
-            games = game;
+            gameId = gameID;
         }
     }
 
