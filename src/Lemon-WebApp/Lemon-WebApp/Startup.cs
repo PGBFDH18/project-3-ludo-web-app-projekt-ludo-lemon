@@ -24,6 +24,8 @@ namespace Lemon_WebApp
                 .MinimumLevel.Debug()
                 .WriteTo.Seq("http://localhost:5341/")
                 .CreateLogger();
+
+            Log.Information("Starting Up");
         }
 
         public IConfiguration Configuration { get; }
