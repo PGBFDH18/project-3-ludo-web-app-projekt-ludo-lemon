@@ -21,18 +21,15 @@ namespace Lemon_WebApp.Controllers
             _client.BaseUrl = new Uri("https://ludolemon-webapi.azurewebsites.net");
         }
 
-        public int RollDice()
+        public int RollDice(string nameOfPlayer)
         {
-            //[Route("giveNumber")]
-
             var request = new RestRequest("api/ludo/dice", Method.GET);
             IRestResponse<int> ludoGameResponse = _client.Execute<int>(request);
 
             var diceValue = ludoGameResponse.Data;
             _diceValue = diceValue;
-
-            //DiceModel model = new DiceModel(diceValue);
-            Log.Information("The dice roll was: {diceValue}", diceValue);
+            
+            Log.Information("Player: {nameOfPlayer} rolled the dice. The dice roll was: {diceValue}", nameOfPlayer, diceValue);
 
             return diceValue;
         }
@@ -44,14 +41,13 @@ namespace Lemon_WebApp.Controllers
 
         public IActionResult CreateGame()
         {
-            //[Route("createGame")]
-
             var request = new RestRequest("api/ludo/", Method.POST);
             IRestResponse<int> ludoGameResponse = _client.Execute<int>(request);
             var gameId = ludoGameResponse.Data;
             //  Log.Information("Created a game with ID: {gameId}", gameId);
 
             var gameModel = GetTotalGameInfo(gameId);
+            Log.Information("Created game with gameId: {gameId}", gameId);
 
             return View("~/Views/Ludo/GameConfiguration.cshtml", gameModel);
         }
@@ -64,6 +60,7 @@ namespace Lemon_WebApp.Controllers
             var gameSetup = ludoGameResponse;
             var data = gameSetup.Content;
             var gameModel = JsonConvert.DeserializeObject<GameModel>(data);
+            Log.Information("Fetching total info about gameId: {gameId}", gameId);
             return gameModel;
         }
 
@@ -76,11 +73,11 @@ namespace Lemon_WebApp.Controllers
             {
                 ListOfCreatedGames = JsonConvert.DeserializeObject<int[]>(ludoListResponse.Content)
             };
-
+            Log.Information("Listing available games: {data}", data);
             return View(data);
         }
 
-        public IActionResult MovePiece(int selectedPiece, int currentPlayerId, int gameId)
+        public IActionResult MovePiece(int selectedPiece, int currentPlayerId, int gameId, string nameOfCurrentPlayer)
         {
             MovePiece movePiece = new MovePiece
             {
@@ -95,11 +92,8 @@ namespace Lemon_WebApp.Controllers
             IRestResponse ludoGameResponse = _client.Put(request);
 
             var gameModel = GetTotalGameInfo(gameId);
-
+            Log.Information("Player: {nameOfCurrentPlayer} moved {_diceValue} steps with pieceId: {selectedPiece}", nameOfCurrentPlayer, _diceValue, selectedPiece);
             return View("~/Views/Ludo/Index.cshtml", gameModel);
-
-            //var request = new RestRequest("/api/Ludo/115", Method.PUT);
-            ////request.AddUrlSegment("id", gameID.ToString()); // replaces matching token in request.Resource
         }
 
         public int DeleteGame()  // (vi ska testa den när vi skapar spel)
@@ -113,20 +107,21 @@ namespace Lemon_WebApp.Controllers
         {
             throw new NotImplementedException();
         }
-
-        /*
-        public IActionResult GameConfiguration(int gameID)
+        
+        public IActionResult GameBoardSavedGame(int gameId)
         {
-            return View("~/Views/Ludo/GameConfiguration.cshtml", );
+            var gameModel = GetTotalGameInfo(gameId);
+            Log.Information("Loading game board for saved games with gameId: {gameId}", gameId);
+            return View("~/Views/Ludo/Index.cshtml", gameModel);
         }
-        */
 
-        public IActionResult PutGameStateToStart(int gameId)
+        public IActionResult GameBoardNewGame(int gameId)
         {
             var request = new RestRequest($"api/ludo/{gameId}/state", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             IRestResponse addPlayerRequest = _client.Put(request);
             var gameModel = GetTotalGameInfo(gameId);
+            Log.Information("Loading game board for new game with gameId: {gameId}", gameId);
             return View("~/Views/Ludo/Index.cshtml", gameModel);
         }
 
@@ -143,9 +138,8 @@ namespace Lemon_WebApp.Controllers
             IRestResponse addPlayerRequest = _client.Post(request);
 
             var gameModel = GetTotalGameInfo(gameId);
-
+            Log.Information("Added player with name: {nameOfPlayer}" + " with color: {playerColor}" + " and gameId: {gameId}", nameOfPlayer, playerColor, gameId);
             return View("~/Views/Ludo/GameConfiguration.cshtml", gameModel);
         }
-
     }
 }

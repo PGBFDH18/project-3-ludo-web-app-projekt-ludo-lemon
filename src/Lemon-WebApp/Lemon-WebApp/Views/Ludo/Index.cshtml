@@ -63,6 +63,7 @@
                 </select>
                 <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
                 <input type="text" name="gameID" value="@Model.gameId">
+                <input type="hidden" name="nameOfCurrentPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
                 <input type="submit" value="Move Piece">
             }
         </div>
@@ -71,8 +72,9 @@
 
 
     <div class="rollDice">
-        <form id="rollDice" action="javascript:void(0);" method="get">
+        <form id="rollDice" action="@Url.Action("RollDice", "Ludo")" method="post">
             <input type="submit" value="Roll THE Dice">
+            <input type="hidden" name="nameOfPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
         </form>
     </div>
 
