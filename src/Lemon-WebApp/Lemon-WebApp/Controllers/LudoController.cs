@@ -6,6 +6,7 @@ using Lemon_WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 using Serilog;
 
 namespace Lemon_WebApp.Controllers
@@ -19,6 +20,12 @@ namespace Lemon_WebApp.Controllers
         {
             _client = client;
             _client.BaseUrl = new Uri("https://ludolemon-webapi.azurewebsites.net");
+        }
+
+        public IActionResult Index()
+        {
+            Log.Information($"A new client connected at IP{HttpContext.Connection.RemoteIpAddress.ToString()}");
+            return View();
         }
 
         public int RollDice(string nameOfPlayer)
