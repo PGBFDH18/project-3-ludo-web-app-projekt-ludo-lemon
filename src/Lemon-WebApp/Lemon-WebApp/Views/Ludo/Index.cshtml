@@ -206,50 +206,48 @@
     </div>
     <div class="start player4">
         <div class="field">
-            <div class="brick player4" id="0">1</div>
+            <div class="brick player4" id="bluePiece1">1</div>
         </div>
         <div class="field">
-            <div class="brick player4" id="1">2</div>
+            <div class="brick player4" id="bluePiece2">2</div>
         </div>
         <div class="field">
-            <div class="brick player4" id="2">3</div>
+            <div class="brick player4" id="bluePiece3">3</div>
         </div>
         <div class="field">
-            <div class="brick player4" id="3">4</div>
+            <div class="brick player4" id="bluePiece4">4</div>
         </div>
     </div>
 
     @for (var i = 0; i < Model.ludoPlayers.Count; i++)
     {
-        var ludoPlayer = Model.ludoPlayers[i];
-        var pColor = "";
-        switch (ludoPlayer.playerColor)
+        LudoPlayer player = Model.ludoPlayers[i];
+
+        string color = "";
+        switch (player.playerColor)
         {
-            case 0:
-                pColor = "blue";
+            case 0: color = "blue";
                 break;
-            case 1:
-                pColor = "yellow";
+            case 1: color = "yellow";
                 break;
-            case 2:
-                pColor = "red";
+            case 2: color = "red";
                 break;
-            case 3:
-                pColor = "green";
+            case 3: color = "green";
                 break;
         }
 
-        @for (var k = 0; k < ludoPlayer.pieces.Count; k++)
+        foreach (var piece in player.pieces)
         {
-            var piece = ludoPlayer.pieces[k];
-            var pieceIdentity = pColor + "Piece" + k + 1;
-
-            // JavaScript-kod.
-            <script>
-                var piece = document.getElementById('#' + @pieceIdentity);
-                var field = document.getElementById('#' + (@piece.position * @ludoPlayer.offset));
-                field.appendChild(piece);
-            </script>
+            string pieceId = color + "Piece" + (piece.pieceId + 1);
+            int pieceOffset = piece.position + Model.ludoPlayers[i].offset;
+            if (piece.position > 0)
+            {
+                // BEGIN JavaScript
+                <script>
+                    $('#@pieceId').appendTo('#@pieceOffset');
+                </script>
+                // END JavaScript
+            }
         }
     }
 
