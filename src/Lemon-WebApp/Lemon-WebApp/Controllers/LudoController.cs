@@ -22,11 +22,6 @@ namespace Lemon_WebApp.Controllers
             _client.BaseUrl = new Uri("https://ludolemon-webapi.azurewebsites.net");
         }
 
-        public IActionResult Index()
-        {
-            Log.Information($"A new client connected at IP{HttpContext.Connection.RemoteIpAddress.ToString()}");
-            return View();
-        }
 
         public int RollDice(string nameOfPlayer)
         {
@@ -43,6 +38,7 @@ namespace Lemon_WebApp.Controllers
 
         public IActionResult Welcome()
         {
+            Log.Information($"A new client connected at IP{HttpContext.Connection.RemoteIpAddress.ToString()}");
             return View();
         }
 

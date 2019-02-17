@@ -55,15 +55,7 @@ $('#rollDice').submit(function () { // catch the form's submit event
 
             // method to show the markup of dice with diceValue
             showDiceDots(diceValue); 
-
-            // moving mechanism
-            $(document).ready(function () {
-                $('.field').on('click', '.brick', function () {
-                    $(this).appendTo('#' + diceValue);
-                    var x = $(this).attr('id');
-                    //console.log(x);
-                });
-            });
+            
         }
     });
     return false; // cancel original event to prevent form submitting
