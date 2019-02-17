@@ -1,0 +1,21 @@
+﻿@model Lemon_WebApp.Models.GameList
+
+    @{
+       Layout = "_MittLayout";
+       ViewData["Title"] = "Join Game";
+    }
+
+    <h1 class="joinGameHeader">Join a saved Game</h1>
+
+    <div id="listOfAllGameIdsContent">
+
+    @for (int i = 0; i < Model.ListOfCreatedGames.Length; i++)
+       {
+       <form class="gameForm" method="post" action="GetTotalGameInfo">
+
+           <input type="hidden" name="gameId" value"@Model.ListOfCreatedGames[i]" />
+           <label>@Model.ListOfCreatedGames[i]</label>
+           <button class="button" type="submit">Join this game</button>
+       </form>
+       }
+    </div>

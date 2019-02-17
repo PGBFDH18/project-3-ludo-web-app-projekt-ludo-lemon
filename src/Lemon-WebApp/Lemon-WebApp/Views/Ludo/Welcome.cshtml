@@ -27,13 +27,17 @@
     <center><img src="~/img/pic8.png" id="picture"></center>
 
     <br><br>
-    
+
     <form action="@Url.Action("CreateGame", "Ludo")">
         <center>
             <input type="submit" value="NEW GAME">
         </center>
     </form> <br><br>
 
-    <center><button>LOAD SAVED GAME</button></center>
+    <form action="@Url.Action("JoinGame", "Ludo")">
+        <center>
+            <input type="submit" value="JOIN A SAVED GAME">
+        </center>
+    </form> <br><br>
 </body>
 </html>

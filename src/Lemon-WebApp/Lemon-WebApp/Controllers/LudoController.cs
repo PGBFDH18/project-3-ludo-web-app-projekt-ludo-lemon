@@ -67,6 +67,19 @@ namespace Lemon_WebApp.Controllers
             return gameModel;
         }
 
+        [HttpGet("joingame")]
+        public IActionResult JoinGame()
+        {
+            var request = new RestRequest("api/ludo", Method.GET);
+            IRestResponse ludoListResponse = _client.Execute(request);
+            GameList data = new GameList()
+            {
+                ListOfCreatedGames = JsonConvert.DeserializeObject<int[]>(ludoListResponse.Content)
+            };
+
+            return View(data);
+        }
+
         public IActionResult MovePiece(int selectedPiece, int currentPlayerId, int gameId)
         {
             MovePiece movePiece = new MovePiece
