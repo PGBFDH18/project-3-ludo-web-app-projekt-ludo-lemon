@@ -26,6 +26,8 @@
     background: #FFB914;
     cursor: pointer;
     transition: all 0.2s;
+    font-size: 15px;
+    animation-delay:0.07s;
     text-align: center;
     font-size: 0.7em;
     width: 150px;
