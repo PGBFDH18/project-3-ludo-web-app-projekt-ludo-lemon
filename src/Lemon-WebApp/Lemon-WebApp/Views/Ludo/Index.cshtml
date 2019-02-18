@@ -240,6 +240,10 @@
         {
             string pieceId = color + "Piece" + (piece.pieceId + 1);
             int pieceOffset = piece.position + Model.ludoPlayers[i].offset;
+            if (pieceOffset > 52)
+            {
+                pieceOffset -= 52;
+            }
             if (piece.position > 0)
             {
                 // BEGIN JavaScript
