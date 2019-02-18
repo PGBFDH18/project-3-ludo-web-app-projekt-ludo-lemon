@@ -11,25 +11,25 @@
     <link href="~/css/GameConfigurationStyle.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    
-    <br /><br />
-          <div class="form-addPlayer">
-              @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
-              {
-                  <h4>Add player</h4>
-                  //<input placeholder="Name" type="text" name="nameOfPlayer" required pattern="[a-zA-ZäöüßÄÖÜ]+" title="Only letters" />
-                  <input type="text" placeholder="Write name" maxlength="15" required pattern="[a-zA-ZåäöüßÅÄÖÜ]+" title="Only letters" />
-                  <input type="hidden" name="gameId" value="@Model.gameId">
-                  <select name="playerColor" id="playerColor">
-                      <option value="Blue">Blue</option>
-                      <option value="Yellow">Yellow</option>
-                      <option value="Red">Red</option>
-                      <option value="Green">Green</option>
-                  </select>
-                  <input value="Add player" type="submit">
-              }
-          </div>
 
+    <br /><br />
+
+    <div class="form-addPlayer">
+        @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
+        {
+            <h4>Add player</h4>
+            //<input placeholder="Name" type="text" name="nameOfPlayer" required pattern="[a-zA-ZäöüßÄÖÜ]+" title="Only letters" />
+            <input type="text" name="nameOfPlayer" placeholder="Write name" maxlength="15" required pattern="[a-zA-ZåäöüßÅÄÖÜ]+" title="Only letters" />
+            <input type="hidden" name="gameId" value="@Model.gameId">
+            <select name="playerColor" id="playerColor">
+                <option value="Blue">Blue</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Red">Red</option>
+                <option value="Green">Green</option>
+            </select>
+            <input value="Add player" type="submit">
+        }
+    </div>
 
     <p>
         @if (Model.numberOfPlayers > 0)
@@ -56,19 +56,29 @@
                     playerColor = "green";
                 }
                 <div>
-                    Name: <b>@Model.ludoPlayers[i].name</b> was added with color: <font color="@playerColor">@playerColor</font>
+                    <b>@Model.ludoPlayers[i].name</b> was added with color: <font color="@playerColor">@playerColor</font>
                 </div>
             }
         }
     </p>
 
     <br /><br />
-
     <div>
-        <form action="@Url.Action("GameBoardNewGame", "Ludo")">
-            <input value="Go to gameboard" type="submit">
-            <input type="hidden" name="gameId" value="@Model.gameId">
-        </form>
+        @if (Model.ludoPlayers.Count < 2)
+        {
+            <form action="@Url.Action("GameBoardNewGame", "Ludo")">
+                <input id="go-to-gameboard" value="Go to gameboard" type="submit" disabled>
+                <input type="hidden" name="gameId" value="@Model.gameId">
+            </form>
+        }
+        else
+        {
+            <form action="@Url.Action("GameBoardNewGame", "Ludo")">
+                <input id="go-to-gameboard" value="Go to gameboard" type="submit">
+                <input type="hidden" name="gameId" value="@Model.gameId">
+            </form>
+        }
+
     </div>
 
 </body>

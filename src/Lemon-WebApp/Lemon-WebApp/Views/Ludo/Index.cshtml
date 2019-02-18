@@ -164,58 +164,58 @@
     <div class="goal"></div>
     <div class="start player1">
         <div class="field">
-            <div class="brick player1" id="redPiece1">1</div>
+            <div class="brick player1" id="redPiece1"><br />1</div>
         </div>
         <div class="field">
-            <div class="brick player1" id="redPiece2">2</div>
+            <div class="brick player1" id="redPiece2"><br />2</div>
         </div>
         <div class="field">
-            <div class="brick player1" id="redPiece3">3</div>
+            <div class="brick player1" id="redPiece3"><br />3</div>
         </div>
         <div class="field">
-            <div class="brick player1" id="redPiece4">4</div>
+            <div class="brick player1" id="redPiece4"><br />4</div>
         </div>
     </div>
     <div class="start player2">
         <div class="field">
-            <div class="brick player2" id="greenPiece1">1</div>
+            <div class="brick player2" id="greenPiece1"><br />1</div>
         </div>
         <div class="field">
-            <div class="brick player2" id="greenPiece2">2</div>
+            <div class="brick player2" id="greenPiece2"><br />2</div>
         </div>
         <div class="field">
-            <div class="brick player2" id="greenPiece3">3</div>
+            <div class="brick player2" id="greenPiece3"><br />3</div>
         </div>
         <div class="field">
-            <div class="brick player2" id="greenPiece4">4</div>
+            <div class="brick player2" id="greenPiece4"><br />4</div>
         </div>
     </div>
     <div class="start player3">
         <div class="field">
-            <div class="brick player3" id="yellowPiece1">1</div>
+            <div class="brick player3" id="yellowPiece1"><br />1</div>
         </div>
         <div class="field">
-            <div class="brick player3" id="yellowPiece2">2</div>
+            <div class="brick player3" id="yellowPiece2"><br />2</div>
         </div>
         <div class="field">
-            <div class="brick player3" id="yellowPiece3">3</div>
+            <div class="brick player3" id="yellowPiece3"><br />3</div>
         </div>
         <div class="field">
-            <div class="brick player3" id="yellowPiece4">4</div>
+            <div class="brick player3" id="yellowPiece4"><br />4</div>
         </div>
     </div>
     <div class="start player4">
         <div class="field">
-            <div class="brick player4" id="bluePiece1">1</div>
+            <div class="brick player4" id="bluePiece1"><br />1</div>
         </div>
         <div class="field">
-            <div class="brick player4" id="bluePiece2">2</div>
+            <div class="brick player4" id="bluePiece2"><br />2</div>
         </div>
         <div class="field">
-            <div class="brick player4" id="bluePiece3">3</div>
+            <div class="brick player4" id="bluePiece3"><br />3</div>
         </div>
         <div class="field">
-            <div class="brick player4" id="bluePiece4">4</div>
+            <div class="brick player4" id="bluePiece4"><br />4</div>
         </div>
     </div>
 
@@ -240,6 +240,10 @@
         {
             string pieceId = color + "Piece" + (piece.pieceId + 1);
             int pieceOffset = piece.position + Model.ludoPlayers[i].offset;
+            if (pieceOffset > 52)
+            {
+                pieceOffset -= 52;
+            }
             if (piece.position > 0)
             {
                 // BEGIN JavaScript
