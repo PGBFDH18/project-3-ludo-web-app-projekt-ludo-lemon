@@ -14,6 +14,4 @@ namespace Lemon_WebApp.Models
             gameId = gameID;
         }
     }
-
-    
 }
