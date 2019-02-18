@@ -14,8 +14,6 @@
 
     <br /><br />
 
-    <div class="form-addPlayer">
-
     <div class="addPlayerPageCenteredContent">
 
         @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
@@ -30,7 +28,7 @@
                 <option value="Red">Red</option>
                 <option value="Green">Green</option>
             </select>
-            <input value="Add player" type="submit">
+            <input value="Add player" type="submit" id="addPlayerButton">
         }
     </div>
 
@@ -58,32 +56,28 @@
                 {
                     playerColor = "green";
                 }
-                <div class="addPlayerPageCenteredContent">
-                    <b>@Model.ludoPlayers[i].name</b> was added with color: <font color="@playerColor">@playerColor</font>
-                </div>
+                <div id="showAddedPlayers" class="addPlayerPageCenteredContent"><b>@Model.ludoPlayers[i].name</b> was added with color:<font color="@playerColor">@playerColor</font></div>
             }
         }
     </p>
 
     <br /><br />
-          <div class="addPlayerPageCenteredContent">
-              @if (Model.ludoPlayers.Count < 2)
-              {
-                  <form action="@Url.Action("GameBoardNewGame", "Ludo")">
-                      <input id="go-to-gameboard" value="Go to gameboard" type="submit" disabled>
-                      <input type="hidden" name="gameId" value="@Model.gameId">
-                  </form>
-              }
-              else
-              {
-                  <form action="@Url.Action("GameBoardNewGame", "Ludo")">
-                      <input id="go-to-gameboard" value="Go to gameboard" type="submit">
-                      <input type="hidden" name="gameId" value="@Model.gameId">
-                  </form>
-              }
-          <br><br>
-          <img src="~/img/pic8.png" id="picture">
 
+    <div class="addPlayerPageCenteredContent">
+        @if (Model.ludoPlayers.Count < 2)
+        {
+        <form action="@Url.Action("GameBoardNewGame", "Ludo")">
+            <input id="go-to-gameboard" value="Go to gameboard" type="hidden" disabled>
+            <input type="hidden" name="gameId" value="@Model.gameId">
+        </form>
+        }
+        else
+        {
+        <form action="@Url.Action("GameBoardNewGame", "Ludo")">
+            <input id="goToGameBoardButton" value="Go to gameboard" type="submit">
+            <input type="hidden" name="gameId" value="@Model.gameId">
+        </form>
+        }
           </div>
 
 </body>
