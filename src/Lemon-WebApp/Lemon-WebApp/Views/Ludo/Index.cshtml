@@ -8,7 +8,9 @@
 }
 
 <div class="gameInfo">
-
+    <div class="gameIdLabel">
+        <p>Game ID: @Model.gameId</p>
+    </div>
     @{
         string playerColor = "";
 
@@ -62,7 +64,7 @@
                 }
                 </select>
                 <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
-                <input type="text" name="gameID" value="@Model.gameId">
+                <input type="hidden" name="gameID" value="@Model.gameId">
                 <input type="hidden" name="nameOfCurrentPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
                 <input type="submit" value="Move Piece">
             }
