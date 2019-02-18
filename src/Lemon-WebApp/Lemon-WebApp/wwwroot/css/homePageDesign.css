@@ -1,11 +1,13 @@
-body {
+body
+{
     background-color: #6bb0dd;
     color: rgb(255, 255, 255);
     font-family: "Lucida Console";
     font-size: 22px;
 }
 
-#createGameButton[type=submit] {
+#createGameButton[type=submit]
+{
     padding: 15px 32px;
     background: #ccc;
     cursor: pointer;
@@ -16,7 +18,8 @@ body {
     animation-delay:0.07s;
 }
 
-    #createGameButton[type=submit]:hover {
+    #createGameButton[type=submit]:hover
+    {
         background-color: #ffffff;
     }
 

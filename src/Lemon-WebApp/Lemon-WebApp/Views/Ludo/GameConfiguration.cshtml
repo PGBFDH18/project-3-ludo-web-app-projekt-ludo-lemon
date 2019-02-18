@@ -66,23 +66,25 @@
     </p>
 
     <br /><br />
-    <div class="addPlayerPageCenteredContent">
-        @if (Model.ludoPlayers.Count < 2)
-        {
-            <form action="@Url.Action("GameBoardNewGame", "Ludo")">
-                <input id="go-to-gameboard" value="Go to gameboard" type="submit" disabled>
-                <input type="hidden" name="gameId" value="@Model.gameId">
-            </form>
-        }
-        else
-        {
-            <form action="@Url.Action("GameBoardNewGame", "Ludo")">
-                <input id="go-to-gameboard" value="Go to gameboard" type="submit">
-                <input type="hidden" name="gameId" value="@Model.gameId">
-            </form>
-        }
+          <div class="addPlayerPageCenteredContent">
+              @if (Model.ludoPlayers.Count < 2)
+              {
+                  <form action="@Url.Action("GameBoardNewGame", "Ludo")">
+                      <input id="go-to-gameboard" value="Go to gameboard" type="submit" disabled>
+                      <input type="hidden" name="gameId" value="@Model.gameId">
+                  </form>
+              }
+              else
+              {
+                  <form action="@Url.Action("GameBoardNewGame", "Ludo")">
+                      <input id="go-to-gameboard" value="Go to gameboard" type="submit">
+                      <input type="hidden" name="gameId" value="@Model.gameId">
+                  </form>
+              }
+          <br><br>
+          <img src="~/img/pic8.png" id="picture">
 
-    </div>
+          </div>
 
 </body>
 </html>
