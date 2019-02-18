@@ -227,7 +227,7 @@
     {
         LudoPlayer player = Model.ludoPlayers[i];
 
-        string color = "";
+        string color = string.Empty;
         switch (player.playerColor)
         {
             case 0: color = "blue";
@@ -240,21 +240,27 @@
                 break;
         }
 
+        // Iterate through the player's pieces.
         foreach (var piece in player.pieces)
         {
             string pieceId = color + "Piece" + (piece.pieceId + 1);
-            int pieceOffset = piece.position + Model.ludoPlayers[i].offset;
-            if (pieceOffset > 52)
+
+            // Field Id indicates a global position (board position).
+            int globalPosition =
+                piece.position + Model.ludoPlayers[i].offset > 52
+                ? piece.position + Model.ludoPlayers[i].offset - 52
+                : piece.position + Model.ludoPlayers[i].offset;
+
+            // After 52 steps, pieces should continue on goal path.
+            if (piece.position > 52)
             {
-                pieceOffset -= 52;
+                var goalPathPosition = color.First().ToString() + (piece.position - 52);
+                <script> $('#@pieceId').appendTo('#@goalPathPosition'); </script>
             }
-            if (piece.position > 0)
+            // If position is less than 1, pieces should stay "home".
+            else if (piece.position > 0)
             {
-                // BEGIN JavaScript
-                <script>
-                    $('#@pieceId').appendTo('#@pieceOffset');
-                </script>
-                // END JavaScript
+                <script> $('#@pieceId').appendTo('#@globalPosition'); </script>
             }
         }
     }
