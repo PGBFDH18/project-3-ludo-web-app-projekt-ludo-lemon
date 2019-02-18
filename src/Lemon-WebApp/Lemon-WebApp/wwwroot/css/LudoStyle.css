@@ -95,18 +95,16 @@
 }
 
 .gameIdLabel {
-    background-color: lightgrey;
+    background-color: rgba(212, 212, 212, 0.75);
     display: inline-block;
     font-size: 300%;
     text-align: center;
     width: 300px;
     top: 792px;
-    margin-left: -16px;
     position: relative;
     color: black;
-    border: inset;
+    border: solid;
     border-width: 1px;
-    border-left-width: 0px;
 }
 
 .goal {
