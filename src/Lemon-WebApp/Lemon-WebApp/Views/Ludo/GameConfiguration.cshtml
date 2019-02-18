@@ -15,9 +15,12 @@
     <br /><br />
 
     <div class="form-addPlayer">
+
+    <div class="addPlayerPageCenteredContent">
+
         @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
         {
-            <h4>Add player</h4>
+            <h1 id="addPlayerHeader">Add player</h1>
             //<input placeholder="Name" type="text" name="nameOfPlayer" required pattern="[a-zA-ZäöüßÄÖÜ]+" title="Only letters" />
             <input type="text" name="nameOfPlayer" placeholder="Write name" maxlength="15" required pattern="[a-zA-ZåäöüßÅÄÖÜ]+" title="Only letters" />
             <input type="hidden" name="gameId" value="@Model.gameId">
@@ -55,7 +58,7 @@
                 {
                     playerColor = "green";
                 }
-                <div>
+                <div class="addPlayerPageCenteredContent">
                     <b>@Model.ludoPlayers[i].name</b> was added with color: <font color="@playerColor">@playerColor</font>
                 </div>
             }
@@ -63,7 +66,7 @@
     </p>
 
     <br /><br />
-    <div>
+    <div class="addPlayerPageCenteredContent">
         @if (Model.ludoPlayers.Count < 2)
         {
             <form action="@Url.Action("GameBoardNewGame", "Ludo")">

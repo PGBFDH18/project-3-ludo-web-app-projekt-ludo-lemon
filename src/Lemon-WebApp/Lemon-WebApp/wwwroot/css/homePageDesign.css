@@ -3,32 +3,33 @@ body {
     color: rgb(255, 255, 255);
     font-family: "Lucida Console";
     font-size: 22px;
-
 }
-input {
-    background-color: rgb(7, 27, 160); /* Green */
-    border: 2px rgb(15, 3, 121);
-    color: rgb(218, 228, 84);
+
+#createGameButton[type=submit] {
     padding: 15px 32px;
-    text-align: center;
+    background: #ccc;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    transition: all 0.2s;
+    font-size: 15px;
+    animation-delay:0.07s;
+}
+
+    #createGameButton[type=submit]:hover {
+        background-color: #ffffff;
+    }
+
+/*input {
+    background-color: rgb(7, 27, 160); /* Green 
+    border: 2px rgb(15, 3, 121);
+    padding: 15px 32px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    font-family: "Lucida Console";
-}
+}*/
 
-button {
-    background-color: rgb(7, 27, 160); /* Green */
-    border: 2px rgb(15, 3, 121);
-    color: rgb(218, 228, 84);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: "Lucida Console";
 
-}
 .gameDescription {
     font-family: "Lucida Console";
     text-align: center;

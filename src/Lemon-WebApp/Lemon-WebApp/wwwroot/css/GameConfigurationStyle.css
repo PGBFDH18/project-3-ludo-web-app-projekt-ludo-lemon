@@ -1,5 +1,4 @@
-﻿body
-{
+﻿body {
     background-color: #6bb0dd;
     color: rgb(255, 255, 255);
     font-family: "Lucida Console";
@@ -9,4 +8,27 @@
 .listOfAllGameIdsContent {
     text-align: center;
     position: center;
+}
+
+.addPlayerPageCenteredContent {
+    text-align: center;
+    position: center;
+}
+
+input[type=submit] {
+    padding: 5px 15px;
+    background: #ccc;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+    input[type=submit]:hover {
+        background-color: #ffffff;
+    }
+
+#addPlayerHeader {
+    color: #fce158;
 }
