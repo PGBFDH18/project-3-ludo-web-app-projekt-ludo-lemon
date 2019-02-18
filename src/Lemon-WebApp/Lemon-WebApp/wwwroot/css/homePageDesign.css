@@ -33,3 +33,8 @@ button {
     font-family: "Lucida Console";
     text-align: center;
 }
+
+form
+{
+    display: inline;
+}

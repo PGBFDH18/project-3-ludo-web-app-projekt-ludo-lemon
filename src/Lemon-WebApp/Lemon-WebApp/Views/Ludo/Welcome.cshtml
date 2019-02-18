@@ -15,29 +15,32 @@
             WELCOME TO LUDO GAME<br>
             lemon group
         </h1>
-    </center>
-    <div class="gameDescription">
-        <p>
-            Game description: you can play 2-4 players. Each player rolls the die.<br>
-            Then, you select what piece to move. The first player, who has moved all pieces<br>
-            around the board has won.<br>
-        </p>
-    </div>
 
-    <center><img src="~/img/pic8.png" id="picture"></center>
+        <div class="gameDescription">
+            <p>
+                Game description: you can play 2-4 players. Each player rolls the die.<br>
+                Then, you select what piece to move. The first player, who has moved all pieces<br>
+                around the board has won.<br>
+            </p>
+        </div>
 
     <br><br>
 
-    <form action="@Url.Action("CreateGame", "Ludo")">
-        <center>
+    
+        <form action="@Url.Action("CreateGame", "Ludo")">
             <input type="submit" value="NEW GAME">
-        </center>
-    </form> <br><br>
+        </form>
 
-    <form action="@Url.Action("JoinGame", "Ludo")">
-        <center>
+        <form action="@Url.Action("JoinGame", "Ludo")">
             <input type="submit" value="JOIN A SAVED GAME">
-        </center>
-    </form> <br><br>
+        </form>
+
+    <br><br>
+            <img src="~/img/pic8.png" id="picture">
+
+    </center>
+    
+
+
 </body>
 </html>
