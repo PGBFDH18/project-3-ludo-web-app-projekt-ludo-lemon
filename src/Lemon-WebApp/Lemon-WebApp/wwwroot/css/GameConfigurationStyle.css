@@ -5,3 +5,8 @@
     font-family: "Lucida Console";
     font-size: 22px;
 }
+
+.listOfAllGameIdsContent {
+    text-align: center;
+    position: center;
+}
