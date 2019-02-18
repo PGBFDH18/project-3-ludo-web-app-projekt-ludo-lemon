@@ -6,7 +6,8 @@
     }
     
 <div class="listOfAllGameIdsContent">
-    <h1 class="joinGameHeader">Join a saved Game</h1>
+    <link href="~/css/GameConfigurationStyle.css" rel="stylesheet" type="text/css" />
+    <h1>Join a saved Game</h1>
     <a href="~/Views/Ludo/JoinGame.cshtml"></a>
 
 
@@ -17,23 +18,27 @@
             <form class="gameForm" method="post" action="@Url.Action("GameBoardSavedGame", "Ludo")">
 
                 <input type="hidden" name="gameId" value="@Model.ListOfCreatedGames[i]" />
-                
-                    <label id="listOfAllGames">@Model.ListOfCreatedGames[i]</label>
-                
+
+                <label id="listOfAllGames">@Model.ListOfCreatedGames[i]</label>
+
                 <button class="button" type="submit">Join this game</button>
             </form>
         }
     }
     else
     {
-        
-            <h2 class="joinGamesAlternative">There are currently no saved games to join!</h2>
-            <p>Press the button below to create a new game instead</p>
-            <form action="@Url.Action("CreateGame", "Ludo")">
-                <div>
-                    <input type="submit" value="Create a new game">
-                </div>
-            </form> <br><br>
-        
+
+        <h2 class="joinGamesAlternative">There are currently no saved games to join!</h2>
+        <p>Press the button below to create a new game instead</p>
+        <form action="@Url.Action("CreateGame", "Ludo")">
+            <div>
+                <input type="submit" value="Create a new game">
+            </div>
+        </form> <br><br>
+
     }
+
+    <br><br>
+    <img src="~/img/pic8.png" id="picture">
+
 </div>
