@@ -28,30 +28,17 @@
 
     
         <form action="@Url.Action("CreateGame", "Ludo")">
-            <input type="submit" value="NEW GAME">
+            <input type="submit" value="NEW GAME" id="createGameButton">
         </form>
 
         <form action="@Url.Action("JoinGame", "Ludo")">
-            <input type="submit" value="JOIN A SAVED GAME">
+            <input type="submit" value="JOIN A SAVED GAME" id="createGameButton">
         </form>
 
     <br><br>
             <img src="~/img/pic8.png" id="picture">
 
     </center>
-    
 
-
-    <form action="@Url.Action("CreateGame", "Ludo")">
-        <center>
-            <input type="submit" id="createGameButton" style="animation-delay:0.07s" value="NEW GAME">
-        </center>
-    </form> <br><br>
-
-    <form action="@Url.Action("JoinGame", "Ludo")">
-        <center>
-            <input type="submit" id="createGameButton" style="animation-delay:0.14s" value="JOIN A SAVED GAME">
-        </center>
-    </form> <br><br>
 </body>
 </html>
