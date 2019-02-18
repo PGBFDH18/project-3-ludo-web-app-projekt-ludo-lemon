@@ -84,12 +84,29 @@
         left: 41px;
     }
 
+
+
 .gameInfo {
     width: 100px;
     height: 50px;
     top: 20px;
     left: 920px;
     position: absolute;
+}
+
+.gameIdLabel {
+    background-color: lightgrey;
+    display: inline-block;
+    font-size: 300%;
+    text-align: center;
+    width: 300px;
+    top: 792px;
+    margin-left: -16px;
+    position: relative;
+    color: black;
+    border: inset;
+    border-width: 1px;
+    border-left-width: 0px;
 }
 
 .goal {
