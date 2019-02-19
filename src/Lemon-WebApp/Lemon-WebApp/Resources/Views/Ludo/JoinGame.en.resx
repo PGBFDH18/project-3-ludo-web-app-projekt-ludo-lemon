@@ -124,6 +124,6 @@
     <value>There are currently no saved games to join!</value>
   </data>
   <data name="PressButton" xml:space="preserve">
-    <value>Press the button below to create a new game instead</value>
+    <value>Press the button below to create a new game</value>
   </data>
 </root>

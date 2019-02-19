@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChoosePiece" xml:space="preserve">
-    <value>Choose Piece To Move</value>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Luo uusi peli</value>
   </data>
-  <data name="MovePieceButton" xml:space="preserve">
-    <value>Move Piece</value>
+  <data name="NoSavedGames" xml:space="preserve">
+    <value>Tällä hetkellä ei ole tallennettu pelejä!</value>
   </data>
-  <data name="RollDieButton" xml:space="preserve">
-    <value>Roll the dice</value>
+  <data name="PressButton" xml:space="preserve">
+    <value>Luo uusi peli painamalla alla olevaa painiketta</value>
   </data>
 </root>

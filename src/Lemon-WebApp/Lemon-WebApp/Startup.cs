@@ -57,7 +57,8 @@ namespace Lemon_WebApp
                 var supportedCultures = new List<CultureInfo>
                 {
                     new CultureInfo("en"),
-                    new CultureInfo("sv")
+                    new CultureInfo("sv"),
+                    new CultureInfo("fi")
                 };
 
                 opt.DefaultRequestCulture = new RequestCulture("en");
@@ -89,7 +90,8 @@ namespace Lemon_WebApp
             var supportedCultures = new[]
             {
                 new CultureInfo("en"),
-                new CultureInfo("sv")
+                new CultureInfo("sv"),
+                new CultureInfo("fi")
             };
 
             app.UseRequestLocalization(new RequestLocalizationOptions

@@ -117,13 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChoosePiece" xml:space="preserve">
-    <value>Choose Piece To Move</value>
+  <data name="gameDescription" xml:space="preserve">
+    <value>Pelin kuvaus&lt;br&gt;2-4 pelaaja voi pelata.
+Jokainen pelaaja rullaa noppaa.&lt;br&gt;
+Sitten päätät, minkä osan haluat siirtää.&lt;br&gt;Ensimmäinen pelaaja, joka on siirtänyt kaikki pelikappaleet pesään on voittanut.
+</value>
   </data>
-  <data name="MovePieceButton" xml:space="preserve">
-    <value>Move Piece</value>
+  <data name="Join" xml:space="preserve">
+    <value>Liity tallennettuun peliin</value>
   </data>
-  <data name="RollDieButton" xml:space="preserve">
-    <value>Roll the dice</value>
+  <data name="New Game" xml:space="preserve">
+    <value>Uusi peli</value>
+  </data>
+  <data name="welcomeHeader" xml:space="preserve">
+    <value>TERVETULOA LUDO-PELIIN&lt;br&gt;lemon group</value>
   </data>
 </root>

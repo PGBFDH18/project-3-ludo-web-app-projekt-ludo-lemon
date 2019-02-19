@@ -117,13 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChoosePiece" xml:space="preserve">
-    <value>Choose Piece To Move</value>
+  <data name="AddedColor" xml:space="preserve">
+    <value>lisättiin värillää:</value>
   </data>
-  <data name="MovePieceButton" xml:space="preserve">
-    <value>Move Piece</value>
+  <data name="AddPlayer" xml:space="preserve">
+    <value>Lisää pelaaja</value>
   </data>
-  <data name="RollDieButton" xml:space="preserve">
-    <value>Roll the dice</value>
+  <data name="AddPlayerButton" xml:space="preserve">
+    <value>Lisää pelaaja</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Sininen</value>
+  </data>
+  <data name="GoToGameboard" xml:space="preserve">
+    <value>Siirry pelipöydälle</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Vihreä</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Punainen</value>
+  </data>
+  <data name="WriteName" xml:space="preserve">
+    <value>Kirjoita nimi</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>Keltainen</value>
   </data>
 </root>
