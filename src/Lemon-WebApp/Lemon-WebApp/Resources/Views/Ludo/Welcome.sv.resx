@@ -118,9 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="gameDescription" xml:space="preserve">
-    <value>Spelbeskrivning: Man kan spela 2-4 spelare. Varje spelare kastar tärningen.  Därefter väljer du vilken pjäs du vill flytta. Den första spelaren som har flyttat alla pjäser runt spelplanet, har vunnit.</value>
+    <value>Spelbeskrivning &lt;br&gt; Man kan spela 2-4 spelare. Varje spelare kastar tärningen. &lt;br&gt; Därefter väljer du vilken pjäs du vill flytta. &lt;br&gt;Den första spelaren som har flyttat alla pjäser runt spelplanet, har vunnit.</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Starta ett sparat spel</value>
+  </data>
+  <data name="New Game" xml:space="preserve">
+    <value>Nytt spel</value>
   </data>
   <data name="welcomeHeader" xml:space="preserve">
-    <value>VÄLKOMMEN TILL FIASPEL lemon group</value>
+    <value>VÄLKOMMEN TILL FIASPEL &lt;br&gt;
+lemon group</value>
   </data>
 </root>

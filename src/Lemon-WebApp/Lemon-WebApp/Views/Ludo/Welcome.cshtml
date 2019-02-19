@@ -25,11 +25,11 @@
 
 
         <form action="@Url.Action("CreateGame", "Ludo")">
-            <input type="submit" value="New Game" id="createGameButton">
+            <input type="submit" value="@Localizer["New Game"]" id="createGameButton">
         </form>
 
         <form action="@Url.Action("JoinGame", "Ludo")">
-            <input type="submit" value="Join a saved game" id="createGameButton">
+            <input type="submit" value="@Localizer["Join"]" id="createGameButton">
         </form>
 
         <br><br>
