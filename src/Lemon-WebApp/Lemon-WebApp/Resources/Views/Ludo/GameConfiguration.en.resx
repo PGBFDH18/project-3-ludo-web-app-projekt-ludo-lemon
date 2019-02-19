@@ -117,18 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="gameDescription" xml:space="preserve">
-    <value>Game description&lt;br&gt; You can play 2-4 players. Each player rolls the die.&lt;br&gt;
-Then, you select what piece to move.&lt;br&gt;The first player, who has moved all pieces
-around the board has won.</value>
+  <data name="AddedColor" xml:space="preserve">
+    <value>was added with color: </value>
   </data>
-  <data name="Join" xml:space="preserve">
-    <value>Join a saved game</value>
+  <data name="AddPlayer" xml:space="preserve">
+    <value>Add player</value>
   </data>
-  <data name="New Game" xml:space="preserve">
-    <value>New Game</value>
+  <data name="AddPlayerButton" xml:space="preserve">
+    <value>Add player</value>
   </data>
-  <data name="welcomeHeader" xml:space="preserve">
-    <value>WELCOME TO LUDO GAME&lt;br&gt;lemon group</value>
+  <data name="Blue" xml:space="preserve">
+    <value>Blå</value>
+  </data>
+  <data name="GoToGameboard" xml:space="preserve">
+    <value>Go to gameboard</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="WriteName" xml:space="preserve">
+    <value>Write name</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>Yellow</value>
   </data>
 </root>

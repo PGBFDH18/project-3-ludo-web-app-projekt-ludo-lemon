@@ -50,7 +50,7 @@ namespace Lemon_WebApp
             services.AddHttpContextAccessor();
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
-
+            // Adds Internationalization
             services.AddLocalization(option => option.ResourcesPath = "Resources");
             services.Configure<RequestLocalizationOptions>(opt =>
             {

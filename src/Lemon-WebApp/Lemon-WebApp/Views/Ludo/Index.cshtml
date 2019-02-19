@@ -1,6 +1,10 @@
 ﻿@*gameInfo*@
 @model Lemon_WebApp.Models.GameModel
 
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer  Localizer
+
 @{
 
     Layout = "_MittLayout";
@@ -39,7 +43,7 @@
 
     <br><br>
 
-    <div class="form-selectedPieceText">Choose Piece To Move</div>
+    <div class="form-selectedPieceText">@Localizer["ChoosePiece"]</div>
     <div class="form-selectedPieceBtn">
         @using (Html.BeginForm("MovePiece", "Ludo", FormMethod.Post))
         {
@@ -52,7 +56,7 @@
             <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
             <input type="hidden" name="gameID" value="@Model.gameId">
             <input type="hidden" name="nameOfCurrentPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
-            <input type="submit" value="Move Piece" class="buttonSmall">
+            <input type="submit" value="@Localizer["MovePieceButton"]" class="buttonSmall">
         }
     </div>
 
@@ -61,7 +65,7 @@
 
     <div class="rollDice">
         <form id="rollDice" action="@Url.Action("RollDice", "Ludo")" method="post">
-            <input type="submit" value="Roll THE Dice" class="buttonSmall">
+            <input type="submit" value="@Localizer["RollDieButton"]" class="buttonSmall">
             <input type="hidden" name="nameOfPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
         </form>
     </div>
@@ -230,13 +234,17 @@
         string color = string.Empty;
         switch (player.playerColor)
         {
-            case 0: color = "blue";
+            case 0:
+                color = "blue";
                 break;
-            case 1: color = "yellow";
+            case 1:
+                color = "yellow";
                 break;
-            case 2: color = "red";
+            case 2:
+                color = "red";
                 break;
-            case 3: color = "green";
+            case 3:
+                color = "green";
                 break;
         }
 
@@ -250,7 +258,7 @@
                 piece.position + Model.ludoPlayers[i].offset > 52
                 ? piece.position + Model.ludoPlayers[i].offset - 52
                 : piece.position + Model.ludoPlayers[i].offset;
-            
+
             // After 52 steps, pieces should continue on goal path.
             if (piece.position > 52)
             {

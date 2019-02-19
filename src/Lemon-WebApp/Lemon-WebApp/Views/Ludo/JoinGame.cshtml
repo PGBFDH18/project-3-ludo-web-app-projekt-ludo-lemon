@@ -1,5 +1,9 @@
 ﻿@model Lemon_WebApp.Models.GameList
 
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer  Localizer
+
 @{
     Layout = "_MittLayout";
     ViewData["Title"] = "Join Game";
@@ -29,11 +33,11 @@
     else
     {
 
-        <h2 class="joinGamesAlternative">There are currently no saved games to join!</h2>
-        <p>Press the button below to create a new game instead</p>
+            <h2 class="joinGamesAlternative">"@Localizer["NoSavedGames"]</h2>
+            <p>@Localizer["PressButton"]</p>
         <form action="@Url.Action("CreateGame", "Ludo")">
             <div>
-                <input class="buttonLarge" type="submit" value="Create a new game">
+                <input class="buttonLarge" type="submit" value="@Localizer["CreateButton"]">
             </div>
         </form> <br><br>
 

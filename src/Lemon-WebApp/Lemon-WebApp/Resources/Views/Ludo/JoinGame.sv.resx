@@ -117,18 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="gameDescription" xml:space="preserve">
-    <value>Game description&lt;br&gt; You can play 2-4 players. Each player rolls the die.&lt;br&gt;
-Then, you select what piece to move.&lt;br&gt;The first player, who has moved all pieces
-around the board has won.</value>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Skapa ett nytt spel</value>
   </data>
-  <data name="Join" xml:space="preserve">
-    <value>Join a saved game</value>
+  <data name="NoSavedGames" xml:space="preserve">
+    <value>Det finns inga sparade spel att välja!</value>
   </data>
-  <data name="New Game" xml:space="preserve">
-    <value>New Game</value>
-  </data>
-  <data name="welcomeHeader" xml:space="preserve">
-    <value>WELCOME TO LUDO GAME&lt;br&gt;lemon group</value>
+  <data name="PressButton" xml:space="preserve">
+    <value>Klicka på knappen nedanför för att skapa ett nytt spel</value>
   </data>
 </root>
