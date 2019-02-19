@@ -2,7 +2,7 @@ body
 {
     background-color: #6bb0dd;
     color: rgb(255, 255, 255);
-    font-family: "Lucida Console";
+    font-family: "Courier New";
     font-size: 22px;
 }
 
@@ -19,7 +19,7 @@ body
 
 
 .gameDescription {
-    font-family: "Lucida Console";
+    font-family: "Courier New";
     text-align: center;
 }
 
