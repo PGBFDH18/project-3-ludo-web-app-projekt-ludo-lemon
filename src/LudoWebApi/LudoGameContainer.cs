@@ -33,6 +33,11 @@ namespace LudoWebApi
 
         }
 
+        /*public Dictionary<int, ILudoGame> GetGameIdsWithState()
+        {
+            return ludoGames.Where(kvp => kvp.Value.GetGameState() == GameState.Started).ToDictionary(k => k.Key, v => v.Value);
+        }*/
+
         public List<int> GetIdsOfAllGames()
         {
             return ludoGames.Select(d => d.Key).ToList();

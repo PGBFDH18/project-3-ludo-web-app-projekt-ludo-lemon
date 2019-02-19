@@ -9,7 +9,7 @@ namespace LudoWebApi
         {
             get;
         }
-
+        //Dictionary<int, ILudoGame> GetGameIdsWithState();
         List<int> GetIdsOfAllGames();
         void DeleteGame(int id);
         void CreateGame(int gameId);
