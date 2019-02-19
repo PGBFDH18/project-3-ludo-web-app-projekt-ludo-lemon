@@ -11,7 +11,7 @@
 
 <div class="listOfAllGameIdsContent">
     <link href="~/css/GameConfigurationStyle.css" rel="stylesheet" type="text/css" />
-    <h1>Join a saved Game</h1>
+    <h1>@Localizer["joinasavedGame"]</h1>
     <a href="~/Views/Ludo/JoinGame.cshtml"></a>
 
 
@@ -25,15 +25,15 @@
 
                 <label id="listOfAllGames">@Model.ListOfCreatedGames[i]</label>
 
-                <input class="buttonSmall" type="submit" name="joinGame" value="Join game" />
-                <input class="buttonSmall" type="submit" name="deleteGame" value="Delete game" />
+                <input class="buttonSmall" type="submit" name="joinGame" value="@Localizer["buttonJoinGame"]" />
+                <input class="buttonSmall" type="submit" name="deleteGame" value="@Localizer["buttonDeleteGame"]" />
             </form>
         }
     }
     else
     {
 
-            <h2 class="joinGamesAlternative">"@Localizer["NoSavedGames"]</h2>
+            <h2 class="joinGamesAlternative">@Localizer["NoSavedGames"]</h2>
             <p>@Localizer["PressButton"]</p>
         <form action="@Url.Action("CreateGame", "Ludo")">
             <div>
