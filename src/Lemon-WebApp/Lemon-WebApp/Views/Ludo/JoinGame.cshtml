@@ -1,10 +1,10 @@
 ﻿@model Lemon_WebApp.Models.GameList
 
-    @{
-       Layout = "_MittLayout";
-       ViewData["Title"] = "Join Game";
-    }
-    
+@{
+    Layout = "_MittLayout";
+    ViewData["Title"] = "Join Game";
+}
+
 <div class="listOfAllGameIdsContent">
     <link href="~/css/GameConfigurationStyle.css" rel="stylesheet" type="text/css" />
     <h1>Join a saved Game</h1>
@@ -15,13 +15,14 @@
     {
         @for (int i = 0; i < Model.ListOfCreatedGames.Length; i++)
         {
-            <form class="gameForm" method="post" action="@Url.Action("GameBoardSavedGame", "Ludo")">
+            <form class="gameForm" method="post" action="@Url.Action("GameHandler", "Ludo")">
 
                 <input type="hidden" name="gameId" value="@Model.ListOfCreatedGames[i]" />
 
                 <label id="listOfAllGames">@Model.ListOfCreatedGames[i]</label>
 
-                <button class="buttonSmall" type="submit">Join game</button>
+                <input class="buttonSmall" type="submit" name="joinGame" value="Join game" />
+                <input class="buttonSmall" type="submit" name="deleteGame" value="Delete game" />
             </form>
         }
     }
