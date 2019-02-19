@@ -39,11 +39,11 @@
 
     <br><br>
 
-    <div class="form-selectedPiece">
-        <p>Choose Piece To Move</p>
+    <div class="form-selectedPieceText">Choose Piece To Move</div>
+    <div class="form-selectedPieceBtn">
         @using (Html.BeginForm("MovePiece", "Ludo", FormMethod.Post))
         {
-            <select name="selectedPiece" id="selectedPiece">
+            <select name="selectedPiece" id="selectedPiece" class="dropDown-piece">
                 @for (int i = 0; i < Model.ludoPlayers[Model.currentPlayerId].pieces.Count; i++)
                 {
                     <option value=@i>@int.Parse((@Model.ludoPlayers[Model.currentPlayerId].pieces[i].pieceId + 1).ToString())</option>
@@ -52,7 +52,7 @@
             <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
             <input type="hidden" name="gameID" value="@Model.gameId">
             <input type="hidden" name="nameOfCurrentPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
-            <input type="submit" value="Move Piece">
+            <input type="submit" value="Move Piece" class="buttonSmall">
         }
     </div>
 
@@ -61,7 +61,7 @@
 
     <div class="rollDice">
         <form id="rollDice" action="@Url.Action("RollDice", "Ludo")" method="post">
-            <input type="submit" value="Roll THE Dice">
+            <input type="submit" value="Roll THE Dice" class="buttonSmall">
             <input type="hidden" name="nameOfPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
         </form>
     </div>
