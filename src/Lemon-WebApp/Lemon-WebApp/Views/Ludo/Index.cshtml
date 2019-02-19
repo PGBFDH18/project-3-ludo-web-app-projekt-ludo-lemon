@@ -250,12 +250,19 @@
                 piece.position + Model.ludoPlayers[i].offset > 52
                 ? piece.position + Model.ludoPlayers[i].offset - 52
                 : piece.position + Model.ludoPlayers[i].offset;
-
+            
             // After 52 steps, pieces should continue on goal path.
             if (piece.position > 52)
             {
                 var goalPathPosition = color.First().ToString() + (piece.position - 52);
-                <script> $('#@pieceId').appendTo('#@goalPathPosition'); </script>
+                if (piece.position - 52 > 5)
+                {
+                    <script> $('#@pieceId').remove(); </script>
+                }
+                else
+                {
+                    <script> $('#@pieceId').appendTo('#@goalPathPosition'); </script>
+                }
             }
             // If position is less than 1, pieces should stay "home".
             else if (piece.position > 0)
