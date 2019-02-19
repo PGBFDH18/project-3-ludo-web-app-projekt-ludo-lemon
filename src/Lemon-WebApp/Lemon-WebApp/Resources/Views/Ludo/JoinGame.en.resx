@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonDeleteGame" xml:space="preserve">
+    <value>Delete game</value>
+  </data>
+  <data name="buttonJoinGame" xml:space="preserve">
+    <value>Join game</value>
+  </data>
   <data name="CreateButton" xml:space="preserve">
     <value>Create a new game</value>
+  </data>
+  <data name="JoinasavedGame" xml:space="preserve">
+    <value>Join a saved Game</value>
   </data>
   <data name="NoSavedGames" xml:space="preserve">
     <value>There are currently no saved games to join!</value>

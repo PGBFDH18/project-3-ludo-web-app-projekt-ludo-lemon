@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonDeleteGame" xml:space="preserve">
+    <value>Poista peli</value>
+  </data>
+  <data name="buttonJoinGame" xml:space="preserve">
+    <value>Liity peliin</value>
+  </data>
   <data name="CreateButton" xml:space="preserve">
     <value>Luo uusi peli</value>
+  </data>
+  <data name="JoinasavedGame" xml:space="preserve">
+    <value>Liity tallennettuun peliin</value>
   </data>
   <data name="NoSavedGames" xml:space="preserve">
     <value>Tällä hetkellä ei ole tallennettu pelejä!</value>

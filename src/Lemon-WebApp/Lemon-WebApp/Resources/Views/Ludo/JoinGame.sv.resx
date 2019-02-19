@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonDeleteGame" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="buttonJoinGame" xml:space="preserve">
+    <value>Gå med</value>
+  </data>
   <data name="CreateButton" xml:space="preserve">
     <value>Skapa ett nytt spel</value>
+  </data>
+  <data name="JoinasavedGame" xml:space="preserve">
+    <value>Gå med i ett spel</value>
   </data>
   <data name="NoSavedGames" xml:space="preserve">
     <value>Det finns inga sparade spel att välja!</value>
