@@ -28,7 +28,7 @@
                 <option value="Red">Red</option>
                 <option value="Green">Green</option>
             </select>
-            <input value="Add player" type="submit" id="addPlayerButton">
+            <input value="Add player" type="submit" class="buttonSmall">
         }
     </div>
 
@@ -74,7 +74,7 @@
               else
               {
                   <form action="@Url.Action("GameBoardNewGame", "Ludo")">
-                      <input id="goToGameBoardButton" value="Go to gameboard" type="submit">
+                      <input class="buttonLarge" value="Go to gameboard" type="submit">
                       <input type="hidden" name="gameId" value="@Model.gameId">
                   </form>
               }
