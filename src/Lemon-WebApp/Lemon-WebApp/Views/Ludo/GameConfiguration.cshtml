@@ -43,24 +43,29 @@
             {
 
                 string playerColor = "";
+                string playerColorString = "";
 
                 if (Model.ludoPlayers[i].playerColor == 0)
                 {
-                    playerColor = "blue";
+                    playerColor = @Localizer["Blue"].Value;
+                    playerColorString = "blue";
                 }
                 if (Model.ludoPlayers[i].playerColor == 1)
                 {
-                    playerColor = "yellow";
+                    playerColor = @Localizer["Yellow"].Value;
+                    playerColorString = "yellow";
                 }
                 if (Model.ludoPlayers[i].playerColor == 2)
                 {
-                    playerColor = "red";
+                    playerColor = @Localizer["Red"].Value;
+                    playerColorString = "red";
                 }
                 if (Model.ludoPlayers[i].playerColor == 3)
                 {
-                    playerColor = "green";
+                    playerColor = @Localizer["Green"].Value;
+                    playerColorString = "green";
                 }
-        <div id="showAddedPlayers" class="addPlayerPageCenteredContent"><b>@Model.ludoPlayers[i].name</b> @Localizer["AddedColor"]<font color="@playerColor">@playerColor</font></div>
+        <div id="showAddedPlayers" class="addPlayerPageCenteredContent"><b>@Model.ludoPlayers[i].name</b> @Localizer["AddedColor"]<font color=@playerColorString>@playerColor</font></div>
             }
         }
     </p>
