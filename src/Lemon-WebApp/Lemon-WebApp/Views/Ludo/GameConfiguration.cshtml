@@ -1,0 +1,95 @@
+﻿@model Lemon_WebApp.Models.GameModel
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer  Localizer
+
+@{
+    Layout = "_MittLayout";
+    ViewData["Title"] = "Game Configuration";
+}
+
+<html>
+<head>
+    <title>LudoGameApple</title>
+    <link href="~/css/GameConfigurationStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <br /><br />
+
+    <div class="addPlayerPageCenteredContent">
+
+        @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
+        {
+            <h1 id="addPlayerHeader">@Localizer["AddPlayer"]</h1>
+            //<input placeholder="Name" type="text" name="nameOfPlayer" required pattern="[a-zA-ZäöüßÄÖÜ]+" title="Only letters" />
+            <input type="text" name="nameOfPlayer" placeholder="@Localizer["WriteName"]" maxlength="15" required pattern="[a-zA-ZåäöüßÅÄÖÜ]+" title="Only letters" />
+            <input type="hidden" name="gameId" value="@Model.gameId">
+            <select name="playerColor" id="playerColor">
+                <option value="Blue">@Localizer["Blue"]</option>
+                <option value="Yellow">@Localizer["Yellow"]</option>
+                <option value="Red">@Localizer["Red"]</option>
+                <option value="Green">@Localizer["Green"]</option>
+            </select>
+            <input value="@Localizer["AddPlayerButton"]" type="submit" class="buttonSmall">
+        }
+    </div>
+
+    <p>
+        @if (Model.numberOfPlayers > 0)
+        {
+            for (int i = 0; i < Model.ludoPlayers.Count; i++)
+            {
+
+                string playerColor = "";
+                string playerColorString = "";
+
+                if (Model.ludoPlayers[i].playerColor == 0)
+                {
+                    playerColor = @Localizer["Blue"].Value;
+                    playerColorString = "blue";
+                }
+                if (Model.ludoPlayers[i].playerColor == 1)
+                {
+                    playerColor = @Localizer["Yellow"].Value;
+                    playerColorString = "yellow";
+                }
+                if (Model.ludoPlayers[i].playerColor == 2)
+                {
+                    playerColor = @Localizer["Red"].Value;
+                    playerColorString = "red";
+                }
+                if (Model.ludoPlayers[i].playerColor == 3)
+                {
+                    playerColor = @Localizer["Green"].Value;
+                    playerColorString = "green";
+                }
+        <div id="showAddedPlayers" class="addPlayerPageCenteredContent"><b>@Model.ludoPlayers[i].name</b> @Localizer["AddedColor"]<font color=@playerColorString>@playerColor</font></div>
+            }
+        }
+    </p>
+
+    <br /><br />
+
+    <div class="addPlayerPageCenteredContent">
+        @if (Model.ludoPlayers.Count < 2)
+        {
+            <form action="@Url.Action("GameBoardNewGame", "Ludo")">
+                <input id="go-to-gameboard" value="Go to gameboard" type="hidden" disabled>
+                <input type="hidden" name="gameId" value="@Model.gameId">
+            </form>
+        }
+        else
+        {
+            <form action="@Url.Action("GameBoardNewGame", "Ludo")">
+                <input class="buttonLarge" value="@Localizer["GoToGameboard"]" type="submit">
+                <input type="hidden" name="gameId" value="@Model.gameId">
+            </form>
+        }
+        <br><br>
+        <img src="~/img/pic8.png" id="picture">
+
+    </div>
+</body>
+</html>

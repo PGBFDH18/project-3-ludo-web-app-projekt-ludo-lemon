@@ -1,0 +1,49 @@
+﻿@model Lemon_WebApp.Models.GameList
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer  Localizer
+
+@{
+    Layout = "_MittLayout";
+    ViewData["Title"] = "Join Game";
+}
+
+<div class="listOfAllGameIdsContent">
+    <link href="~/css/GameConfigurationStyle.css" rel="stylesheet" type="text/css" />
+    <h1>@Localizer["joinSavedGame"]</h1>
+    <a href="~/Views/Ludo/JoinGame.cshtml"></a>
+
+
+    @if (Model.ListOfCreatedGames.Length != 0)
+    {
+        @for (int i = 0; i < Model.ListOfCreatedGames.Length; i++)
+        {
+            <form class="gameForm" method="post" action="@Url.Action("GameHandler", "Ludo")">
+
+                <input type="hidden" name="gameId" value="@Model.ListOfCreatedGames[i]" />
+
+                <label id="listOfAllGames">@Model.ListOfCreatedGames[i]</label>
+
+                <input class="buttonSmall" type="submit" name="joinGame" value="@Localizer["buttonJoinGame"]" />
+                <input class="buttonSmall" type="submit" name="deleteGame" value="@Localizer["buttonDeleteGame"]" />
+            </form>
+        }
+    }
+    else
+    {
+
+            <h2 class="joinGamesAlternative">@Localizer["NoSavedGames"]</h2>
+            <p>@Localizer["PressButton"]</p>
+        <form action="@Url.Action("CreateGame", "Ludo")">
+            <div>
+                <input class="buttonLarge" type="submit" value="@Localizer["CreateButton"]">
+            </div>
+        </form> <br><br>
+
+    }
+
+    <br><br>
+    <img src="~/img/pic8.png" id="picture">
+
+</div>
