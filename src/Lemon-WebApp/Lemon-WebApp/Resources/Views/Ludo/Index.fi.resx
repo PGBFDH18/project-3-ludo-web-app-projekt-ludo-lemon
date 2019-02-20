@@ -120,6 +120,9 @@
   <data name="ChoosePiece" xml:space="preserve">
     <value>Valitse pelikappale</value>
   </data>
+  <data name="is winner" xml:space="preserve">
+    <value>on voittanut pelin!!</value>
+  </data>
   <data name="MovePieceButton" xml:space="preserve">
     <value>Siirrä kappale</value>
   </data>

@@ -120,6 +120,9 @@
   <data name="ChoosePiece" xml:space="preserve">
     <value>Choose Piece To Move</value>
   </data>
+  <data name="is winner" xml:space="preserve">
+    <value>has won the game!!</value>
+  </data>
   <data name="MovePieceButton" xml:space="preserve">
     <value>Move Piece</value>
   </data>
