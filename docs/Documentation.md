@@ -5,7 +5,7 @@ Se separat dokumentation (docs/vg_cicd.md)
 https://ludowebapp-dev-as.azurewebsites.net
 
 ## Validering av inputdata
-Vi har ordnat validering av player-name så att endast strängar kan skrivas in.
+Vi har ordnat validering av player-name så att endast strängar kan matas in. Vidare tillåts enbart bokstäver a-z, A-Z.
 Eftersom vi använder oss av drop-down-lister för färgval och för vilken pjäs (1-4) man vill flytta så är dessa input redan validerade.
 
 ## Lagring av spelinstanser
