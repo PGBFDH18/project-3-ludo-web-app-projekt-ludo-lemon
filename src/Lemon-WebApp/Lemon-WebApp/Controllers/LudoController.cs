@@ -119,10 +119,6 @@ namespace Lemon_WebApp.Controllers
             return View("~/Views/Ludo/JoinGame.cshtml", listOfCreatedGames);
         }
 
-        private int HttpStatusCode(Func<OkResult> ok)
-        {
-            throw new NotImplementedException();
-        }
 
         public IActionResult GameHandler(int gameId, string joinGame)
         {
