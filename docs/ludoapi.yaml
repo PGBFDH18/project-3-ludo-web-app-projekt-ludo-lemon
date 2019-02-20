@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: Ludo Api
+paths:
+  /ludo:
+    get:
+      description: Lista av fia spel   
+    post:
+      description: Skåpa ett nytt spel
+  /ludo/{gameId}:
+    get:
+      description: Detaljeret information om spelet, som vart alla pjäser finns
+    put:
+      description: Ändra placering på en pjäs
+    delete:
+      description: Ta bort ett spel
+  /ludo/{gameId}/state:
+    get:
+      description: Get the state of the current game
+    put:
+      description: If possible change the state to started
+  /ludo/{gameId}/players:
+    get:
+      description: List med alla spelera i spelet
+    post:
+      description: Lägg till en ny spelere till spelet
+  /ludo/{gameId}/players/{playerId}:
+    get:
+      description: Detajeret information om speleren
+    put:
+      description: Ändra namn på speleren
+  /ludo/{gameId}/winner:
+    get:
+      description: Name of the winner (If the game is over) 

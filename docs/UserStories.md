@@ -1,0 +1,24 @@
+# Userstories
+## WebAPP
+- Som spelare vill jag se ett **välkomst-Webb-fönster** där spelet presenteras.
+- Som spelare vill jag kunna logga in med ett **användarnamn**.
+- Som spelare vill jag kunna få en lista på tidigare sparade spel där jag deltagit som spelare så att jag kan välja att **öppna/fortsätta** ett spel.
+- Som spelare vill jag komma till ett nytt Webb-fönster där det sparade spelet **presenteras grafiskt** så att det skall gå att fortsätta spela den.
+- Som spelare vill jag kunna välja att påbörja ett **nytt spel** i välkomst-fönstret och **namnge** spelet.
+- Som spelare vill jag kunna välja bland **4 färger**.
+- Som spelare vill jag kunna **påbörja spelet** när minst två spelare är med genom att tärningen kastas av första spelaren.
+- Spelet påbörjas automatiskt när 4 spelare gått med genom att tärningen kastas av första spelaren.
+- Som spelare vill jag komma till ett Webb-fönster så att jag grafiskt kan se spelplanen, pjäsernas placering och tärningen.
+- Som spelare vill jag kunna **"kasta" tärningen** genom att klicka på den.
+- Som spelare vill jag kunna se **resultatet av tärningsslaget** så att jag kan ta ställning till vilken pjäs jag vill/kan flytta.
+- Som spelare vill jag kunna se **positionen på samtliga pjäser** på spelplanet så att jag kan ta ställning till vilken pjäs jag vill/kan flytta.
+- Som spelare vill jag kunna välja att **flytta ut en pjäs från boet** om jag kastar **1** eller **6** med tärningen.
+- Som spelare vill jag kunna **välja vilken av mina pjäser jag vill flytta** genom att klicka på den.
+- Som spelare vill jag kunna **"knuffa ut"** en motståndares pjäs om jag hamnar på samma position som motståndaren. Den utslagna pjäsen placeras automatiskt i sin spelares bo.
+- Som spelare kan jag inte bli "knuffad" om jag befinner mig på ruta **53-57** på spelplanet.
+- Som spelare har min pjäs gått i mål när pjäsen flyttat **58 steg**.
+- Som spelare har jag **vunnit** om alla mina fyra pjäser gått i mål först av alla deltagande spelare.
+- Spelet **avslutas automatiskt** om en spelare vunnit.
+- Som spelare vill jag kunna **avsluta ett spel** när jag vill.
+- Som spelare vill jag kunna välja att **spara ett spel** som inte är avslutat så att det kan återupptas senare om jag vill.
+- Som spelare vill jag kunna **namnge** spelet som skall sparas så att jag kan välja att fortsätta spela den senare om jag vill.

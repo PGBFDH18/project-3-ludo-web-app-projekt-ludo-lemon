@@ -1,0 +1,42 @@
+﻿
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer  Localizer
+
+@{
+    Layout = "_MittLayout";
+    ViewData["Title"] = "Welcome";
+}
+
+<html>
+<head>
+    <title>LudoGameLemon</title>
+    <link href="~/css/homePageDesign.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <center>
+        <h1>@Localizer["welcomeHeader"]</h1>
+
+        <div class="gameDescription">
+            <p>@Localizer["gameDescription"]</p>
+        </div>
+
+        <br><br>
+
+
+        <form action="@Url.Action("CreateGame", "Ludo")">
+            <input type="submit" value="@Localizer["New Game"]" class="buttonLarge">
+        </form>
+
+        <form action="@Url.Action("JoinGame", "Ludo")">
+            <input type="submit" value="@Localizer["Join"]" class="buttonLarge">
+
+        </form>
+
+        <br><br>
+        <img src="~/img/pic8.png" id="picture">
+
+    </center>
+
+</body>
+</html>
