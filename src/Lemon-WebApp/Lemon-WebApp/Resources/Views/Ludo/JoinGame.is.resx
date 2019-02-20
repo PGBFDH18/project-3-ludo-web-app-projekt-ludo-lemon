@@ -117,16 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChoosePiece" xml:space="preserve">
-    <value>Izaberi pijuna kojeg ceš da pomjeriš</value>
+  <data name="buttonDeleteGame" xml:space="preserve">
+    <value>Kasta</value>
   </data>
-  <data name="is winner" xml:space="preserve">
-    <value>je pobjednik</value>
+  <data name="buttonJoinGame" xml:space="preserve">
+    <value>Fara með</value>
   </data>
-  <data name="MovePieceButton" xml:space="preserve">
-    <value>Pomjeri ga</value>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Búa til nýjan leik</value>
   </data>
-  <data name="RollDieButton" xml:space="preserve">
-    <value>Baci kocku</value>
+  <data name="joinSavedGame" xml:space="preserve">
+    <value>Taka þátt í leik</value>
+  </data>
+  <data name="NoSavedGames" xml:space="preserve">
+    <value>Það eru enginn vistað leik.</value>
+  </data>
+  <data name="PressButton" xml:space="preserve">
+    <value>Ýttu á hnappinn fyrir að til nýjan leik</value>
   </data>
 </root>

@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChoosePiece" xml:space="preserve">
-    <value>Izaberi pijuna kojeg ceš da pomjeriš</value>
+  <data name="gameDescription" xml:space="preserve">
+    <value>Lýsingar &lt;br&gt; Maður getur leika 2-4 leikmaður. Hver leikmaður kastar teningunum. &lt;br&gt; Eftir það velurðu hvaða stykki að flytja. &lt;br&gt;Fyrsti leikmaðurinn sem hefur flutt alla stykki kring borðið, hefur unnið.</value>
   </data>
-  <data name="is winner" xml:space="preserve">
-    <value>je pobjednik</value>
+  <data name="Join" xml:space="preserve">
+    <value>Halda áfram leik</value>
   </data>
-  <data name="MovePieceButton" xml:space="preserve">
-    <value>Pomjeri ga</value>
+  <data name="New Game" xml:space="preserve">
+    <value>Nýtt leik</value>
   </data>
-  <data name="RollDieButton" xml:space="preserve">
-    <value>Baci kocku</value>
+  <data name="welcomeHeader" xml:space="preserve">
+    <value>Velkommin til Ludo</value>
   </data>
 </root>
