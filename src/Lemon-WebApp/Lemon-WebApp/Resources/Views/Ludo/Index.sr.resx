@@ -121,7 +121,7 @@
     <value>Izaberi pijuna kojeg ceš da pomjeriš</value>
   </data>
   <data name="MovePieceButton" xml:space="preserve">
-    <value>Pomjeri pijuna</value>
+    <value>Pomjeri ga</value>
   </data>
   <data name="RollDieButton" xml:space="preserve">
     <value>Baci kocku</value>

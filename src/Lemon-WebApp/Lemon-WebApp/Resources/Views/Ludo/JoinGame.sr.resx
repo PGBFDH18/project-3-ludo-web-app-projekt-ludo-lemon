@@ -121,7 +121,7 @@
     <value>Izbriši igru</value>
   </data>
   <data name="buttonJoinGame" xml:space="preserve">
-    <value>Priključi se na postojeću igru</value>
+    <value>Priključi se na sačuvanu</value>
   </data>
   <data name="CreateButton" xml:space="preserve">
     <value>Otvori novu igru</value>

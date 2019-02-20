@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="gameDescription" xml:space="preserve">
-    <value>"Opis igre&lt;br&gt;Može igrati 2-4 igrača. Svaki igrač baca kocku.&lt;br&gt;Zatim, birate kojeg pijuna želite pomjeriti.&lt;br&gt;Prvi igrač koji uspije da obiđe cijelu tablu sa sva 4 pijuna je pobjednik."</value>
+    <value>Opis igre&lt;br&gt;Može igrati 2-4 igrača. Svaki igrač baca kocku.&lt;br&gt;Zatim, birate kojeg pijuna želite pomjeriti.&lt;br&gt;Prvi igrač koji uspije da obiđe cijelu tablu sa sva 4 pijuna je pobjednik.</value>
   </data>
   <data name="Join" xml:space="preserve">
     <value>Priključi se u sačuvanu igru</value>
@@ -127,6 +127,6 @@
     <value>Nova igra</value>
   </data>
   <data name="welcomeHeader" xml:space="preserve">
-    <value>DOBRODOŠLI U NE "LJUTI SE ČOVJEČE" IGRU&lt;br&gt;programerski tim limun </value>
+    <value>DOBRODOŠLI U "NE LJUTI SE ČOVJEČE" IGRU&lt;br&gt;programerski tim limun </value>
   </data>
 </root>
