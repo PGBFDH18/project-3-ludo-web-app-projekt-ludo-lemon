@@ -59,7 +59,8 @@ namespace Lemon_WebApp
                     new CultureInfo("en"),
                     new CultureInfo("sv"),
                     new CultureInfo("fi"),
-                    new CultureInfo("hu")
+                    new CultureInfo("hu"),
+                    new CultureInfo("sr")
                 };
 
                 opt.DefaultRequestCulture = new RequestCulture("en");
@@ -93,7 +94,8 @@ namespace Lemon_WebApp
                 new CultureInfo("en"),
                 new CultureInfo("sv"),
                 new CultureInfo("fi"),
-                new CultureInfo("hu")
+                new CultureInfo("hu"),
+                new CultureInfo("sr")
             };
 
             app.UseRequestLocalization(new RequestLocalizationOptions
