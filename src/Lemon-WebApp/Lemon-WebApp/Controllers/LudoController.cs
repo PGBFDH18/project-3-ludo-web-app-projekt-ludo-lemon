@@ -95,9 +95,16 @@ namespace Lemon_WebApp.Controllers
             var request = new RestRequest($"api/ludo/{gameId}", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(movePiece);
-            IRestResponse ludoGameResponse = _client.Put(request);
+            IRestResponse backendResponse = _client.Put(request);
 
             var gameModel = GetTotalGameInfo(gameId);
+
+            // Try get winner name and assign it to gameModel so it can be accessed in Index.cshtml.
+            request = new RestRequest($"api/ludo/{gameId}/winner", Method.GET);
+            backendResponse = _client.Get(request);
+            string winner = JsonConvert.DeserializeObject<string>(backendResponse.Content);
+            gameModel.winner = winner == "N/A" ? null : winner;
+
             Log.Information("Player: {nameOfCurrentPlayer} moved {_diceValue} steps with pieceId: {selectedPiece}", nameOfCurrentPlayer, _diceValue, selectedPiece);
             return View("~/Views/Ludo/Index.cshtml", gameModel);
         }

@@ -13,5 +13,6 @@ namespace Lemon_WebApp.Models
         public int currentPlayerId { get; set; }
         public List<LudoPlayer> ludoPlayers { get; set; }
         public Piece[] pieces { get; set; }
+        public string winner { get; set; } = null;
     }
 }
