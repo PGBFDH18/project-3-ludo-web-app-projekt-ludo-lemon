@@ -71,7 +71,7 @@
                 <input type="hidden" name="currentPlayerId" value="@Model.currentPlayerId">
                 <input type="hidden" name="gameID" value="@Model.gameId">
                 <input type="hidden" name="nameOfCurrentPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
-                <input type="submit" value="@Localizer["MovePieceButton"]" class="buttonSmall">
+                <input type="submit" value="@Localizer["MovePieceButton"]" class="buttonSmall" id="movePieceButton">
             }
         </div>
 
@@ -80,7 +80,7 @@
 
         <div class="rollDice">
             <form id="rollDice" action="@Url.Action("RollDice", "Ludo")" method="post">
-                <input type="submit" value="@Localizer["RollDieButton"]" class="buttonSmall">
+                <input type="submit" value="@Localizer["RollDieButton"]" class="buttonSmall" id="rollDieButton" onclick="onRollDieButtonClick()">
                 <input type="hidden" name="nameOfPlayer" value="@Model.ludoPlayers[@Model.currentPlayerId].name">
             </form>
         </div>
@@ -285,5 +285,13 @@
         }
     }
 
+    <script>
+        function onRollDieButtonClick() {
+            var rollDieButton = document.getElementById('rollDieButton');
+            var movePieceButton = document.getElementById('movePieceButton');
+            rollDieButton.style.visibility = "hidden";
+            movePieceButton.style.visibility = "visible";
+        }
+    </script>
     <script src="~/js/site.js"></script>
 </div>

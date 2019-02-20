@@ -41,3 +41,7 @@
     .buttonSmall[type=submit]:hover {
         border-color: rgba(255,255,255,1);
     }
+
+    .buttonSmall[type=submit]#movePieceButton {
+        visibility: hidden;
+    }
