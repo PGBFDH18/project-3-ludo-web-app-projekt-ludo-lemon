@@ -260,12 +260,26 @@
                 : piece.position + Model.ludoPlayers[i].offset;
 
             // After 52 steps, pieces should continue on goal path.
-            if (piece.position > 52)
+            if (piece.state == 1)
+            {
+                <script> $('#@pieceId').appendTo('#@globalPosition'); </script>
+            }
+            else if (piece.state == 2)
+            {
+                var goalPathPosition = color.First().ToString() + (piece.position - 52);
+                <script> $('#@pieceId').appendTo('#@goalPathPosition'); </script>
+            }
+            else if (piece.state == 3)
+            {
+                <script> $('#@pieceId').remove(); </script>
+            }
+
+            @*if (piece.position > 52)
             {
                 var goalPathPosition = color.First().ToString() + (piece.position - 52);
                 if (piece.position - 52 > 5)
                 {
-                    <script> $('#@pieceId').remove(); </script>
+                <script> $('#@pieceId').remove(); </script>
                 }
                 else
                 {
@@ -276,7 +290,7 @@
             else if (piece.position > 0)
             {
                 <script> $('#@pieceId').appendTo('#@globalPosition'); </script>
-            }
+            }*@
         }
     }
 
