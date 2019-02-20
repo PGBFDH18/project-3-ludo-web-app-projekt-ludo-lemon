@@ -127,7 +127,7 @@
     <value>Otvori novu igru</value>
   </data>
   <data name="joinSavedGame" xml:space="preserve">
-    <value>Priključi se na sačuvanu igru</value>
+    <value>uđi</value>
   </data>
   <data name="NoSavedGames" xml:space="preserve">
     <value>Trenutno nema sačuvanih igara da bi se priključili!</value>
