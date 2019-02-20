@@ -113,6 +113,7 @@ namespace Lemon_WebApp.Controllers
         {
             var request = new RestRequest($"api/ludo/{gameId}", Method.DELETE);
             _client.Delete(request);
+            Log.Information("Game: {gameId} was deleted", gameId);
 
             var listOfCreatedGames = GetGames();
             return View("~/Views/Ludo/JoinGame.cshtml", listOfCreatedGames);
