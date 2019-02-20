@@ -121,7 +121,7 @@
     <value>Izaberi pijuna kojeg ceš da pomjeriš</value>
   </data>
   <data name="is winner" xml:space="preserve">
-    <value>XXXXXX</value>
+    <value>je pobjednik</value>
   </data>
   <data name="MovePieceButton" xml:space="preserve">
     <value>Pomjeri ga</value>
