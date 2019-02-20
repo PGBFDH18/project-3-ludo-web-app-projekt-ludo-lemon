@@ -129,6 +129,9 @@
   <data name="Blue" xml:space="preserve">
     <value>Plava</value>
   </data>
+  <data name="GoToGameboard" xml:space="preserve">
+    <value>Idi na tablu za igru</value>
+  </data>
   <data name="Green" xml:space="preserve">
     <value>Zelena</value>
   </data>
