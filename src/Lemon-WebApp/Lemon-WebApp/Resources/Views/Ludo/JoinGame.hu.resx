@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="buttonDeleteGame" xml:space="preserve">
-    <value>Poista peli</value>
+    <value>Eltávolittani</value>
   </data>
   <data name="buttonJoinGame" xml:space="preserve">
-    <value>Liity peliin</value>
+    <value>Részt venni</value>
   </data>
   <data name="CreateButton" xml:space="preserve">
-    <value>Luo uusi peli</value>
+    <value>Új játékot teremteni</value>
   </data>
   <data name="joinSavedGame" xml:space="preserve">
-    <value>Liity tallennettuun peliin</value>
+    <value>Egy játékhoz csatlakozni</value>
   </data>
   <data name="NoSavedGames" xml:space="preserve">
-    <value>Tällä hetkellä ei ole tallennettu pelejä!</value>
+    <value>Nincsenek mentett játékok!</value>
   </data>
   <data name="PressButton" xml:space="preserve">
-    <value>Luo uusi peli painamalla alla olevaa painiketta</value>
+    <value>Új játék létrehozásához, kattintson az alábbi gombra</value>
   </data>
 </root>

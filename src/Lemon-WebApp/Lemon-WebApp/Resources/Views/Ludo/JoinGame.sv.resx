@@ -126,7 +126,7 @@
   <data name="CreateButton" xml:space="preserve">
     <value>Skapa ett nytt spel</value>
   </data>
-  <data name="JoinasavedGame" xml:space="preserve">
+  <data name="joinSavedGame" xml:space="preserve">
     <value>Gå med i ett spel</value>
   </data>
   <data name="NoSavedGames" xml:space="preserve">

@@ -117,22 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="buttonDeleteGame" xml:space="preserve">
-    <value>Poista peli</value>
+  <data name="gameDescription" xml:space="preserve">
+    <value>Játékleírás &lt;br&gt; 2-4 játékos játszhat. Minden játékosnak a kockát dobnia kell. &lt;br&gt; Ezután válassza ki az áthelyezni kívánt játék darabot. &lt;br&gt; Megnyerte az első játékos, aki az összes darabjával a játéktáblát körbejárta.</value>
   </data>
-  <data name="buttonJoinGame" xml:space="preserve">
-    <value>Liity peliin</value>
+  <data name="Join" xml:space="preserve">
+    <value>Mentett játékok</value>
   </data>
-  <data name="CreateButton" xml:space="preserve">
-    <value>Luo uusi peli</value>
+  <data name="New Game" xml:space="preserve">
+    <value>Új játék</value>
   </data>
-  <data name="joinSavedGame" xml:space="preserve">
-    <value>Liity tallennettuun peliin</value>
-  </data>
-  <data name="NoSavedGames" xml:space="preserve">
-    <value>Tällä hetkellä ei ole tallennettu pelejä!</value>
-  </data>
-  <data name="PressButton" xml:space="preserve">
-    <value>Luo uusi peli painamalla alla olevaa painiketta</value>
+  <data name="welcomeHeader" xml:space="preserve">
+    <value>Üdvözöljük a játékban</value>
   </data>
 </root>
