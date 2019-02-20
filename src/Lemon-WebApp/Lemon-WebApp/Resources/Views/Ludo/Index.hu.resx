@@ -121,7 +121,7 @@
     <value>Mozgatni kívánt darab</value>
   </data>
   <data name="is winner" xml:space="preserve">
-    <value>XXXXXXX</value>
+    <value>megnyerte a játékot!!!</value>
   </data>
   <data name="MovePieceButton" xml:space="preserve">
     <value>Lépés</value>
