@@ -8,6 +8,7 @@ För närvarande har vi språkstöd för:
 * finska
 * serbiska
 * ungerska
+* isländska
 
 Vi har åstadkommit språkstödet genom implementering av L10n (Localization) i vårat program.
 
@@ -30,3 +31,6 @@ Vi hade även tänkt lägga in en knapp för att aktivt kunna välja språket i 
 
 ![Logo](L10n_6.png)
 *Språkstöd för ungerska*
+
+![Logo](L10n_7.png)
+*Språkstöd för isländska*

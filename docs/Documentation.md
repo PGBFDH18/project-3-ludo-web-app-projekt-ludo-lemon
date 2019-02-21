@@ -18,6 +18,7 @@ Vi har lagt till Internationalisering till vår applikation genom applicering av
 * Finska
 * Serbiska
 * Ungerska
+* Isländska
 
 Danska kan läggas till om önskemål för det framkommer...
 
