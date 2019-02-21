@@ -1,4 +1,4 @@
-# Internationalisering
+﻿# Internationalisering
 
 Vi har lagt in stöd för **flera språk** till vår Ludo applikation. Beroende på användarens förval av språk i Webbläsar så anpassas språket i Ludo-spelet automatiskt efter det. Saknas språkstöd för aktuellt språk så blir engelska valt som default.
 

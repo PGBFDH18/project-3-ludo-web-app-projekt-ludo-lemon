@@ -1,4 +1,4 @@
-## CI/CD via Azure DevOps till Azure tillagt
+﻿## CI/CD via Azure DevOps till Azure tillagt
 Se separat dokumentation (docs/vg_cicd.md)
 
 ## Spelet är distribuerat till Webserver i Azure ##
