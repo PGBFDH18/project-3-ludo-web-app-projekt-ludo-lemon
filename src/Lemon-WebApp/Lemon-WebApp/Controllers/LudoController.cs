@@ -153,6 +153,7 @@ namespace Lemon_WebApp.Controllers
             request.AddJsonBody(playerData);
             IRestResponse addPlayerRequest = _client.Post(request);
 
+
             var gameModel = GetTotalGameInfo(gameId);
             Log.Information("Added player with name: {nameOfPlayer}" + " with color: {playerColor}" + " and gameId: {gameId}", nameOfPlayer, playerColor, gameId);
             return View("~/Views/Ludo/GameConfiguration.cshtml", gameModel);

@@ -18,23 +18,25 @@
 
     <br /><br />
 
-    <div class="addPlayerPageCenteredContent">
+          <div class="addPlayerPageCenteredContent">
+              @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
 
-        @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
-        {
-            <h1 id="addPlayerHeader">@Localizer["AddPlayer"]</h1>
-            //<input placeholder="Name" type="text" name="nameOfPlayer" required pattern="[a-zA-ZäöüßÄÖÜ]+" title="Only letters" />
-            <input type="text" name="nameOfPlayer" placeholder="@Localizer["WriteName"]" maxlength="15" required pattern="[a-zA-ZåäöüßÅÄÖÜ]+" title="Only letters" />
-            <input type="hidden" name="gameId" value="@Model.gameId">
-            <select name="playerColor" id="playerColor">
-                <option value="Blue">@Localizer["Blue"]</option>
-                <option value="Yellow">@Localizer["Yellow"]</option>
-                <option value="Red">@Localizer["Red"]</option>
-                <option value="Green">@Localizer["Green"]</option>
-            </select>
-            <input value="@Localizer["AddPlayerButton"]" type="submit" class="buttonSmall">
-        }
-    </div>
+              {
+                  @Html.ValidationSummary()
+                  <h1 id="addPlayerHeader">@Localizer["AddPlayer"]</h1>
+                  //<input placeholder="Name" type="text" name="nameOfPlayer" required pattern="[a-zA-ZäöüßÄÖÜ]+" title="Only letters" />
+                  @Html.ValidationMessageFor(x => x.ludoPlayers)
+                  <input type="text" name="nameOfPlayer" placeholder="@Localizer["WriteName"]" maxlength="15" required pattern="[a-zA-ZåäöüßÅÄÖÜ]+" title="Only letters" />
+                  <input type="hidden" name="gameId" value="@Model.gameId">
+                  <select name="playerColor" id="playerColor">
+                      <option value="Blue">@Localizer["Blue"]</option>
+                      <option value="Yellow">@Localizer["Yellow"]</option>
+                      <option value="Red">@Localizer["Red"]</option>
+                      <option value="Green">@Localizer["Green"]</option>
+                  </select>
+                  <input value="@Localizer["AddPlayerButton"]" type="submit" class="buttonSmall">
+              }
+          </div>
 
     <p>
         @if (Model.numberOfPlayers > 0)
