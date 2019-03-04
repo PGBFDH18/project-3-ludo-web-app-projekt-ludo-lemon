@@ -1,4 +1,4 @@
-﻿@model Lemon_WebApp.Models.GameModel
+﻿@model Lemon_WebApp.Models.CreateGameModel
 
 @using Microsoft.AspNetCore.Mvc.Localization
 
@@ -22,19 +22,23 @@
               @using (Html.BeginForm("AddPlayer", "Ludo", FormMethod.Post))
 
               {
-                  @Html.ValidationSummary()
+                  <div asp-validation-summary="ModelOnly"></div>
+                  @*@Html.ValidationSummary()*@
                   <h1 id="addPlayerHeader">@Localizer["AddPlayer"]</h1>
-                  //<input placeholder="Name" type="text" name="nameOfPlayer" required pattern="[a-zA-ZäöüßÄÖÜ]+" title="Only letters" />
-                  @Html.ValidationMessageFor(x => x.ludoPlayers)
-                  <input type="text" name="nameOfPlayer" placeholder="@Localizer["WriteName"]" maxlength="15" required pattern="[a-zA-ZåäöüßÅÄÖÜ]+" title="Only letters" />
+                  @*@Html.ValidationMessageFor(x => x.ludoPlayers)*@
+                  <input type="text" asp-for="ludoplayer.name" placeholder="@Localizer["WriteName"]" />
+
                   <input type="hidden" name="gameId" value="@Model.gameId">
-                  <select name="playerColor" id="playerColor">
+
+
+                  <select name="ludoplayer.playerColor" id="playerColor">
                       <option value="Blue">@Localizer["Blue"]</option>
                       <option value="Yellow">@Localizer["Yellow"]</option>
                       <option value="Red">@Localizer["Red"]</option>
                       <option value="Green">@Localizer["Green"]</option>
                   </select>
                   <input value="@Localizer["AddPlayerButton"]" type="submit" class="buttonSmall">
+                  <span asp-validation-for="ludoplayer.name" ></span>
               }
           </div>
 

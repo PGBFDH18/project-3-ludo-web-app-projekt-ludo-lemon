@@ -46,14 +46,20 @@ namespace Lemon_WebApp.Controllers
             var request = new RestRequest("api/ludo/", Method.POST);
             IRestResponse<int> ludoGameResponse = _client.Execute<int>(request);
             var gameId = ludoGameResponse.Data;
+            var game = GetTotalGameInfo(gameId);
+            var model = new CreateGameModel();
+            model.numberOfPlayers = game.numberOfPlayers;
+            model.ludoPlayers = game.ludoPlayers ?? new List<LudoPlayer>();
+            model.gameId = game.gameId;
 
-            var gameModel = GetTotalGameInfo(gameId);
+
+            //var gameModel = GetTotalGameInfo(gameId);
             Log.Information("Created game with gameId: {gameId}", gameId);
 
-            return View("~/Views/Ludo/GameConfiguration.cshtml", gameModel);
+            return View("~/Views/Ludo/GameConfiguration.cshtml", model);
         }
 
-        public GameModel GetTotalGameInfo(int gameId)
+        protected GameModel GetTotalGameInfo(int gameId)
         {
             var request = new RestRequest($"/api/Ludo/{gameId}", Method.GET);
             IRestResponse ludoGameResponse = _client.Execute(request);
@@ -141,22 +147,43 @@ namespace Lemon_WebApp.Controllers
             return View("~/Views/Ludo/Index.cshtml", gameModel);
         }
 
-        public IActionResult AddPlayer(string nameOfPlayer, string playerColor, int gameId)
+        [HttpPost]
+        public IActionResult AddPlayer(CreateGameModel model)
         {
-            AddPlayer playerData = new AddPlayer();
+            var gameId = model.gameId;
+            var game = GetTotalGameInfo(gameId);
+            CreateGameModel postBackModel = new CreateGameModel();
+            if (ModelState.IsValid)
+            {
+                
+                AddPlayer playerData = new AddPlayer();
+              
+                playerData.Name = model.ludoplayer.name;
+                playerData.Color = model.ludoplayer.playerColor;
 
-            playerData.Name = nameOfPlayer;
-            playerData.Color = playerColor;
+                var request = new RestRequest($"api/ludo/{gameId}/players", Method.POST);
+                request.RequestFormat = DataFormat.Json;
+                request.AddJsonBody(playerData);
+                IRestResponse addPlayerRequest = _client.Post(request);
+                var  postedgame = GetTotalGameInfo(gameId);
+                postBackModel.ludoPlayers = postedgame.ludoPlayers;
+                postBackModel.numberOfPlayers = postedgame.numberOfPlayers;
+                postBackModel.gameId = postedgame.gameId;
+                Log.Information("Added player with name: {nameOfPlayer}" + " with color: {playerColor}" + " and gameId: {gameId}", model.ludoplayer.name, model.ludoplayer.playerColor, gameId);
+                return View("GameConfiguration", postBackModel);
+            }
+            else
+            {
+                postBackModel.ludoPlayers = game.ludoPlayers;
+                postBackModel.numberOfPlayers = game.numberOfPlayers;
+                postBackModel.gameId = game.gameId;
 
-            var request = new RestRequest($"api/ludo/{gameId}/players", Method.POST);
-            request.RequestFormat = DataFormat.Json;
-            request.AddJsonBody(playerData);
-            IRestResponse addPlayerRequest = _client.Post(request);
+                return View("GameConfiguration", postBackModel);
+            }
+
+            
 
 
-            var gameModel = GetTotalGameInfo(gameId);
-            Log.Information("Added player with name: {nameOfPlayer}" + " with color: {playerColor}" + " and gameId: {gameId}", nameOfPlayer, playerColor, gameId);
-            return View("~/Views/Ludo/GameConfiguration.cshtml", gameModel);
         }
     }
 }

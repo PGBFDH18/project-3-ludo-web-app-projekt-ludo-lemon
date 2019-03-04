@@ -35,21 +35,21 @@
 
         if (Model.ludoPlayers[Model.currentPlayerId].playerColor == 0)
         {
-        playerColor = "blue";
+            playerColor = "blue";
         }
         if (Model.ludoPlayers[Model.currentPlayerId].playerColor == 1)
         {
-        playerColor = "yellow";
+            playerColor = "yellow";
         }
         if (Model.ludoPlayers[Model.currentPlayerId].playerColor == 2)
         {
-        playerColor = "red";
+            playerColor = "red";
         }
         if (Model.ludoPlayers[Model.currentPlayerId].playerColor == 3)
         {
-        playerColor = "green";
+            playerColor = "green";
         }
-        
+
 
         <div id="playerName" class="currentPlayer">
             <font color="@playerColor">@Model.ludoPlayers[Model.currentPlayerId].name</font>
