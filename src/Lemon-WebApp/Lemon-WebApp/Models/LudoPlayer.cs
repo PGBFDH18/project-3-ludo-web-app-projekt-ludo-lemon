@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace Lemon_WebApp.Models
 {
     public class LudoModifyPlayerModel
     {
-       
-        [Required(ErrorMessage = "Please enter a user name.")]
+        [Required(ErrorMessage = "Please enter a user Name.")]
         [RegularExpression(@"^[a-zA-ZåäöüßÅÄÖÜ]+$", ErrorMessage = "Name can only contain letters")]
-        [StringLength(maximumLength: 15, MinimumLength = 2, ErrorMessage = "The First Name must be more than {2} characters and less than {1}.")]
+        [StringLength(maximumLength: 15, MinimumLength = 2, ErrorMessage = "The Name must be between {2} and {1} characters .")]
         public string name { get; set; }
         public string playerColor { get; set; }
     } 
