@@ -11,7 +11,7 @@ namespace Lemon_WebApp.Models
     {
         [Required(ErrorMessage = "Please enter a user Name.")]
         [RegularExpression(@"^[a-zA-ZåäöüßÅÄÖÜ]+$", ErrorMessage = "Name can only contain letters")]
-        [StringLength(maximumLength: 15, MinimumLength = 2, ErrorMessage = "The Name must be between {2} and {1} characters .")]
+        [StringLength(maximumLength: 15, MinimumLength = 2, ErrorMessage = "The Name must be between {2} and {1} characters")]
         public string name { get; set; }
         public string playerColor { get; set; }
     } 
